@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: asinamet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 11:09:11 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/12 12:41:57 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 15:50:19 by asinamet          #+#    #+#             */
+/*   Updated: 2021/01/12 15:52:01 by asinamet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*c;
-	unsigned int	i;
+	unsigned int	c;
+	char			*d;
+	char			*s;
+	char			mm[len];
 
-	i = 0;
-	c = (unsigned char *)s;
-	while (i < n)
+	d = (char *)dst;
+	s = (char *)src;
+	c = 0;
+	while (c < len)
 	{
-		c[i] = 0;
-		i++;
+		mm[c] = s[c];
+		c++;
 	}
-	return ;
+	c = 0;
+	while (c < len)
+	{
+		d[c] = mm[c];
+		c++;
+	}
+	return (dst);
 }

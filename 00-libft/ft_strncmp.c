@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 17:32:52 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/12 17:35:42 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/13 11:12:55 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/13 11:56:53 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
+	size_t i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	if (i != n)
+		return (s1[i] - s2[i]);
 	return (0);
 }
