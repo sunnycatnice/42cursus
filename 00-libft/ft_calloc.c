@@ -6,7 +6,7 @@
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 16:08:46 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/14 18:09:39 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/01/15 13:51:13 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*res;
-	size_t	i;
+	void	*array;
 
-	i = 0;
-	if (count == 0 || size == 0)
+	if (!(array = (char *)malloc(size * count)))
 		return (NULL);
-	res = (void*)malloc(size * count);
-	ft_bzero(res, count);
-	return (res);
+	ft_bzero(array, size * count);
+	return (array);
 }
+

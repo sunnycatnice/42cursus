@@ -6,7 +6,7 @@
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:13:24 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/15 10:38:44 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:22:53 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 int	ft_atoi(const char *str)
 {
-	int	num;
-	int	n_p;
+	int	nbr;
+	int	sign;
 
-	num = 0;
-	n_p = 1;
+	nbr = 0;
+	sign = 1;
 	while (*str == ' ' || (*str > 8 && *str < 14))
 		str++;
-	if (*str == '-' || *str == '+')
+	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			n_p *= -1;
+			sign = -1;
 		str++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (*str && ft_isdigit(*str))
 	{
-		num *= 10;
-		num += (int)(*str - '0');
-		str++;
-		if(num == 2147483647)
-			return (-1)
-		if(num == -2147483648)
+		if (nbr < 0)
+		{
+			if (sign == 1)
+				return (-1);
 			return (0);
-		
+		}
+		nbr = nbr * 10 + *str - '0';
+		str++;
 	}
-	return (num * n_p);
+	return (nbr * sign);
 }
