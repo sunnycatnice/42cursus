@@ -6,7 +6,7 @@
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:13:24 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/13 14:52:07 by asinamet         ###   ########.fr       */
+/*   Updated: 2021/01/15 10:38:44 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int	ft_atoi(const char *str)
 		num *= 10;
 		num += (int)(*str - '0');
 		str++;
+		if(num == 2147483647)
+			return (-1)
+		if(num == -2147483648)
+			return (0);
+		
 	}
 	return (num * n_p);
 }

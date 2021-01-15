@@ -6,7 +6,7 @@
 /*   By: asinamet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:50:19 by asinamet          #+#    #+#             */
-/*   Updated: 2021/01/12 15:52:01 by asinamet         ###   ########.fr       */
+/*   Updated: 2021/01/15 10:04:58 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	d = (char *)dst;
 	s = (char *)src;
 	c = 0;
+	if(dst == NULL && src == NULL)
+		return(NULL);
 	while (c < len)
 	{
 		mm[c] = s[c];
