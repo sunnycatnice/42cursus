@@ -6,7 +6,7 @@
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:21:22 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/16 12:58:23 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/01/16 19:19:06 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	conta_parole(char const *s, char c)
 
 	i = 0;
 	parole = 0;
-	while(s[i])
+	while (s[i])
 	{
-		if(s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			parole ++;
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			parole++;
 		i++;
 	}
 	return (parole);
@@ -73,14 +73,14 @@ static char	**riempi(char const *s, int parole, char c, char **splittato)
 			return (libera(splittato, i));
 		j = 0;
 		while (j < lung)
-			splittato [i][j++] = *s++;
-		splittato [i][j] = '\0';
+			splittato[i][j++] = *s++;
+		splittato[i][j] = '\0';
 	}
 	splittato[i] = NULL;
 	return (splittato);
 }
 
-char **ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char	**splittato;
 	int		num_parole;
@@ -88,8 +88,8 @@ char **ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	num_parole = conta_parole(s, c);
-	if (!(splittato = (char **) malloc(sizeof(char*) * (num_parole + 1))))
+	if (!(splittato = (char **)malloc(sizeof(char*) * (num_parole + 1))))
 		return (NULL);
-	splittato = riempi (s, num_parole, c, splittato);
+	splittato = riempi(s, num_parole, c, splittato);
 	return (splittato);
 }
