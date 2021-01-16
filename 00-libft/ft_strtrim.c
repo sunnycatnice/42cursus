@@ -6,21 +6,11 @@
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 19:58:17 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/15 19:58:20 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/01/16 11:01:42 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
-
-size_t	ft_strlenDiDani(const char *s)
-{
-	size_t i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 static int
 	ft_char_in_set(char c, char const *set)
@@ -46,12 +36,14 @@ char
 	size_t	end;
 
 	start = 0;
+	if (s1 == NULL)
+		return (NULL);
 	while (s1[start] && ft_char_in_set(s1[start], set))
 		start++;
-	end = ft_strlenDiDani(s1);
+	end = ft_strlen(s1);
 	while (end > start && ft_char_in_set(s1[end - 1], set))
 		end--;
-	str = (char*)malloc(sizeof(*s1) * (end - start + 1));
+	str = malloc(sizeof(char) * (end - start + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -60,4 +52,3 @@ char
 	str[i] = 0;
 	return (str);
 }
-
