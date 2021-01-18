@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raccoman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 18:36:14 by raccoman          #+#    #+#             */
-/*   Updated: 2021/01/15 18:36:15 by raccoman         ###   ########.fr       */
+/*   Created: 2021/01/15 18:36:14 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/17 12:15:24 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 	{
 		del(lst->content);
 		free(lst);
+		lst = 0;
 	}
 }
