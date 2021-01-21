@@ -6,7 +6,7 @@
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:19:38 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/18 17:19:41 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/01/21 10:44:02 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
 
-size_t			ft_strlen(char *s);
+# define MASSIMO_OPEN 4096
+
+size_t			ft_strlen(const char *s);
 char			*ft_strjoin(char const *s1, char const *s2);
+int				is_line(char *str);
+int				get_next_line(const int fd, char **line);
+char			*next_line(char *db);
+char			*del_line(char *db);
 
 #endif
