@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:19:38 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/21 10:44:02 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/01/24 12:17:53 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H

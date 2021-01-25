@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
@@ -75,7 +75,7 @@ int get_next_line(const int fd, char **line)
 		return (-1);
 	while (!is_line(db[fd]) && res != 0) //while line not ended and there's something to read
 	{
-		if((res = read (fd, buffer, BUFFER_SIZE)) == -1) // if while reading there's an error
+		if((res = read (fd, buffer, BUFFER_SIZE)) == -1) // if there's an error in reading
 		{
 			free(buffer);// free buffer memory
 			return (-1);// return errror
@@ -85,8 +85,8 @@ int get_next_line(const int fd, char **line)
 	}
 	free(buffer); //free buffer memory
 	*line = next_line(db[fd]); // coping  the content of the database to *line
-	db[fd] = del_line(db[fd]); // coping the content of new_database to the old database (?)
+	db[fd] = del_line(db[fd]); // deleting the database
 	if (res == 0)
 		return (0);
-	return (1);// if all passages are correct, return 1
+	return (1);// if all steps are correct, return 1
 }
