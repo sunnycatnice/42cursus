@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 16:01:43 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/27 16:02:01 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/27 15:36:15 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/27 15:36:18 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int			is_line(char *str)
 {
