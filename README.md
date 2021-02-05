@@ -1,7 +1,7 @@
 # My experience | 42cursus
 
 ## C Piscine 
->You can view my 42 piscine work in this [repository](https://khan.github.io/KaTeX/)
+>You can view my 42 piscine work in this [repository](https://github.com/sunnycatnice/C-Piscine)
 
 ## 42 Cursus
 
