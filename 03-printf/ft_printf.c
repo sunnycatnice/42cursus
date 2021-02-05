@@ -13,91 +13,91 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static void	specs_init(char specs[9],
-			int (*specificatori[8])(va_list *, t_modificatori))
+static void	ft_init_req(char print_req[9],
+			int (*requests[8])(va_list *, t_modifiers))
 {
-	specs[0] = 'c';
-	specs[1] = 's';
-	specs[2] = 'd';
-	specs[3] = 'i';
-	specs[4] = 'p';
-	specs[5] = 'u';
-	specs[6] = 'x';
-	specs[7] = 'X';
-	specs[8] = 0;
-	specificatori[0] = &spec_c;
-	specificatori[1] = &spec_s;
-	specificatori[2] = &spec_d;
-	specificatori[3] = &spec_d;
-	specificatori[4] = &spec_p;
-	specificatori[5] = &spec_u;
-	specificatori[6] = &spec_x;
-	specificatori[7] = &spec_x;
-	specificatori[8] = 0;
+	print_req[0] = 'c';
+	print_req[1] = 's';
+	print_req[2] = 'd';
+	print_req[3] = 'i';
+	print_req[4] = 'p';
+	print_req[5] = 'u';
+	print_req[6] = 'x';
+	print_req[7] = 'X';
+	print_req[8] = 0;
+	requests[0] = &p_req_c;
+	requests[1] = &p_req_s;
+	requests[2] = &p_req_d;
+	requests[3] = &p_req_d;
+	requests[4] = &p_req_p;
+	requests[5] = &p_req_u;
+	requests[6] = &p_req_x;
+	requests[7] = &p_req_x;
+	requests[8] = 0;
 
 }
 
-static	int	aggiungi_specif(const char *str, int *cont, va_list args)
+static	int	ft_add_spec(const char *str, int *index, va_list args)
 {
-	char			specs[9];
-	int				(*specificatori[9]) (va_list *, t_modificatori);
-	t_modificatori	modificatori;
-	int				contSpecs;
+	char			print_req[9];
+	int				(*requests[9]) (va_list *, t_modifiers);
+	t_modifiers		modifiers;
+	int				index_req;
 
-	contSpecs = 0;
-	specs_init(specs, specificatori);
-	controlla_modif(args, str, cont, &modificatori);
-	if (str[*cont] == '%')
+	index_req = 0;
+	ft_init_req(print_req, requests);
+	ft_check_modifiers(args, str, index, &modifiers);
+	if (str[*index] == '%')
 	{
-		(*cont)++;
-		return (spec_r(modificatori));
+		(*index)++;
+		return (ft_spec_r(modifiers));
 	}
-	while(specificatori[contSpecs])
+	while(requests[index_req])
 	{
-		if (str[*cont] == specs[contSpecs])
+		if (str[*index] == print_req[index_req])
 		{
-			(*cont)++;
-			if (contSpecs == 7)
-				modificatori.maiuscoli_x = true;
-				return (specificatori[contSpecs] (args, modificatori));
+			(*index)++;
+			if (index_req == 7)
+				modifiers.upper_x = true;
+			return (requests[index_req] (args, modifiers));
 		}
-		contSpecs++;
+		index_req++;
 	}
 	return (-1);
 }
 
-static int	ufficio_stampa(const char *str, va_list *arg, int n)
+static int	ft_press_office(const char *str, va_list *args, int len)
 {
-	int cont;
-	int ret;
+	int index;
+	int lung_specs;
 
-	cont = 0;
-	while(str[cont])
+	index = 0;
+	while(str[index])
 	{
-		if(str[cont] == '%')
+		if(str[index] == '%')
 		{
-			cont++;
-			if((ret = aggiungi_specif(str, &cont, arg)) < 0)
+			index++;
+			if((lung_specs = ft_add_spec(str, &index, args)) < 0)
 				return (-1);
-			n = n + ret;
+			len+= lung_specs;
 		}
 		else
 		{
-			ft_putchar_fd(str[cont], FD);
-			cont++;
-			n++;
+			ft_putchar_fd(str[index], FD);
+			index++;
+			len++;
 		}
 	}
-	return (n);
+	return (len);
 }
 
 int			ft_printf(const char *str, ...)
 {
 	va_list	arg;
-	int		n;
+	int		len;
 
 	va_start(arg, str);
-	n = ufficio_stampa(str, &arg, 0);
+	len = ft_press_office(str, &arg, 0);
 	va_end(arg);
-	return (n);
+	return (len);
 }

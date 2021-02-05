@@ -26,20 +26,20 @@
 # define BASE_16	"0123456789abcdef"
 # define BASE_16X	"0123456789ABCDEF"
 
-typedef enum	e_bandiere
+typedef enum	e_flags
 {
 	zero = 0,
-	meno = 1
-}				t_bandiere;
+	minus = 1
+}				t_flags;
 
-typedef struct	s_modificatori
+typedef struct	s_modifiers
 {
-	bool	bandiere[2];
-	int		width;
-	bool	width_stato;
-	int		precisione;
-	bool	maiuscoli_x;
-}				t_modificatori;
+	bool		flags[2];
+	int			width;
+	bool		width_state;
+	int			precision;
+	bool		upper_x;
+}				t_modifiers;
 
  typedef struct	s_par
 {
