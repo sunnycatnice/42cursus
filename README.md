@@ -6,7 +6,7 @@
 ## 42 Cursus
 
 
-| Project | Project |
+| Project | Rating |
 | ------ | ------ |
 | libft | `115`|
 | get_next_line | `115` |
