@@ -10,4 +10,5 @@
 | ------ | ------ |
 | libft | `115`|
 | get_next_line | `115` |
+| netwhat | `100` |
 | ft_printf | `100` |
