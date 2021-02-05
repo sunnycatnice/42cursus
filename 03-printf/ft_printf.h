@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdbool.h>
-# include "libft/libft.h"
 
 # define BASE_8		"01234567"
 # define BASE_10	"0123456789"
@@ -41,17 +40,11 @@ typedef struct	s_modifiers
 	bool		upper_x;
 }				t_modifiers;
 
- typedef struct	s_par
-{
-	char	sflag;
-	char	zflag;
-	char	prec;
-	int		width;
-	int		prec_len;
-	int		printed;
-	char	error;
-	va_list	arg;
-}				t_par;
-
+int			ft_simple_atoi(const char *str, int *index);
+int			ft_isdigit(int c);
+int			p_req_c(va_list *args, t_modifiers modifiers);
+void		ft_putchar_fd(char c, int fd);
+void		ft_check_modifiers(va_list *args, const char *str, int *index,
+			t_modifiers *modifiers);
 
 #endif

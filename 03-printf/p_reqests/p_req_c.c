@@ -19,17 +19,17 @@ int	p_req_c(va_list *args, t_modifiers modifiers)
 	char	fill;
 
 	c = va_arg(*args, int);
-	cont = 1;
+	cont_width = 1;
 	fill = modifiers.flags[zero] ? '0' : ' ';
 	if(modifiers.flags[minus])
 		ft_putchar(c, FD);
 	while(modifiers.width - 1 > 0)
 	{
 		ft_putchar_fd(fill, FD);
-		mofiers.width--;
-		cont++;
+		modifiers.width--;
+		cont_width++;
 	}
 	if(!modifiers.flags[minus] || modifiers.flags[zero])
 		ft_putchar_fd(c, FD);
-	return (cont_width)
+	return (cont_width);
 }

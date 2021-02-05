@@ -10,4 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../ft_printf.h"
 
+int			p_req_d(va_list *args, t_modifiers modifiers)
+{
+	int i;
+	int num;
+
+	i = (long)va_arg(*args, int);
+	if (!modifiers->precision && !modifiers.width && !i)
+		return (0);
+	num = ft_numlen_base(i, 10);
+	if(!i && !modifiers->precision)
+		num = 0;
+	num = ft_decimal_office(i, num, modifiers);
+	return (num);
+}

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 static void	ft_init_req(char print_req[9],
 			int (*requests[8])(va_list *, t_modifiers))
@@ -26,18 +25,18 @@ static void	ft_init_req(char print_req[9],
 	print_req[7] = 'X';
 	print_req[8] = 0;
 	requests[0] = &p_req_c;
-	requests[1] = &p_req_s;
-	requests[2] = &p_req_d;
-	requests[3] = &p_req_d;
-	requests[4] = &p_req_p;
-	requests[5] = &p_req_u;
-	requests[6] = &p_req_x;
-	requests[7] = &p_req_x;
-	requests[8] = 0;
+	// requests[1] = &p_req_s;
+	// requests[2] = &p_req_d;
+	// requests[3] = &p_req_d;
+	// requests[4] = &p_req_p;
+	// requests[5] = &p_req_u;
+	// requests[6] = &p_req_x;
+	// requests[7] = &p_req_x;
+	// requests[8] = 0;
 
 }
 
-static	int	ft_add_spec(const char *str, int *index, va_list args)
+static	int	ft_add_spec(const char *str, int *index, va_list *args)
 {
 	char			print_req[9];
 	int				(*requests[9]) (va_list *, t_modifiers);
@@ -50,7 +49,7 @@ static	int	ft_add_spec(const char *str, int *index, va_list args)
 	if (str[*index] == '%')
 	{
 		(*index)++;
-		return (ft_spec_r(modifiers));
+		//return (ft_spec_r(modifiers));
 	}
 	while(requests[index_req])
 	{
@@ -93,11 +92,11 @@ static int	ft_press_office(const char *str, va_list *args, int len)
 
 int			ft_printf(const char *str, ...)
 {
-	va_list	arg;
+	va_list	args;
 	int		len;
 
-	va_start(arg, str);
-	len = ft_press_office(str, &arg, 0);
-	va_end(arg);
+	va_start(args, str);
+	len = ft_press_office(str, &args, 0);
+	va_end(args);
 	return (len);
 }
