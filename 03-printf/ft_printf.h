@@ -40,11 +40,25 @@ typedef struct	s_modifiers
 	bool		upper_x;
 }				t_modifiers;
 
-int			ft_simple_atoi(const char *str, int *index);
-int			ft_isdigit(int c);
+/*
+** dir print requests
+*/
 int			p_req_c(va_list *args, t_modifiers modifiers);
-void		ft_putchar_fd(char c, int fd);
+int			p_req_s(va_list *args, t_modifiers modifiers);
+int			p_req_percent(t_modifiers modifiers);
+/*
+** dir utils
+*/
 void		ft_check_modifiers(va_list *args, const char *str, int *index,
 			t_modifiers *modifiers);
+void		ft_putstrlen_fd(char *str, int len, int fd);
+int			ft_isdigit(int c);
+void		ft_putchar_fd(char c, int fd);
+int			ft_simple_atoi(const char *str, int *index);
+int			ft_strlen(char *str);
+/*
+** ft_printf.c
+*/
+int			ft_printf(const char *str, ...);
 
 #endif

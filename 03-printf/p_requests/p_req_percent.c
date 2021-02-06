@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_simple_atoi.c                                   :+:      :+:    :+:   */
+/*   p_req_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 13:46:47 by dmangola          #+#    #+#             */
-/*   Updated: 2021/02/04 13:46:48 by dmangola         ###   ########.fr       */
+/*   Created: 2021/02/06 11:57:44 by dmangola          #+#    #+#             */
+/*   Updated: 2021/02/06 11:57:59 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+#include "../ft_printf.h"
 
-int			ft_simple_atoi(const char *str, int *index)
+int	p_req_percent(t_modifiers modifiers)
 {
-	int ret;
+	int		n;
+	char	fill;
 
-	ret = 0;
-	while (ft_isdigit(str[*index]))
+	n = 1;
+	fill = modifiers.flags[zero] ? '0' : ' ';
+	if (modifiers.flags[minus])
+		ft_putchar_fd('%', FD);
+	while (modifiers.width - 1 > 0)
 	{
-		ret = ret * 10 + (str[*index] - '0');
-		(*index)++;
+		ft_putchar_fd(fill, FD);
+		modifiers.width--;
+		n++;
 	}
-	return (ret);
+	if (!modifiers.flags[minus] || modifiers.flags[zero])
+		ft_putchar_fd('%', FD);
+	return (n);
 }

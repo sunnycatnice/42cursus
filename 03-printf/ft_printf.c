@@ -25,7 +25,7 @@ static void	ft_init_req(char print_req[9],
 	print_req[7] = 'X';
 	print_req[8] = 0;
 	requests[0] = &p_req_c;
-	// requests[1] = &p_req_s;
+	requests[1] = &p_req_s;
 	// requests[2] = &p_req_d;
 	// requests[3] = &p_req_d;
 	// requests[4] = &p_req_p;
@@ -49,7 +49,7 @@ static	int	ft_add_spec(const char *str, int *index, va_list *args)
 	if (str[*index] == '%')
 	{
 		(*index)++;
-		//return (ft_spec_r(modifiers));
+		return (p_req_percent(modifiers));
 	}
 	while(requests[index_req])
 	{

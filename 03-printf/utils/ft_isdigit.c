@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_simple_atoi.c                                   :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 13:46:47 by dmangola          #+#    #+#             */
-/*   Updated: 2021/02/04 13:46:48 by dmangola         ###   ########.fr       */
+/*   Created: 2021/02/06 11:35:34 by dmangola          #+#    #+#             */
+/*   Updated: 2021/02/06 11:35:51 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
-}
-
-int			ft_simple_atoi(const char *str, int *index)
-{
-	int ret;
-
-	ret = 0;
-	while (ft_isdigit(str[*index]))
-	{
-		ret = ret * 10 + (str[*index] - '0');
-		(*index)++;
-	}
-	return (ret);
 }

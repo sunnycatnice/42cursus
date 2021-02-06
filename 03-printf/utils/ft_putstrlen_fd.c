@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_simple_atoi.c                                   :+:      :+:    :+:   */
+/*   ft_putstrlen_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 13:46:47 by dmangola          #+#    #+#             */
-/*   Updated: 2021/02/04 13:46:48 by dmangola         ###   ########.fr       */
+/*   Created: 2021/02/06 16:58:40 by dmangola          #+#    #+#             */
+/*   Updated: 2021/02/06 16:58:50 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+#include <unistd.h>
 
-int			ft_simple_atoi(const char *str, int *index)
+void	ft_putstrlen_fd(char *str, int len, int fd)
 {
-	int ret;
-
-	ret = 0;
-	while (ft_isdigit(str[*index]))
-	{
-		ret = ret * 10 + (str[*index] - '0');
-		(*index)++;
-	}
-	return (ret);
+	write(fd, str, len);
 }

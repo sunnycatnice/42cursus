@@ -1,12 +1,11 @@
-#include "printf.h"
 #include <stdio.h>
-#include "ft_printf.c"
+#include "ft_printf.h"
 
 int main()
 {
-	char a = 'f';
+	char a[] = "FEDE NOZIALE";
 
-	printf("Abbello %c\n", a);
-	ft_printf("Abbello %c\n", a);
+	printf("Abbello %s\n", a);
+	ft_printf("Abbello %s\n", a);
 	return (0);
 }
