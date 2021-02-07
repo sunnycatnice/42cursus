@@ -15,7 +15,7 @@
 int		p_req_s(va_list *args, t_modifiers modifiers)
 {
 	char	*string;
-	int 	len;
+	int		len;
 	int		lenandwidth;
 	int		fill;
 

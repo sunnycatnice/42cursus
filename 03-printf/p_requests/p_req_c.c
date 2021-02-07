@@ -21,15 +21,15 @@ int	p_req_c(va_list *args, t_modifiers modifiers)
 	c = va_arg(*args, int);
 	cont_width = 1;
 	fill = modifiers.flags[zero] ? '0' : ' ';
-	if(modifiers.flags[minus])
+	if (modifiers.flags[minus])
 		ft_putchar_fd(c, FD);
-	while(modifiers.width - 1 > 0)
+	while (modifiers.width - 1 > 0)
 	{
 		ft_putchar_fd(fill, FD);
 		modifiers.width--;
 		cont_width++;
 	}
-	if(!modifiers.flags[minus] || modifiers.flags[zero])
+	if (!modifiers.flags[minus] || modifiers.flags[zero])
 		ft_putchar_fd(c, FD);
 	return (cont_width);
 }

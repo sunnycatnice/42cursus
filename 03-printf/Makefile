@@ -15,7 +15,7 @@ NAME	= libftprintf.a
 SRC		= $(wildcard ./p_requests/*.c) $(wildcard ./utils/*.c) ft_printf.c main.c
 
 OBJ		= $(SRC:.c=.o)
-CC = gcc
+CC		= gcc
 CFLAGS	= -c -Wall -Wextra -Werror
 HEADER	= ft_printf.h
 

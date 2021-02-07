@@ -46,7 +46,7 @@ static void	check_width(va_list *args, const char *str, int *index,
 {
 	while (*str)
 	{
-		if(ft_isdigit(str[*index]))
+		if (ft_isdigit(str[*index]))
 		{
 			modifiers->width_state = true;
 			modifiers->width = ft_simple_atoi(str, index);
@@ -57,16 +57,16 @@ static void	check_width(va_list *args, const char *str, int *index,
 			modifiers->width = va_arg(*args, int);
 			(*index)++;
 		}
-		if(modifiers->width < 0 && modifiers->width_state)
+		if (modifiers->width < 0 && modifiers->width_state)
 		{
 			modifiers->flags[minus] = true;
-			modifiers->width = modifiers-> width * -1;
+			modifiers->width = modifiers->width * -1;
 		}
 		return ;
 	}
 }
 
-static void check_flags(const char *str, int *index, t_modifiers *modifiers)
+static void	check_flags(const char *str, int *index, t_modifiers *modifiers)
 {
 	if (str[*index] == '0')
 		modifiers->flags[0] = true;

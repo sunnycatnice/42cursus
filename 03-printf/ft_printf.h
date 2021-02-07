@@ -13,7 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define FD 1
+# define FD	1
 
 # include <unistd.h>
 # include <stdlib.h>
