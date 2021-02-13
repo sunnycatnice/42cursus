@@ -58,6 +58,9 @@ dkms.conf
 *.swp
 *.code-workspace
 
+/pft
+/42TESTERS-PRINTF
+
 #VS_CODE
 .vscode/*
 !.vscode/settings.json
