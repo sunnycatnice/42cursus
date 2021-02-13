@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static void	check_precision(va_list *args, const char *str, int *index,
+static void		check_precision(va_list *args, const char *str, int *index,
 		t_modifiers *modifiers)
 {
 	if (str[*index] != '.')
@@ -31,7 +31,7 @@ static void	check_precision(va_list *args, const char *str, int *index,
 	{
 		if (ft_isdigit(str[*index]))
 			(*index)++;
-		else if (str[*index])
+		else if (str[*index] == '*')
 		{
 			va_arg(*args, int);
 			(*index)++;
@@ -41,37 +41,53 @@ static void	check_precision(va_list *args, const char *str, int *index,
 	}
 }
 
-static void	check_width(va_list *args, const char *str, int *index,
+static void		check_width(va_list *args, const char *str, int *index,
 		t_modifiers *modifiers)
 {
-	while (*str)
+	while (1)
 	{
 		if (ft_isdigit(str[*index]))
 		{
 			modifiers->width_state = true;
 			modifiers->width = ft_simple_atoi(str, index);
 		}
-		if (str[*index] == '*')
+		else if (str[*index] == '*')
 		{
 			modifiers->width_state = true;
 			modifiers->width = va_arg(*args, int);
 			(*index)++;
 		}
-		if (modifiers->width < 0 && modifiers->width_state)
+		else
 		{
-			modifiers->flags[minus] = true;
-			modifiers->width = modifiers->width * -1;
+			if (modifiers->width < 0 && modifiers->width_state)
+			{
+				modifiers->flags[minus] = true;
+				modifiers->width *= -1;
+			}
+			return ;
 		}
-		return ;
 	}
 }
 
 static void	check_flags(const char *str, int *index, t_modifiers *modifiers)
 {
-	if (str[*index] == '0')
-		modifiers->flags[0] = true;
-	if (str[*index] == '-')
-		modifiers->flags[1] = true;
+	char	flagset[3];
+	int		j;
+
+	flagset[0] = '0';
+	flagset[1] = '-';
+	flagset[2] = 0;
+	j = 0;
+	while (flagset[j])
+	{
+		if (str[*index] == flagset[j])
+		{
+			modifiers->flags[j] = true;
+			(*index)++;
+			j = -1;
+		}
+		j++;
+	}
 }
 
 static void	init_modifiers(t_modifiers *modifiers)

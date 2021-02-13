@@ -26,13 +26,13 @@ static void	ft_init_req(char type[9],
 	type[8] = 0;
 	request[0] = &p_req_c;
 	request[1] = &p_req_s;
-	// request[2] = &p_req_d;
-	// request[3] = &p_req_d;
-	// request[4] = &p_req_p;
-	// request[5] = &p_req_u;
-	// request[6] = &p_req_x;
-	// request[7] = &p_req_x;
-	// request[8] = 0;
+	request[2] = &p_req_d;
+	request[3] = &p_req_d;
+	request[4] = &p_req_p;
+	request[5] = &p_req_u;
+	request[6] = &p_req_x;
+	request[7] = &p_req_x;
+	request[8] = 0;
 }
 
 static	int	ft_print_requests(const char *str, int *index, va_list *args)
@@ -48,10 +48,12 @@ static	int	ft_print_requests(const char *str, int *index, va_list *args)
 	if (str[*index] == '%')
 	{
 		(*index)++;
+		ft_check_spaces(str, index, &modifiers);
 		return (p_req_percent(modifiers));
 	}
 	while (request[index_req])
 	{
+		ft_check_spaces(str, index, &modifiers);
 		if (str[*index] == type[index_req])
 		{
 			(*index)++;
