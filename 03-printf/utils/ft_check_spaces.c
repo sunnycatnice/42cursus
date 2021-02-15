@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-void	ft_check_spaces(const char *str, int *index, t_modifiers *modifiers)
+int	ft_check_spaces(const char *str, int *index, t_modifiers *modifiers)
 {
 	if (str[*index] == ' ')
 	{
@@ -20,10 +20,13 @@ void	ft_check_spaces(const char *str, int *index, t_modifiers *modifiers)
 			(*index)++;
 		modifiers->space = true;
 	}
-	modifiers->space = false;
+	else
+		modifiers->space = false;
 	if (modifiers->space == true)
 	{
 		ft_putchar_fd(' ', FD);
+		return (1);
 	}
-	return ;
+	else
+		return (-1);
 }
