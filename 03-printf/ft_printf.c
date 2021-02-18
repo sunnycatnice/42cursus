@@ -76,7 +76,7 @@ static int	ft_press_office(const char *str, va_list *args, int len)
 		if (str[index] == '%')
 		{
 			index++;
-			space = ft_check_spaces(str, &index, &modifiers) > 0 ? 1 : 0;
+			space = ft_check_spaces(str, &index) > 0 ? 1 : 0;
 			if ((modifiers.len_modified = ft_print_types(str, &index, args,
 					&modifiers)) < 0)
 				return (-1);

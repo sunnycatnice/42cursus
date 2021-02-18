@@ -61,7 +61,7 @@ static int	ft_print_manager(unsigned long pointer, int n,
 			modifiers.precision : len, modifiers);
 	if(!modifiers.flags[minus] || modifiers.flags[zero])
 	{
-		ft_putstr_fd("0X", FD);
+		ft_putstr_fd("0x", FD);
 		n += ft_write_prec(len - 2, modifiers);
 		if (modifiers.precision || pointer)
 			ft_putnbr_base_fd(pointer, BASE_16, FD);

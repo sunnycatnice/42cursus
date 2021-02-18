@@ -58,7 +58,7 @@ int			p_req_percent(t_modifiers modifiers);
 */
 void		ft_check_modifiers(va_list *args, const char *str, int *index,
 			t_modifiers *modifiers);
-int			ft_check_spaces(const char *str, int *index, t_modifiers *modifiers);
+int			ft_check_spaces(const char *str, int *index);
 void		ft_putstrlen_fd(char *str, int len, int fd);
 int			ft_isdigit(int c);
 int			ft_numlen_base(int num, int base);
