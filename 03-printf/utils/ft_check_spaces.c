@@ -16,17 +16,10 @@ int	ft_check_spaces(const char *str, int *index, t_modifiers *modifiers)
 {
 	if (str[*index] == ' ')
 	{
+		ft_putchar_fd(' ', FD);
 		while (str[*index] == ' ')
 			(*index)++;
-		modifiers->space = true;
+		return (modifiers->len_modified++);
 	}
-	else
-		modifiers->space = false;
-	if (modifiers->space == true)
-	{
-		ft_putchar_fd(' ', FD);
-		return (1);
-	}
-	else
-		return (-1);
+	return (0);
 }

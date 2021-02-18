@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/09 13:58:12 by dmangola          #+#    #+#             */
-/*   Updated: 2021/02/09 13:58:13 by dmangola         ###   ########.fr       */
+/*   Created: 2021/02/11 13:46:35 by dmangola          #+#    #+#             */
+/*   Updated: 2021/02/11 13:46:47 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,4 @@ int	ft_ulnumlen_base(unsigned long i, int base)
 	}
 	return (n);
 }
+

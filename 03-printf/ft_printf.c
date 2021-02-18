@@ -35,37 +35,29 @@ static void	ft_init_req(char type[9],
 	request[8] = 0;
 }
 
-static	int	ft_checking(const char *str, int *index,
+static	int	ft_print_types(const char *str, int *index, va_list *args,
 			t_modifiers *modifiers)
 {
-	
+	char			type[9];
+	int				(*request[9])(va_list *, t_modifiers);
+	int				index_req;
+
+	index_req = 0;
+	ft_init_req(type, request);
+	ft_check_modifiers(args, str, index, modifiers);
 	if (str[*index] == '%')
 	{
 		(*index)++;
 		return (p_req_percent(*modifiers));
 	}
-	return (ft_check_spaces(str, index, modifiers) > 0 ? 1 : 0);
-}
-
-static	int	ft_print_types(const char *str, int *index, va_list *args)
-{
-	char			type[9];
-	int				(*request[9])(va_list *, t_modifiers);
-	t_modifiers		modifiers;
-	int				index_req;
-
-	index_req = 0;
-	ft_init_req(type, request);
-	ft_check_modifiers(args, str, index, &modifiers);
 	while (request[index_req])
 		{
-			ft_checking(str, index, &modifiers);
 			if (str[*index] == type[index_req])
 			{
 				(*index)++;
 				if (index_req == 7)
-					modifiers.upper_x = true;
-				return (request[index_req](args, modifiers));
+					modifiers->upper_x = true;
+				return (request[index_req](args, *modifiers));
 			}
 			index_req++;
 		}
@@ -74,8 +66,9 @@ static	int	ft_print_types(const char *str, int *index, va_list *args)
 
 static int	ft_press_office(const char *str, va_list *args, int len)
 {
-	int index;
-	int len_modifiers;
+	int 			index;
+	int				space;
+	t_modifiers		modifiers;
 
 	index = 0;
 	while (str[index])
@@ -83,9 +76,11 @@ static int	ft_press_office(const char *str, va_list *args, int len)
 		if (str[index] == '%')
 		{
 			index++;
-			if ((len_modifiers = ft_print_types(str, &index, args)) < 0)
+			space = ft_check_spaces(str, &index, &modifiers) > 0 ? 1 : 0;
+			if ((modifiers.len_modified = ft_print_types(str, &index, args,
+					&modifiers)) < 0)
 				return (-1);
-			len += len_modifiers;
+			len = len + modifiers.len_modified + space;
 		}
 		else
 		{

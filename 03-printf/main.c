@@ -10,8 +10,8 @@ int main()
 	//int *pointer = &i;
 	//long uns =  9845997235;
 
-	val0 = printf("%%   *.5i 42 == |%    *.5d|\n", 4, 11);
-	val1 = ft_printf("%%   *.5i 42 == |%     *.5d|\n", 4, 11);
+	val0 = printf("%%   *.5i 42 == |%  *.5d|\n", 4, 11);
+	val1 = ft_printf("%%   *.5i 42 == |%  *.5d|\n", 4, 11);
 
 	printf("Return : (%d //", val0);
 	printf(" %d)\n", val1);
