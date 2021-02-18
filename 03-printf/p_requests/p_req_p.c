@@ -42,7 +42,7 @@ static int	ft_write_prec(int len, t_modifiers modifiers)
 	return (n);
 }
 
-static int	ft_print_manager(unsigned long pointer, int n, 
+static int	ft_print_manager(unsigned long pointer, int n,
 		t_modifiers modifiers)
 {
 	int len;
@@ -59,7 +59,7 @@ static int	ft_print_manager(unsigned long pointer, int n,
 	}
 	n += ft_write_width(modifiers.precision > len ?
 			modifiers.precision : len, modifiers);
-	if(!modifiers.flags[minus] || modifiers.flags[zero])
+	if (!modifiers.flags[minus] || modifiers.flags[zero])
 	{
 		ft_putstr_fd("0x", FD);
 		n += ft_write_prec(len - 2, modifiers);
@@ -69,7 +69,7 @@ static int	ft_print_manager(unsigned long pointer, int n,
 	return (n);
 }
 
-int		p_req_p(va_list *args, t_modifiers modifiers)
+int			p_req_p(va_list *args, t_modifiers modifiers)
 {
 	unsigned long	pointer;
 	int				n;

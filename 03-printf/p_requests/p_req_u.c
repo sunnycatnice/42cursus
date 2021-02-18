@@ -35,10 +35,10 @@ static int	ft_write_width(long *uns, int len, t_modifiers modifiers)
 
 static int	ft_write_prec(long *uns, int len, t_modifiers modifiers)
 {
-	int		n;
-	
+	int	n;
+
 	n = 0;
-	if(!(*uns) && !modifiers.precision)
+	if (!(*uns) && !modifiers.precision)
 		return (n);
 	if ((*uns) < 0)
 	{
@@ -59,7 +59,7 @@ static int	ft_print_u(long uns, int n, t_modifiers modifiers)
 	int len;
 
 	len = n;
-	if(uns < 0)
+	if (uns < 0)
 		modifiers.precision++;
 	if (modifiers.flags[minus])
 	{
@@ -72,7 +72,7 @@ static int	ft_print_u(long uns, int n, t_modifiers modifiers)
 	if (!modifiers.flags[minus] || modifiers.flags[zero])
 	{
 		n += ft_write_prec(&uns, len, modifiers);
-		if(!(!uns && !modifiers.precision))
+		if (!(!uns && !modifiers.precision))
 			ft_putnbr_fd(uns, FD);
 	}
 	return (n);
@@ -84,7 +84,7 @@ int			p_req_u(va_list *args, t_modifiers modifiers)
 	int				n;
 
 	uns = va_arg(*args, unsigned int);
-	if(!modifiers.precision && !modifiers.width && !uns)
+	if (!modifiers.precision && !modifiers.width && !uns)
 		return (0);
 	n = ft_ulnumlen_base(uns, 10);
 	if (!uns && !modifiers.precision)

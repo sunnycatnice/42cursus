@@ -51,22 +51,22 @@ static	int	ft_print_types(const char *str, int *index, va_list *args,
 		return (p_req_percent(*modifiers));
 	}
 	while (request[index_req])
+	{
+		if (str[*index] == type[index_req])
 		{
-			if (str[*index] == type[index_req])
-			{
-				(*index)++;
-				if (index_req == 7)
-					modifiers->upper_x = true;
-				return (request[index_req](args, *modifiers));
-			}
-			index_req++;
+			(*index)++;
+			if (index_req == 7)
+				modifiers->upper_x = true;
+			return (request[index_req](args, *modifiers));
 		}
+		index_req++;
+	}
 	return (-1);
 }
 
 static int	ft_press_office(const char *str, va_list *args, int len)
 {
-	int 			index;
+	int				index;
 	int				space;
 	t_modifiers		modifiers;
 

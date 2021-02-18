@@ -12,14 +12,14 @@
 
 #include "../ft_printf.h"
 
-static int		ft_write_width(int len, t_modifiers modifiers)
+static int	ft_write_width(int len, t_modifiers modifiers)
 {
 	int		n;
 	char	fill;
 
 	n = 0;
 	fill = modifiers.flags[zero] ? '0' : ' ';
-	while (modifiers.width -  len > 0)
+	while (modifiers.width - len > 0)
 	{
 		ft_putchar_fd(fill, FD);
 		modifiers.width--;
@@ -28,7 +28,7 @@ static int		ft_write_width(int len, t_modifiers modifiers)
 	return (n);
 }
 
-static int ft_write_prec(size_t *exa, int len, t_modifiers modifiers)
+static int	ft_write_prec(size_t *exa, int len, t_modifiers modifiers)
 {
 	int n;
 
@@ -58,7 +58,7 @@ static int	ft_print_x(size_t exa, int n, t_modifiers modifiers)
 			ft_putnbr_base_fd(exa, modifiers.upper_x ? BASE_16X : BASE_16, FD);
 	}
 	n += ft_write_width(modifiers.precision > len ?
-			modifiers.precision : len , modifiers);
+			modifiers.precision : len, modifiers);
 	if (!modifiers.flags[minus] || modifiers.flags[zero])
 	{
 		n += ft_write_prec(&exa, len, modifiers);

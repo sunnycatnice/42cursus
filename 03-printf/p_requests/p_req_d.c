@@ -14,8 +14,8 @@
 
 static int	ft_put_width(long *decimal, int len, t_modifiers modifiers)
 {
-	int 	num;
-	char 	fill;
+	int		num;
+	char	fill;
 
 	num = 0;
 	fill = modifiers.flags[zero] ? '0' : ' ';
@@ -40,7 +40,7 @@ static int	ft_put_prec(long *decimal, int len, t_modifiers modifiers)
 	num = 0;
 	if (!(*decimal) && !modifiers.precision)
 		return (num);
-	if((*decimal) < 0)
+	if ((*decimal) < 0)
 	{
 		ft_putchar_fd('-', FD);
 		(*decimal) *= -1;
@@ -59,20 +59,20 @@ static int	ft_print_manager(long decimal, int num, t_modifiers modifiers)
 	int len;
 
 	len = num;
-	if(decimal < 0)
+	if (decimal < 0)
 		modifiers.precision++;
-	if(modifiers.flags[minus])
+	if (modifiers.flags[minus])
 	{
 		num += ft_put_prec(&decimal, len, modifiers);
 		if (!(!decimal && !modifiers.precision))
 			ft_putnbr_fd(decimal, FD);
 	}
-	num += ft_put_width(&decimal, modifiers.precision > len ? 
-		modifiers.precision : len , modifiers);
-	if(!modifiers.flags[minus] || modifiers.flags[zero])
+	num += ft_put_width(&decimal, modifiers.precision > len ?
+		modifiers.precision : len, modifiers);
+	if (!modifiers.flags[minus] || modifiers.flags[zero])
 	{
 		num += ft_put_prec(&decimal, len, modifiers);
-		if(!(!decimal && !modifiers.precision))
+		if (!(!decimal && !modifiers.precision))
 			ft_putnbr_fd(decimal, FD);
 	}
 	return (num);

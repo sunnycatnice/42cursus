@@ -69,7 +69,7 @@ static void		check_width(va_list *args, const char *str, int *index,
 	}
 }
 
-static void	check_flags(const char *str, int *index, t_modifiers *modifiers)
+static void		check_flags(const char *str, int *index, t_modifiers *modifiers)
 {
 	char	flagset[3];
 	int		j;
@@ -90,7 +90,7 @@ static void	check_flags(const char *str, int *index, t_modifiers *modifiers)
 	}
 }
 
-static void	init_modifiers(t_modifiers *modifiers)
+static void		init_modifiers(t_modifiers *modifiers)
 {
 	modifiers->flags[0] = false;
 	modifiers->flags[1] = false;
@@ -100,7 +100,7 @@ static void	init_modifiers(t_modifiers *modifiers)
 	modifiers->upper_x = false;
 }
 
-void		ft_check_modifiers(va_list *args, const char *str, int *index,
+void			ft_check_modifiers(va_list *args, const char *str, int *index,
 		t_modifiers *modifiers)
 {
 	init_modifiers(modifiers);

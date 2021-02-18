@@ -29,4 +29,3 @@ void	ft_putunbr_fd(unsigned int n, int fd)
 		write(fd, &print, 1);
 	}
 }
-

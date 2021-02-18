@@ -22,4 +22,3 @@ int	ft_ulnumlen_base(unsigned long i, int base)
 	}
 	return (n);
 }
-
