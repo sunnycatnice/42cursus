@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_numlen_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 16:36:29 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/17 10:00:27 by dmangola         ###   ########.fr       */
+/*   Created: 2021/02/27 16:06:00 by dmangola          #+#    #+#             */
+/*   Updated: 2021/02/27 16:06:57 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int	ft_numlen_base(int num, int base)
 {
-	char	*s2;
-	size_t	i;
+	int	len;
 
-	if (!(s2 = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char))))
-		return (0);
-	i = 0;
-	while (s1[i])
+	if (num == -2147483648)
+		return (11);
+	len = num > 0 ? 0 : 1;
+	while (num)
 	{
-		s2[i] = s1[i];
-		i++;
+		num /= base;
+		len++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (len);
 }

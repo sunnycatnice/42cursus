@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isline.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 16:36:29 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/17 10:00:27 by dmangola         ###   ########.fr       */
+/*   Created: 2021/02/27 15:56:51 by dmangola          #+#    #+#             */
+/*   Updated: 2021/02/27 15:57:24 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int			ft_isline(char *str)
 {
-	char	*s2;
-	size_t	i;
+	int i;
 
-	if (!(s2 = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char))))
-		return (0);
 	i = 0;
-	while (s1[i])
+	if (!str)
+		return (0);
+	while (str[i])
 	{
-		s2[i] = s1[i];
+		if (str[i] == '\n')
+			return (1);
 		i++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (0);
 }
