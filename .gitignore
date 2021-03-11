@@ -62,7 +62,7 @@ dkms.conf
 /42TESTERS-PRINTF
 
 #VS_CODE
-.vscode/*
+*.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
