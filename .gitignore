@@ -59,7 +59,7 @@ dkms.conf
 *.code-workspace
 
 #VS_CODE
-.vscode/
+*.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
