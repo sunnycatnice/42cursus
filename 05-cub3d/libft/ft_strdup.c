@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_manager.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:20:28 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/11 13:20:30 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/14 16:36:29 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/17 10:00:27 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	**ft_read_map(char *av1)
+char	*ft_strdup(const char *s1)
 {
-	int		fd;
-	int		size;
-	char	*line;
-	t_list	*head;
-	char	*map;
+	char	*s2;
+	size_t	i;
 
-	line = NULL;
-	head = NULL;
-	size = 0;
-	fd = open(av1, O_RDONLY)
-	while (get_next_line)
-	
+	if (!(s2 = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char))))
+		return (0);
+	i = 0;
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
 }

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_manager.c                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:20:28 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/11 13:20:30 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 15:26:41 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/16 15:26:43 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	**ft_read_map(char *av1)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		fd;
-	int		size;
-	char	*line;
-	t_list	*head;
-	char	*map;
+	const unsigned char		*str1;
+	const unsigned char		*str2;
 
-	line = NULL;
-	head = NULL;
-	size = 0;
-	fd = open(av1, O_RDONLY)
-	while (get_next_line)
-	
+	if (s1 == s2 || n == 0)
+		return (0);
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
+	while (n--)
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		if (n)
+		{
+			str1++;
+			str2++;
+		}
+	}
+	return (0);
 }

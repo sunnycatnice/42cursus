@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_manager.c                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:20:28 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/11 13:20:30 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/13 17:24:20 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/15 13:12:50 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	**ft_read_map(char *av1)
+char	*ft_strrchr(const char *s, int c)
 {
-	int		fd;
-	int		size;
-	char	*line;
-	t_list	*head;
-	char	*map;
+	size_t	len;
 
-	line = NULL;
-	head = NULL;
-	size = 0;
-	fd = open(av1, O_RDONLY)
-	while (get_next_line)
-	
+	len = ft_strlen(s);
+	if ((char)c == '\0')
+		return ((char *)s + len);
+	while (len--)
+		if (*(s + len) == c)
+			return ((char *)(s + len));
+	return (NULL);
 }

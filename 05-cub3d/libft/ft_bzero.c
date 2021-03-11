@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_manager.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:20:28 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/11 13:20:30 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 11:09:11 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/12 12:41:57 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	**ft_read_map(char *av1)
+void	ft_bzero(void *s, size_t n)
 {
-	int		fd;
-	int		size;
-	char	*line;
-	t_list	*head;
-	char	*map;
+	unsigned char	*c;
+	unsigned int	i;
 
-	line = NULL;
-	head = NULL;
-	size = 0;
-	fd = open(av1, O_RDONLY)
-	while (get_next_line)
-	
+	i = 0;
+	c = (unsigned char *)s;
+	while (i < n)
+	{
+		c[i] = 0;
+		i++;
+	}
+	return ;
 }

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_manager.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:20:28 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/11 13:20:30 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/15 18:36:10 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/15 18:36:11 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	**ft_read_map(char *av1)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int		fd;
-	int		size;
-	char	*line;
-	t_list	*head;
-	char	*map;
+	t_list	*current_elem;
+	t_list	*next_elem;
 
-	line = NULL;
-	head = NULL;
-	size = 0;
-	fd = open(av1, O_RDONLY)
-	while (get_next_line)
-	
+	next_elem = *lst;
+	while (next_elem)
+	{
+		current_elem = next_elem;
+		next_elem = current_elem->next;
+		ft_lstdelone(current_elem, del);
+	}
+	*lst = NULL;
 }

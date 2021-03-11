@@ -19,6 +19,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+#include "./libft/libft.h"
+
 typedef struct	s_data
 {
 	void		*img;
@@ -33,11 +35,13 @@ typedef struct	s_mlx
 	void		*init;
 	void		*win;
 	t_data		data;
-	t_map_input	map_input;
 	
 }				t_mlx;
 
 
 int				main(int ac, char **av);
+void			**ft_read_map(char *av1);
+int				put_pixel(int ac, char **av);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

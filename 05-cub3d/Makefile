@@ -23,21 +23,31 @@ NAME = cub3D
 SRC = cub3d.c
 
 MINILIBX_PATH = ./minilibx
-UTILS_PATH = ./utils
-SRCS_PATH = ./srcs
+LIBFT_PATH = ./libft
 
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -O3 -Wall -Wextra -Werror
 MLXFLAGS = -I ./minilibx -L ./minilibx -lmlx -framework OpenGL -framework Appkit
 UTILS = ./utils/*.c
-SRCS = ./srcs/*.c
+SRCS = ./srcs/input/*.c && ./srcs/game/*.c
 INCLUDE = cub3d.h
 
 all: minilibx_make $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(MLXFLAGS) $(UTILS) $(SRC) $(SRCS) libmlx.a -I./ $(OBJS) -o $(NAME)
+
+libft_make:
+		make -C $(LIBFT_PATH) all
+		cp ./libft/libft.a libft.a
+
+libft_clean:
+		make -C $(LIBFT_PATH) clean
+
+libft_fclean:
+		make -C $(LIBFT_PATH) fclean
+		rm -f libft.a
 
 minilibx_make:
 		make -C $(MINILIBX_PATH) all

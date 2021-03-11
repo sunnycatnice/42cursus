@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_manager.c                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:20:28 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/11 13:20:30 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/15 11:44:27 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/15 13:21:37 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "libft.h"
 
-void	**ft_read_map(char *av1)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int		fd;
-	int		size;
-	char	*line;
-	t_list	*head;
-	char	*map;
+	size_t	i;
+	size_t	j;
+	size_t	dstlen;
 
-	line = NULL;
-	head = NULL;
-	size = 0;
-	fd = open(av1, O_RDONLY)
-	while (get_next_line)
-	
+	dstlen = ft_strlen(dst);
+	i = 0;
+	j = 0;
+	while (dst[j])
+		j++;
+	while (i + dstlen + 1 < dstsize && src[i])
+	{
+		dst[j + i] = src[i];
+		i++;
+	}
+	dst[j + i] = '\0';
+	if (dstsize > dstlen)
+		return (dstlen + ft_strlen(src));
+	return (dstsize + ft_strlen(src));
 }
