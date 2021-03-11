@@ -28,7 +28,7 @@ SRCS_PATH = ./srcs
 
 OBJ = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -O3 -Wall -Wextra -Werror
 MLXFLAGS = -I ./minilibx -L ./minilibx -lmlx -framework OpenGL -framework Appkit
 UTILS = ./utils/*.c
 SRCS = ./srcs/*.c
