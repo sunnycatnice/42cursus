@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/14 16:36:29 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/17 10:00:27 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strdup(const char *s1)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
+	char	*s2;
+	size_t	i;
+
+	if (!(s2 = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char))))
+		return (0);
+	i = 0;
+	while (s1[i])
 	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
+		s2[i] = s1[i];
+		i++;
 	}
+	s2[i] = '\0';
+	return (s2);
 }

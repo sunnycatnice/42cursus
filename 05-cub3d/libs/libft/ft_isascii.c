@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 17:29:51 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/12 17:31:18 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int	ft_isascii(int c)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
-	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
+	if (c >= 0 && c <= 127)
 		return (1);
-	}
+	return (0);
 }

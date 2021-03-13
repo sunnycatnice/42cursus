@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 15:26:41 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/16 15:26:43 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
+	const unsigned char		*str1;
+	const unsigned char		*str2;
+
+	if (s1 == s2 || n == 0)
+		return (0);
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
+	while (n--)
 	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		if (n)
+		{
+			str1++;
+			str2++;
+		}
 	}
+	return (0);
 }

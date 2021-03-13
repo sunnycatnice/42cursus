@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 13:58:11 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/15 13:15:11 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
+	size_t i;
+
+	if (!dst && !src)
+		return (0);
+	if (len == 0)
+		return (dst);
+	if (src < dst)
+	{
+		i = len;
+		while (i > 0)
+		{
+			i--;
+			((char *)dst)[i] = ((char *)src)[i];
+		}
+	}
 	else
 	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
+		i = 0;
+		while (i < len)
+		{
+			((char *)dst)[i] = ((char *)src)[i];
+			i++;
+		}
 	}
+	return (dst);
 }

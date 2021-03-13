@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/15 18:36:10 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/15 18:36:11 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
+	t_list	*current_elem;
+	t_list	*next_elem;
+
+	next_elem = *lst;
+	while (next_elem)
 	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
+		current_elem = next_elem;
+		next_elem = current_elem->next;
+		ft_lstdelone(current_elem, del);
 	}
+	*lst = NULL;
 }

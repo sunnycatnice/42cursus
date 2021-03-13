@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int		put_pixel(int ac, char **av)
+int		put_pixel()
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -34,4 +34,5 @@ int		put_pixel(int ac, char **av)
 	my_mlx_pixel_put(&img, 5, 5, 0x00AA0000);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
+	return (0);
 }

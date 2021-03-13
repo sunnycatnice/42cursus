@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/14 11:04:55 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/14 17:01:38 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strchr(const char *s, int c)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
-	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
-	}
+	while ((*s != (unsigned char)c) && (*s != '\0'))
+		s++;
+	if (*s == (unsigned char)c)
+		return ((char *)s);
+	return (NULL);
 }

@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 15:13:24 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/15 16:22:53 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int	ft_atoi(const char *str)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
+	int	nbr;
+	int	sign;
+
+	nbr = 0;
+	sign = 1;
+	while (*str == ' ' || (*str > 8 && *str < 14))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
+	while (*str && ft_isdigit(*str))
+	{
+		if (nbr < 0)
+		{
+			if (sign == 1)
+				return (-1);
+			return (0);
+		}
+		nbr = nbr * 10 + *str - '0';
+		str++;
+	}
+	return (nbr * sign);
 }

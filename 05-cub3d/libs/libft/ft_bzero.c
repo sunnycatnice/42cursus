@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 11:09:11 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/12 12:41:57 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_bzero(void *s, size_t n)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
+	unsigned char	*c;
+	unsigned int	i;
+
+	i = 0;
+	c = (unsigned char *)s;
+	while (i < n)
 	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
+		c[i] = 0;
+		i++;
 	}
+	return ;
 }

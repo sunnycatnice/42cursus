@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_isline.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/02/27 15:56:51 by dmangola          #+#    #+#             */
+/*   Updated: 2021/02/27 15:57:24 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int			ft_isline(char *str)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
+	int i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
 	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
+		if (str[i] == '\n')
+			return (1);
+		i++;
 	}
+	return (0);
 }

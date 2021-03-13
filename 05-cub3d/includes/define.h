@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/03/13 11:45:10 by dmangola          #+#    #+#             */
+/*   Updated: 2021/03/13 11:49:04 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#ifndef DEFINE_H
+# define DEFINE_H
 
-int		main(int ac, char **av)
-{
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
-	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
-	}
-}
+/*
+ * LEGEND
+ * FIRST:
+ *
+ * V = void
+ * C = char
+ * I = int
+ * F = float
+ * D = double
+ *
+ * SECOND:
+ * P = *
+ * PP = **
+ * ?V = ?[]
+ * T = typedef
+ *
+ * Es: IPV_ES = int *ES[]
+ */
+
+#endif
