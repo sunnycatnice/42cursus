@@ -50,7 +50,6 @@ SRC = 	./ft_atoi.c 		\
 		./ft_putendl_fd.c	\
 		./ft_putnbr_fd.c	\
 		./ft_numlen_base.c	\
-		./ft_get_next_line_utils.c	\
 		./ft_get_next_line.c 		\
 
 

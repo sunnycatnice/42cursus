@@ -42,12 +42,6 @@ typedef struct	s_mlx
 	
 }				t_mlx;
 
-typedef struct		s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
 int				main(int ac, char **av);
 char			**ft_read_map(char *av1);
 int				put_pixel();

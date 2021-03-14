@@ -73,7 +73,7 @@ int		get_next_line(const int fd, char **line)
 		return (-1);
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while (!is_line(db[fd]) && res != 0)
+	while (!ft_isline(db[fd]) && res != 0)
 	{
 		if ((res = read(fd, buffer, BUFFER_SIZE)) == -1)
 		{

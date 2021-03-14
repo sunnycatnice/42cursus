@@ -20,28 +20,25 @@
 
 NAME = cub3D
 
+LIBFT_PATH = ./libs/libft/
 MINILIBX_PATH = ./libs/mlx/minilibx_mms_20200219
-LIBFT_PATH = ./libs/libft
 
+SRCS = $(wildcard ./srcs/input/*.c) $(wildcard ./srcs/game/*.c) cub3D.c
 OBJS = $(SRCS:.c=.o)
 CC = gcc
-CFLAGS = -O3 -Wall -Wextra -Werror
-MLXFLAGS = -I ./libs/mlx/minilibx_mms_20200219 -L ./libs/mlx/minilibx_mms_20200219 -lmlx -framework OpenGL -framework Appkit
-UTILS = ./utils/*.c
-SRCS = ./srcs/input/*.c && ./srcs/game/*.c && cub3d.c
+CFLAGS = -O3 -c -Wall -Wextra -Werror
+MLX_FLAGS = -I ./libs/mlx/minilibx_mms_20200219 -L ./libs/mlx/minilibx_mms_20200219 -lmlx -framework OpenGL -framework Appkit
+LIBFT_FLAGS = -I ./libs/libft -L ./libs/libft ./libs/libft/*.c
 INCLUDE = cub3d.h
 
-all: minilibx_make $(NAME)
+all: libft_make minilibx_make $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(MLXFLAGS) $(UTILS) $(SRCS) libmlx.dylib -I./ $(OBJS) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(MLX_FLAGS) libft.a libmlx.dylib -I./ $(OBJS) -o $(NAME)
 
 libft_make:
 		make -C $(LIBFT_PATH) all
-		cp ./libft/libft.a libft.a
-
-libft_clean:
-		make -C $(LIBFT_PATH) clean
+		cp ./libs/libft/libft.a libft.a
 
 libft_fclean:
 		make -C $(LIBFT_PATH) fclean
@@ -53,14 +50,14 @@ minilibx_make:
 
 minilibx_clean:
 		make -C $(MINILIBX_PATH) clean
-		rm -f libmlx.dylib
+		rm -f libmlx.dylib && rm -f libmlx.a
 
 clean:
 	rm -f $(NAME)
 
-fclean: clean
+fclean: clean minilibx_clean libft_fclean
 	rm -f $(NAME) $(OBJ)
 
 re: fclean all
 
-.PHONY:	all minilibx_make minilibx_clean clean fclean re
+.PHONY:	all libft_make libft_fclean minilibx_make minilibx_clean clean fclean re
