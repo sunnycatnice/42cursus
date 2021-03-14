@@ -10,54 +10,78 @@
 #                                                                              #
 # **************************************************************************** #
 
-# -I Add the directory dir to the list of directories to be searched for header files
-# -L Searches the library when linking
-# make -C flag makes you go to the appropriate path and do the asked command
-# %.o: %.c - "to build a file named <something>.o, which depends on <something.c>"
-# -o $@ - name of the target of the rule
-#  $< - the first prerequisite of the rule (gcc -c -o $@ $< = gcc -c -o foo.o foo.c)
-#  $^ - all prerequisites of the rule
-
 NAME = cub3D
 
-LIBFT_PATH = ./libs/libft/
-MINILIBX_PATH = ./libs/mlx/minilibx_mms_20200219
-
-SRCS = $(wildcard ./srcs/input/*.c) $(wildcard ./srcs/game/*.c) cub3D.c
-OBJS = $(SRCS:.c=.o)
 CC = gcc
-CFLAGS = -O3 -c -Wall -Wextra -Werror
-MLX_FLAGS = -I ./libs/mlx/minilibx_mms_20200219 -L ./libs/mlx/minilibx_mms_20200219 -lmlx -framework OpenGL -framework Appkit
-LIBFT_FLAGS = -I ./libs/libft -L ./libs/libft ./libs/libft/*.c
-INCLUDE = cub3d.h
+CFLAGS = -Wall -Wextra -Werror
+MLXFLAGS = -framework OpenGL -framework AppKit -o
 
-all: libft_make minilibx_make $(NAME)
+MAKE = make -C
+MAKE_CLEAN = make clean -C
+MAKE_FCLEAN = make fclean -C
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(MLX_FLAGS) libft.a libmlx.dylib -I./ $(OBJS) -o $(NAME)
+NORM_CFSH = norminette -R CheckForbiddenSourceHeader
+NORM_CD = norminette -R CheckDefine
 
-libft_make:
-		make -C $(LIBFT_PATH) all
-		cp ./libs/libft/libft.a libft.a
+CP = cp
+RM = rm -rf
 
-libft_fclean:
-		make -C $(LIBFT_PATH) fclean
-		rm -f libft.a
+DIR_INCLUDES = includes
 
-minilibx_make:
-		make -C $(MINILIBX_PATH) all
-		cp ./libs/mlx/minilibx_mms_20200219/libmlx.dylib libmlx.dylib
+DIR_LIBS = libs
+DIR_LIBFT = libft
+DIR_MLX = mlx/minilibx_mms_20200219
+LIBFT = $(addprefix $(DIR_LIBS)/, $(DIR_LIBFT))
+LIBMLX = $(addprefix $(DIR_LIBS)/, $(DIR_MLX))
 
-minilibx_clean:
-		make -C $(MINILIBX_PATH) clean
-		rm -f libmlx.dylib && rm -f libmlx.a
+MYLIB = libft.a
+MLXLIB = libmlx.dylib
+
+DIR_SRCS = srcs
+DIR_INPUT = input
+DIR_GAME = game
+
+SRCS_ROOT = 	cub3d.c
+
+SRCS_INPUT =	input_manager.c
+
+SRCS_GAME =		aa.c
+
+SRCS_INPUT_PREFIX_1 = $(addprefix $(DIR_INPUT)/, $(SRCS_INPUT))
+SRCS_GAME_PREFIX_1 = $(addprefix $(DIR_GAME)/, $(SRCS_GAME))
+SRCS_TMP += $(SRCS_ROOT) $(SRCS_INPUT_PREFIX_1) $(SRCS_GAME_PREFIX_1)
+SRCS = $(addprefix $(DIR_SRCS)/, $(SRCS_TMP))
+
+OBJS = $(SRCS:.c=.o)
+
+.o.c: $(CC) $(CFLAGS) $<
+
+all: $(NAME)
+
+$(NAME): $(MYLIB) $(MLXLIB) $(OBJS) 
+	$(CC) $(CFLAGS) $(MLXFLAGS) $(NAME) $(OBJS) $(MYLIB) $(MLXLIB)
+
+$(MYLIB):
+	$(MAKE) $(LIBFT)
+	$(CP) $(LIBFT)/$(MYLIB) .
+
+$(MLXLIB):
+	$(MAKE) $(LIBMLX)
+	$(CP) $(LIBMLX)/$(MLXLIB) .
+
+norminette:
+	$(NORM_CFSH) $(SRCS)
+	$(NORM_CD) $(DIR_INCLUDES)/*
 
 clean:
-	rm -f $(NAME)
+	$(RM) $(OBJS) $(MYLIB) 
+	$(MAKE_CLEAN) $(LIBMLX)
+	$(MAKE_CLEAN) $(LIBFT)
 
-fclean: clean minilibx_clean libft_fclean
-	rm -f $(NAME) $(OBJ)
+fclean: clean
+	$(RM) $(NAME) $(MLXLIB)
+	$(MAKE_FCLEAN) $(LIBFT)
 
 re: fclean all
 
-.PHONY:	all libft_make libft_fclean minilibx_make minilibx_clean clean fclean re
+.PHONY: all norminette clean fclean re
