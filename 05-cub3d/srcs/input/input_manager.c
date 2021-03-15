@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-char	**ft_make_map(t_list **head, int size)
+char	**ft_make_map(t_all **all, int size)
 {
 	int 	i;
 	char	**map;
@@ -20,7 +20,7 @@ char	**ft_make_map(t_list **head, int size)
 
 	if(!(map = (char **)malloc((size + 1) * sizeof(char **))))
 		return (NULL);
-	tmp = *head;
+	tmp = all->list;
 	i = 0;
 	while (tmp)
 	{
@@ -29,29 +29,31 @@ char	**ft_make_map(t_list **head, int size)
 		i++;
 	}
 	map[i] = NULL;
-	ft_lstclear(head, &free);
+	ft_lstclear(&all->list, &free);
 	return (map);
 }
 
 char	**ft_read_map(char *av1)
 {
-	int		fd;
 	int		size;
-	char	*line;
-	t_list	*head;
+	t_all	*all;
 
-	line = NULL;
-	head = NULL;
+	all = NULL;
+	all->map_input.line = NULL;
 	size = 0;
-	fd = open(av1, O_RDONLY);
-	while (get_next_line(fd, &line) >= 0)
+	all->map_input.gnl_fd = open(av1, O_RDONLY);
+	while (get_next_line(all->map_input.gnl_fd, &all->map_input.line) > 0)
 	{
-		ft_lstadd_back(&head, ft_lstnew(line));
+		ft_lstadd_back(&all->list, ft_lstnew(all->map_input.line));
+		printf("LIST N: %s\n", all->list.content);
 		size++;
-		line = NULL;
+		all = all->list.next;
+		all->map_input.line = NULL;
 	}
-	close (fd);
-	ft_lstadd_back(&head, ft_lstnew(line));
+	close (all->map_input.gnl_fd);
+	ft_lstadd_back(&all->list, ft_lstnew(all->map_input.line));
+	printf("LIST N: %s\n", all->list.content);
+	all = all->list.content;	
 	size++;
-	return (ft_make_map(&head, size));
+	return (ft_make_map(&all, size));
 }
