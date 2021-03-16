@@ -15,6 +15,11 @@
 
 #include "../libs/libft/libft.h"
 
+typedef struct		s_input
+{
+	int				save_flag;
+}					t_input;
+
 typedef struct			s_map_input
 {
 	int				gnl_fd;
@@ -41,6 +46,7 @@ typedef struct		s_all
 	void			*win;
 	t_data			data;
 	t_map_input		map_input;
+	t_input			input;
 
 }					t_all;
 

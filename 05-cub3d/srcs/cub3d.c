@@ -14,11 +14,7 @@
 
 int		main(int ac, char **av)
 {
-	if(ac == 2)
-		ft_read_map(av[1]);
-	else
-	{
-		ft_putendl_fd("No map found. Insert a valid map.", 2);
-		return (1);
-	}
+	t_all	all;
+
+	check_arg(&all, ac, av);
 }

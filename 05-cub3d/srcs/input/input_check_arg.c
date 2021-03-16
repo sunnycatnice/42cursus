@@ -30,7 +30,9 @@ static int	find_cub_file(char *s)
 	res = 1;
 	return (res);
 }
-
+/*
+** Da rivedere if(strncmp) mettere parentesi o no? includo all->input.save_flag = 1 ?
+*/
 void		check_arg(t_all *all, int ac, char **av)
 {
 	if(ac == 2)
@@ -41,9 +43,11 @@ void		check_arg(t_all *all, int ac, char **av)
 		{
 			if(ft_strncmp(av[2], "--save", sizeof(av[2] + 7)))
 				print_error(all, (ac != 2) ? 1 : 2);
-			all->input.save_flag;
+			all->input.save_flag = 1;
 		}
 		if (!find_cub_file(av[1]))
-			print_error(all, 2);
+			print_error(all, 3);
+		if ((all->map_input.gnl_fd = open(av[1], O_RDONLY)) < 0)
+			print_error(all, 4);
 	}
 }

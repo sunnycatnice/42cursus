@@ -31,9 +31,10 @@
 # include "struct.h"
 
 int				main(int ac, char **av);
-char			**ft_read_map(char *av1);
+void			check_arg(t_all *all, int ac, char **av);
+void			print_error(t_all *all, int n);
+char			**ft_read_map(t_all *all, char *av1);
 char			**ft_make_map(t_list **list, int size);
-//int				put_pixel();
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
