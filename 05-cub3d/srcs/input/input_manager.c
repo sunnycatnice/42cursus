@@ -33,14 +33,11 @@ char	**ft_make_map(t_list **list, int size)
 	return (map);
 }
 
-char	**ft_read_map(char *av1)
+char	**ft_read_map(t_all *all, char *av1)
 {
 	int		size;
 	t_list	*list;
-	t_all	*all;
 
-	all = NULL;
-	all->map_input.line = NULL;
 	list = NULL;
 	size = 0;
 	all->map_input.gnl_fd = open(av1, O_RDONLY);
