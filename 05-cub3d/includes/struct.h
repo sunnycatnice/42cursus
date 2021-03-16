@@ -39,7 +39,6 @@ typedef struct		s_all
 {
 	void			*init;
 	void			*win;
-	t_list			list;
 	t_data			data;
 	t_map_input		map_input;
 

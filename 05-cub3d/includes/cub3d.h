@@ -32,7 +32,7 @@
 
 int				main(int ac, char **av);
 char			**ft_read_map(char *av1);
-char			**ft_make_map(t_list **head, int size);
+char			**ft_make_map(t_list **list, int size);
 //int				put_pixel();
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
