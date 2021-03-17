@@ -31,6 +31,11 @@
 # include "struct.h"
 
 int				main(int ac, char **av);
+void			init_map_input(t_all *all);
+void			print_error(t_all *all, int n);
+void			check_err(int n);
+void			all_map_input_free(t_all *all);
+void			get_next_line_free(t_all *all);
 void			check_arg(t_all *all, int ac, char **av);
 void			print_error(t_all *all, int n);
 char			**ft_read_map(t_all *all, char *av1);

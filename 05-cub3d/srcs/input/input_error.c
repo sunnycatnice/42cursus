@@ -17,6 +17,6 @@ void	print_error(t_all *all, int n)
 	check_err(n);
 	if(all->map_input.gnl_fd > -1)
 		get_next_line_free(all);
-	all_input_free(all);
+	//all_input_free(all);
 	all_map_input_free(all);
 }

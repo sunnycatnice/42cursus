@@ -15,6 +15,7 @@
 
 #include "../libs/libft/libft.h"
 
+
 typedef struct		s_input
 {
 	int				save_flag;
@@ -25,8 +26,8 @@ typedef struct			s_map_input
 	int				gnl_fd;
 	int				tex_fd;
 	char			*line;
-	char			*ide;
-	char			*identifiers[8];
+	char			*current_ide;
+	char			*real_ide[8];
 	char			**input;
 	char			**new_;
 }					t_map_input;

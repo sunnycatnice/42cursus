@@ -45,6 +45,10 @@ SRCS_ROOT = 	cub3d.c
 
 SRCS_INPUT =	input_manager.c 	\
 				input_check_arg.c	\
+				input_check_err.c	\
+				input_error.c		\
+				input_free.c		\
+				input_init.c
 
 SRCS_GAME =		aa.c
 

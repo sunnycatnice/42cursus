@@ -43,7 +43,11 @@ void		check_arg(t_all *all, int ac, char **av)
 		{
 			if(ft_strncmp(av[2], "--save", sizeof(av[2] + 7)))
 				print_error(all, (ac != 2) ? 1 : 2);
-			all->input.save_flag = 1;
+			else
+			{
+				all->input.save_flag = 1;
+				ft_read_map(all, av[1]);
+			}
 		}
 		if (!find_cub_file(av[1]))
 			print_error(all, 3);

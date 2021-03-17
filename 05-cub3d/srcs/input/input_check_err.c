@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   input_check_err.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/03/17 13:55:10 by dmangola          #+#    #+#             */
+/*   Updated: 2021/03/17 13:55:11 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int		main(int ac, char **av)
+void	check_err(n)
 {
-	t_all	all;
-
-	init_map_input(&all);
-	check_arg(&all, ac, av);
+	if (n == 0)
+		printf("ERROR N. %d: Malloc failed", n);
+	else if (n == 1)
+		printf("ERROR N. %d: Arguments number wrong", n);
+	else if (n == 2)
+		printf("ERROR N. %d: --save flag not recognised", n);
+	else if (n == 3)
+		printf("ERROR N: %d: .cub file not found", n);
+	else if (n == 4)
+		printf("ERROR N: %d: .cub file not opened", n);
 }
