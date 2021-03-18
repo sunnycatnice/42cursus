@@ -18,4 +18,7 @@ int		main(int ac, char **av)
 
 	init_map_input(&all);
 	check_arg(&all, ac, av);
+	if (ac == 2)
+		all.input.map = ft_read_map(&all, av[1]);
+	ft_get_window(&all);
 }

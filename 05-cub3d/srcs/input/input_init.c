@@ -28,3 +28,9 @@ void	init_map_input(t_all *all)
 	all->map_input.real_ide[6] = "C";
 	all->map_input.real_ide[7] = "F";
 }
+
+void	init_input(t_all *all)
+{
+	all->init = NULL;
+	all->win = NULL;
+}

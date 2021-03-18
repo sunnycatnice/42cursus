@@ -40,6 +40,8 @@ void			check_arg(t_all *all, int ac, char **av);
 void			print_error(t_all *all, int n);
 char			**ft_read_map(t_all *all, char *av1);
 char			**ft_make_map(t_list **list, int size);
+void			init_input(t_all *all);
+void			ft_get_window(t_all *all);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

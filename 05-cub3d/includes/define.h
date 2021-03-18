@@ -32,4 +32,10 @@
  * Es: IPV_ES = int *ES[]
  */
 
+#define	SCALE 128
+#define PI 3.1415926535
+#define PI_2 PI / 2
+#define PI_3_2 PI * 3 / 2
+
+
 #endif

@@ -15,13 +15,13 @@
 void	check_err(n)
 {
 	if (n == 0)
-		printf("ERROR N. %d: Malloc failed", n);
+		printf("ERROR N. %d: Malloc failed\n", n);
 	else if (n == 1)
-		printf("ERROR N. %d: Arguments number wrong", n);
+		printf("ERROR N. %d: Arguments number wrong\n", n);
 	else if (n == 2)
-		printf("ERROR N. %d: --save flag not recognised", n);
+		printf("ERROR N. %d: --save flag not recognised\n", n);
 	else if (n == 3)
-		printf("ERROR N: %d: .cub file not found", n);
+		printf("ERROR N: %d: .cub file not found\n", n);
 	else if (n == 4)
-		printf("ERROR N: %d: .cub file not opened", n);
+		printf("ERROR N: %d: .cub file not opened\n", n);
 }
