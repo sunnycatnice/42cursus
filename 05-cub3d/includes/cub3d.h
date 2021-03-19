@@ -31,7 +31,11 @@
 # include "struct.h"
 
 int				main(int ac, char **av);
+void			init_input(t_all *all);
 void			init_map_input(t_all *all);
+/*
+** Input part
+*/
 void			print_error(t_all *all, int n);
 void			check_err(int n);
 void			all_map_input_free(t_all *all);
@@ -39,9 +43,12 @@ void			get_next_line_free(t_all *all);
 void			check_arg(t_all *all, int ac, char **av);
 void			print_error(t_all *all, int n);
 char			**ft_read_map(t_all *all, char *av1);
-char			**ft_make_map(t_list **list, int size);
-void			init_input(t_all *all);
-void			ft_get_window(t_all *all);
+/*
+** Game part
+*/
+void			game_manager(t_all *all);
+void			ft_get_player(char **map, t_all *all);
+int				draw_map(t_all *all);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

@@ -12,28 +12,27 @@
 
 #include "../../includes/cub3d.h"
 
-char	**ft_make_map(t_list **list, int size)
+static char	**ft_make_map(t_all *all, t_list **list, int size)
 {
 	int 	i;
-	char	**map;
 	t_list	*tmp;
 
-	if(!(map = (char **)malloc((size + 1) * sizeof(char **))))
+	if (!(CPP_MAP = (char **)malloc((size + 1) * sizeof(char **))))
 		return (NULL);
 	tmp = *list;
 	i = 0;
 	while (tmp)
 	{
-		map[i] = ft_strdup(tmp->content);
+		CPP_MAP[i] = ft_strdup(tmp->content);
 		tmp = tmp->next;
 		i++;
 	}
-	map[i] = NULL;
+	CPP_MAP[i] = NULL;
 	ft_lstclear(list, &free);
-	return (map);
+	return (CPP_MAP);
 }
 
-char	**ft_read_map(t_all *all, char *av1)
+char		**ft_read_map(t_all *all, char *av1)
 {
 	int		size;
 	t_list	*list;
@@ -53,5 +52,5 @@ char	**ft_read_map(t_all *all, char *av1)
 	ft_lstadd_back(&list, ft_lstnew(all->map_input.line));
 	printf("LIST N: %s\n", list->content);
 	size++;
-	return (ft_make_map(&list, size));
+	return (ft_make_map(all, &list, size));
 }

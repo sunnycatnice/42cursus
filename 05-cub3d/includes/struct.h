@@ -17,10 +17,10 @@
 
 typedef struct		s_player
 {
-	double			pos_x;
-	double			pos_y;
+	float			pos_x;
+	float			pos_y;
 	double			speed;
-	double			dir;
+	float			dir;
 	double			rot_speed;
 }					t_player;
 
@@ -69,7 +69,7 @@ typedef struct			s_map_input
 
 typedef struct		s_all
 {
-	void			*init;
+	void			*mlx;
 	void			*win;
 	t_data			data;
 	t_map_input		map_input;

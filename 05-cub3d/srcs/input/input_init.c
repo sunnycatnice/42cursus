@@ -31,6 +31,6 @@ void	init_map_input(t_all *all)
 
 void	init_input(t_all *all)
 {
-	all->init = NULL;
+	all->mlx = NULL;
 	all->win = NULL;
 }

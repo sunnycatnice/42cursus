@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_window.c                                      :+:      :+:    :+:   */
+/*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 15:28:20 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/18 15:28:23 by dmangola         ###   ########.fr       */
+/*   Created: 2021/03/19 17:23:09 by dmangola          #+#    #+#             */
+/*   Updated: 2021/03/19 17:23:11 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	game_manager(t_all *all)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	all->mlx = mlx_init();
-	all->win = mlx_new_window(all->mlx, 1920, 1080, "Cub 3D");
-	all->win = all->win;
-	ft_get_player(all->input.map, all);
-	draw_map(all);
-	mlx_loop(all->mlx);
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }

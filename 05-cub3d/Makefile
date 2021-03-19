@@ -50,7 +50,10 @@ SRCS_INPUT =	input_manager.c		\
 				input_free.c		\
 				input_init.c
 
-SRCS_GAME =		game_window.c
+SRCS_GAME =		game_window.c		\
+				game_map.c			\
+				game_player.c		\
+				game_utils.c		\
 
 SRCS_INPUT_PREFIX_1 = $(addprefix $(DIR_INPUT)/, $(SRCS_INPUT))
 SRCS_GAME_PREFIX_1 = $(addprefix $(DIR_GAME)/, $(SRCS_GAME))
