@@ -22,7 +22,6 @@
 ** Including libft && minilibx
 */
 # include "../libs/libft/libft.h"
-# include "../libs/mlx/minilibx_mms_20200219/mlx.h"
 # include "../libs/mlx/minilibx_opengl_20191021/mlx.h"
 /*
 ** Including all header files

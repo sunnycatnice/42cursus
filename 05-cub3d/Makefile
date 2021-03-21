@@ -30,12 +30,12 @@ DIR_INCLUDES = includes
 
 DIR_LIBS = libs
 DIR_LIBFT = libft
-DIR_MLX = mlx/minilibx_mms_20200219
+DIR_MLX = mlx/minilibx_opengl_20191021
 LIBFT = $(addprefix $(DIR_LIBS)/, $(DIR_LIBFT))
 LIBMLX = $(addprefix $(DIR_LIBS)/, $(DIR_MLX))
 
 MYLIB = libft.a
-MLXLIB = libmlx.dylib
+MLXLIB = libmlx.a
 
 DIR_SRCS = srcs
 DIR_INPUT = input
@@ -66,7 +66,7 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(MYLIB) $(MLXLIB) $(OBJS) 
+$(NAME): $(MYLIB) $(MLXLIB) $(OBJS)
 	$(CC) $(CFLAGS) $(MLXFLAGS) $(NAME) $(OBJS) $(MYLIB) $(MLXLIB)
 
 $(MYLIB):

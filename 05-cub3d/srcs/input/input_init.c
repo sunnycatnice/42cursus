@@ -33,4 +33,6 @@ void	init_input(t_all *all)
 {
 	all->mlx = NULL;
 	all->win = NULL;
+	all->point.x = -1;
+	all->point.y = -1;
 }

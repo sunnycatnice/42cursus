@@ -18,7 +18,7 @@ int		main(int ac, char **av)
 
 	init_map_input(&all);
 	check_arg(&all, ac, av);
-	all.input.map = ft_read_map(&all, av[1]);
+	all.map = ft_read_map(&all, av[1]);
 	game_manager(&all);
 	return (0);
 }

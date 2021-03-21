@@ -33,10 +33,10 @@
  */
 
 #define	SCALE 128
-#define PI 3.1415926535
-#define PI_2 PI / 2
-#define PI_3_2 PI * 3 / 2
+#define PI M_PI
+#define PI_2 M_PI / 2
+#define PI_3_2 M_PI * 3 / 2
 
-#define	CPP_MAP all->input.map
+#define	CPP_MAP all->map
 
 #endif

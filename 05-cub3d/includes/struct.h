@@ -15,6 +15,12 @@
 
 #include "../libs/libft/libft.h"
 
+typedef	struct s_point
+{
+	int				x;
+	int				y;
+}				t_point;
+
 typedef struct		s_player
 {
 	float			pos_x;
@@ -47,7 +53,6 @@ typedef struct		s_input
 	char			*texture_ea;
 	char			*texture_floor;
 	char			*texture_ceiling;
-	char			**map;
 	int				map_width;
 	int				map_height;
 	int				player;
@@ -71,10 +76,12 @@ typedef struct		s_all
 {
 	void			*mlx;
 	void			*win;
+	char			**map;
 	t_data			data;
 	t_map_input		map_input;
 	t_input			input;
 	t_player		player;
+	t_point			point;
 
 }					t_all;
 
