@@ -33,6 +33,7 @@
  */
 
 #define	SCALE 128
+#define PIXEL_SIZE 32
 #define PI M_PI
 #define PI_2 M_PI / 2
 #define PI_3_2 M_PI * 3 / 2

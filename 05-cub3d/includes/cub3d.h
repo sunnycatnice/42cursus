@@ -51,7 +51,7 @@ void			init_game(t_all *all);
 void			init_window(t_all *all);
 void			init_dir(t_all *all);
 void			init_keys(t_all *all);
-int				draw_map(t_all *all);
+void			draw_map(t_all *all);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
