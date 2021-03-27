@@ -14,9 +14,10 @@
 
 void	init_map_input(t_all *all)
 {
-	all->map_input.gnl_fd = -1;
+	I_GNL_FD = -1;
 	all->map_input.tex_fd = -1;
-	all->map_input.line = 0;
+	I_MAP_LINES = 0;
+	CP_GNL_LINE = 0;
 	all->map_input.current_ide = 0;
 	all->map_input.input = 0;
 	all->map_input.real_ide[0] = "S";
@@ -31,8 +32,8 @@ void	init_map_input(t_all *all)
 
 void	init_input(t_all *all)
 {
-	all->mlx = NULL;
-	all->win = NULL;
+	VP_MLX = NULL;
+	VP_WIN = NULL;
 	all->point.x = -1;
 	all->point.y = -1;
 }

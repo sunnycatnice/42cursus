@@ -50,7 +50,8 @@ SRCS_INPUT =	input_manager.c		\
 				input_free.c		\
 				input_init.c
 
-SRCS_GAME =		game_window.c		\
+SRCS_GAME =		game_manager.c		\
+				game_init.c			\
 				game_map.c			\
 				game_player.c		\
 				game_utils.c		\

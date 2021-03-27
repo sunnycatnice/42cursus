@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
@@ -30,6 +30,23 @@ typedef struct		s_player
 	double			rot_speed;
 }					t_player;
 
+typedef struct		s_keys
+{
+	int				w;
+	int				a;
+	int				s;
+	int				d;
+	int				esc;
+}					t_keys;
+
+typedef struct		s_dir
+{
+	int				no;
+	int				so;
+	int				ea;
+	int				we;
+}					t_dir;
+
 typedef struct		s_data
 {
 	void			*img;
@@ -38,6 +55,11 @@ typedef struct		s_data
 	int				line_length;
 	int				endian;
 }					t_data;
+
+typedef struct  s_mlx {
+    void        *mlx;
+    void        *win;
+}               t_mlx;
 
 typedef struct		s_input
 {
@@ -65,6 +87,7 @@ typedef struct			s_map_input
 {
 	int				gnl_fd;
 	int				tex_fd;
+	int				map_lines;
 	char			*line;
 	char			*current_ide;
 	char			*real_ide[8];
@@ -74,13 +97,14 @@ typedef struct			s_map_input
 
 typedef struct		s_all
 {
-	void			*mlx;
-	void			*win;
 	char			**map;
-	t_data			data;
-	t_map_input		map_input;
 	t_input			input;
+	t_mlx			mlx;
+	t_data			data;
 	t_player		player;
+	t_keys			keys;
+	t_dir			dir;
+	t_map_input		map_input;
 	t_point			point;
 
 }					t_all;

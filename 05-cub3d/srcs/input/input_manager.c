@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-static char	**ft_make_map(t_all *all, t_list **list, int size)
+static char	**list_to_matrix(t_all *all, t_list **list, int size)
 {
 	int 	i;
 	t_list	*tmp;
@@ -23,7 +23,7 @@ static char	**ft_make_map(t_all *all, t_list **list, int size)
 	i = 0;
 	while (tmp)
 	{
-		CPP_MAP[i] = ft_strdup(tmp->content);
+		CPP_MAP[i] = CP_GNL_LINE;
 		tmp = tmp->next;
 		i++;
 	}
@@ -32,25 +32,26 @@ static char	**ft_make_map(t_all *all, t_list **list, int size)
 	return (CPP_MAP);
 }
 
-char		**ft_read_map(t_all *all, char *av1)
+void		map_to_list(t_all *all)
 {
-	int		size;
 	t_list	*list;
 
 	list = NULL;
-	size = 0;
-	all->map_input.gnl_fd = open(av1, O_RDONLY);
-	while (get_next_line(all->map_input.gnl_fd, &all->map_input.line))
+	while (get_next_line(I_GNL_FD, &CP_GNL_LINE))
 	{
-		ft_lstadd_back(&list, ft_lstnew(all->map_input.line));
-		printf("LIST N: %s\n", list->content);
-		size++;
+		ft_lstadd_back(&list, ft_lstnew(CP_GNL_LINE));
+		printf("LIST N. %-2d: %s\n", I_MAP_LINES, list->content);
+		I_MAP_LINES++;
 		list = list->next;
-		all->map_input.line = NULL;
 	}
-	close (all->map_input.gnl_fd);
-	ft_lstadd_back(&list, ft_lstnew(all->map_input.line));
-	printf("LIST N: %s\n", list->content);
-	size++;
-	return (ft_make_map(all, &list, size));
+	close (I_GNL_FD);
+	ft_lstadd_back(&list, ft_lstnew(CP_GNL_LINE));
+	printf("LIST N. %-2d: %s\n", I_MAP_LINES, list->content);
+	I_MAP_LINES++;
+	list_to_matrix(all, &list, I_MAP_LINES);
+}
+
+void		input_manager(t_all *all)
+{
+	map_to_list(all);
 }

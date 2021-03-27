@@ -50,9 +50,6 @@ int		draw_map(t_all *all)
 	t_point	point;
 
 	data = &all->data;
-	data->img = mlx_new_image(all->mlx, 1920, 1080);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length,
-								&data->endian);
 	ft_bzero(&point, sizeof(t_point));
 	printf("PRIMA\n");
 	while (all->map[point.x])
@@ -71,6 +68,6 @@ int		draw_map(t_all *all)
 		point.x++;
 	}
 	printf("SECONDA\n");
-    mlx_put_image_to_window(all->mlx, all->win, data->img, 15, 15);
+    mlx_put_image_to_window(VP_MLX, VP_WIN, data->img, 15, 15);
 	return (0);
 }
