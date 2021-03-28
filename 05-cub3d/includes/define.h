@@ -58,5 +58,6 @@
 #define I_GNL_FD all->map_input.gnl_fd
 #define CP_GNL_LINE all->map_input.line
 #define I_MAP_LINES all->map_input.map_lines
+#define CP_HEAD all->map_input.head
 
 #endif

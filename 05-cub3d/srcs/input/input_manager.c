@@ -12,41 +12,39 @@
 
 #include "../../includes/cub3d.h"
 
-static char	**list_to_matrix(t_all *all, t_list *list)
+static void		list_to_matrix(t_all *all, t_list *list)
 {
 	int 	i;
 
 	i = 0;
+	list = list->next;
 	CPP_MAP = calloc((ft_lstsize(list) + 1), sizeof(char *));
-	while (!(list->next == NULL))
+	while (!(list == NULL))
 	{
 		CPP_MAP[i] = list->content;
-		printf("Matrix N. %-2d: %s\n\n", i, CPP_MAP[i]);
+		printf("Matrix N. %-2d: %s\n", i, CPP_MAP[i]);
 		list = list->next;
 		i++;
 	}
-	return (CPP_MAP);
 }
 
 void		map_to_list(t_all *all, t_list *list)
 {
 	int lines;
+	t_list *tmp;
 
+	tmp = list;
 	while ((lines = get_next_line(I_GNL_FD, &CP_GNL_LINE)) > 0)
 	{
-		ft_lstadd_back(&list, ft_lstnew(CP_GNL_LINE));
-		printf("LIST N. %-2d: %s\n", I_MAP_LINES, list->content);
+		ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
+		printf("LIST N. %-2d: %s\n", I_MAP_LINES, tmp->content);
 		I_MAP_LINES++;
-		list = list->next;
+		tmp = tmp->next;
 	}
-	if(lines == 0)
-	{
-		ft_lstadd_back(&list, ft_lstnew(CP_GNL_LINE));
-		list = list->next;
-	}
-	ft_lstadd_back(&list, ft_lstnew(CP_GNL_LINE));
-	printf("LIST N. %-2d: %s\n\n", I_MAP_LINES, list->content);
+	ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
+	printf("LIST N. %-2d: %s\n\n", I_MAP_LINES, tmp->content);
 	I_MAP_LINES++;
+	tmp = tmp->next;
 	list_to_matrix(all, list);
 }
 

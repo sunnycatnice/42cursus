@@ -81,7 +81,7 @@ void	draw_map(t_all *all)
 	i = 0;
 	while (CPP_MAP[i])
 	{
-		printf("Matrix N. %-2d: %s\n\n", i, CPP_MAP[i]);
+		printf("Matrix N. %-2d: %s\n", i, CPP_MAP[i]);
 		y = y + PIXEL_SIZE;
 		i++;
 	}

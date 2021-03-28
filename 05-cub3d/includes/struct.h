@@ -88,6 +88,7 @@ typedef struct			s_map_input
 	int				gnl_fd;
 	int				tex_fd;
 	int				map_lines;
+	char			*head;
 	char			*line;
 	char			*current_ide;
 	char			*real_ide[8];
