@@ -20,21 +20,21 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void        draw_pixel_size(t_all *all, int x, int y, int color)
+void	draw_pixel_size(t_all *all, int x, int y, int color)
 {
-    int l;
-    int h;
+	int	l;
+	int	h;
 
-    h = y;
-    l = x;
-    while (h < (y + PIXEL_SIZE))
-    {
-        l = x;
-        while (l < (x + PIXEL_SIZE))
-        {
-            my_mlx_pixel_put(&all->data, l, h, color);                   
-            l++;
-        }
-        h++;
-    }
+	h = y;
+	l = x;
+	while (h < (y + PIXEL_SIZE))
+	{
+		l = x;
+		while (l < (x + PIXEL_SIZE))
+		{
+			my_mlx_pixel_put(&all->data, l, h, color);
+			l++;
+		}
+		h++;
+	}
 }

@@ -14,8 +14,7 @@
 
 void	ft_get_player(t_all *all, int x, int y, int i, int j)
 {
-	
-	if (CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S' || CPP_MAP[i][j] == 'E' 
+	if (CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S' || CPP_MAP[i][j] == 'E'
 		|| CPP_MAP[i][j] == 'W')
 	{
 		F_PPX = x;

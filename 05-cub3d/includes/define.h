@@ -12,7 +12,24 @@
 
 #ifndef DEFINE_H
 # define DEFINE_H
-
+/*
+** UTILS
+*/
+#define	SCALE 128
+#define PIXEL_SIZE 32
+/*
+** COLORS
+*/
+#define CYAN 0x0000FFFF
+#define BLUE 0x00000FFF
+#define RED 0x00FF0000
+#define BLACK 0x00000000
+/*
+** PI
+*/
+#define PI M_PI
+#define PI_2 M_PI / 2
+#define PI_3_4 M_PI * 3 / 4
 /*
  * LEGEND
  * FIRST:
@@ -31,13 +48,6 @@
  *
  * Es: IPV_ES = int *ES[]
  */
-
-#define	SCALE 128
-#define PIXEL_SIZE 32
-#define PI M_PI
-#define PI_2 M_PI / 2
-#define PI_3_4 M_PI * 3 / 4
-
 #define	CPP_MAP all->map
 #define VP_MLX all->mlx.mlx
 #define VP_WIN all->mlx.win
