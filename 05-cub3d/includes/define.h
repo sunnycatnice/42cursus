@@ -36,7 +36,7 @@
 #define PIXEL_SIZE 32
 #define PI M_PI
 #define PI_2 M_PI / 2
-#define PI_3_2 M_PI * 3 / 2
+#define PI_3_4 M_PI * 3 / 4
 
 #define	CPP_MAP all->map
 #define VP_MLX all->mlx.mlx
@@ -58,6 +58,8 @@
 #define I_GNL_FD all->map_input.gnl_fd
 #define CP_GNL_LINE all->map_input.line
 #define I_MAP_LINES all->map_input.map_lines
-#define CP_HEAD all->map_input.head
+#define F_PPX all->player.pos_x
+#define F_PPY all->player.pos_y
+
 
 #endif

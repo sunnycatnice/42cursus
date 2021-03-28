@@ -12,76 +12,70 @@
 
 #include "../../includes/cub3d.h"
 
-// static  void	ft_put_pixel(t_data *win, int x, int y, int color)
-// {
-// 	char	*dst;
+/* void	draw_line_1(t_all *all, int x, int y, int i, int j)
+{	
+	if(CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S' || 
+			CPP_MAP[i][j] == 'E' || CPP_MAP[i][j] == 'W')
+	{
+		printf("OK1\n");
+		ft_get_player(all, x, y, i, j);
+		//draw_pixel_size(all, x, y, 0x00FF0000);
+		x = x + PIXEL_SIZE;
+	}
+	else
+	{
+		//printf("OK2\n");
+		draw_pixel_size(all, x, y, 0x00000000);
+		x = x + PIXEL_SIZE;
+	}
+} */
 
-// 	printf("put_pixel\n");
-// 	dst = win->addr + (x * (win->bits_per_pixel / 8) + y * win->line_length);
-// 	*(int *)dst = color;
-// }
+void	draw_line_0(t_all *all, int x, int y, int i)
+{
+	int j;
 
-// void	ft_scale_img(t_data *img, t_point point, int color)
-// {
-// 	t_point end;
-
-// 	end.x = (point.x + 1) * SCALE;
-// 	end.y = (point.y + 1) * SCALE;
-// 	point.y *= SCALE;
-// 	point.x *= SCALE;
-// 	printf("scele img\n");
-// 	while (point.y < end.y)
-// 	{
-// 		printf("CICLO ESTERNO 1\n");
-// 		while (point.x < end.x)
-// 		{
-// 			printf("%d, %d\n", point.x, end.x);
-// 			ft_put_pixel(img, point.x, point.y, color);
-// 			point.x++;
-// 		}
-// 		point.x -= SCALE;
-// 		point.y++;
-// 	}
-// }
-
-// int		draw_map(t_all *all)
-// {
-// 	t_data	*data;
-// 	t_point	point;
-
-// 	data = &all->data;
-// 	ft_bzero(&point, sizeof(t_point));
-// 	printf("PRIMA\n");
-// 	while (all->map[point.x])
-// 	{
-// 		printf("CICLO ESTERNO\n");
-// 		point.y = 0;
-// 		while (all->map[point.x][point.y])
-// 		{
-// 			if (all->map[point.y][point.x] == '1')
-// 			{
-// 				printf("CICLO INTERNO\n");
-// 				ft_scale_img(data->img, point, 0x00FFFF00);
-// 			}
-// 			point.y++;
-// 		}
-// 		point.x++;
-// 	}
-// 	printf("SECONDA\n");
-//     mlx_put_image_to_window(VP_MLX, VP_WIN, data->img, 15, 15);
-// 	return (0);
-// }
+	j = 0;
+	while(CPP_MAP[i][j])
+	{
+		if(CPP_MAP[i][j] == '1')
+		{
+			draw_pixel_size(all, x, y, 0x0000FFFF);
+			x = x + PIXEL_SIZE;
+		}
+		else if(CPP_MAP[i][j] == '2')
+		{
+			draw_pixel_size(all, x, y, 0x00000FFF);
+			x = x + PIXEL_SIZE;
+		}
+		else if(CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S' || 
+			CPP_MAP[i][j] == 'E' || CPP_MAP[i][j] == 'W')
+		{
+			printf("OK1\n");
+			ft_get_player(all, x, y, i, j);
+			draw_pixel_size(all, x, y, 0x00FF0000);
+			x = x + PIXEL_SIZE;
+		}
+		else
+		{
+			draw_pixel_size(all, x, y, 0x00000000);
+			x = x + PIXEL_SIZE;
+		}
+		j++;
+	}
+}
 
 void	draw_map(t_all *all)
 {
-	// int x = 50;
+	int x = 50;
 	int y = 50;
 	int i;
 
 	i = 0;
+	printf("Grafic part: reading map...\n");
 	while (CPP_MAP[i])
 	{
-		printf("Matrix N. %-2d: %s\n", i, CPP_MAP[i]);
+		printf("Matrix line n. %-2d: %s\n", i, CPP_MAP[i]);
+		draw_line_0(all, x, y, i);
 		y = y + PIXEL_SIZE;
 		i++;
 	}

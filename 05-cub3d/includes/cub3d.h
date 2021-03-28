@@ -46,12 +46,13 @@ void			input_manager(t_all *all);
 ** Game part
 */
 void			game_manager(t_all *all);
-void			ft_get_player(char **map, t_all *all);
+void			ft_get_player(t_all *all, int x, int y, int i, int j);
 void			init_game(t_all *all);
 void			init_window(t_all *all);
 void			init_dir(t_all *all);
 void			init_keys(t_all *all);
 void			draw_map(t_all *all);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			draw_pixel_size(t_all *all, int x, int y, int color);
 
 #endif

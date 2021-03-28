@@ -14,12 +14,12 @@
 
 void		all_map_input_free(t_all *all)
 {
-	if(all->map_input.gnl_fd > -1)
-		close(all->map_input.gnl_fd);
+	if(I_GNL_FD > -1)
+		close(I_GNL_FD);
 	if(all->map_input.tex_fd > -1)
 		close(all->map_input.tex_fd);
-	if(all->map_input.line)
-		free(all->map_input.line);
+	if(CP_GNL_LINE)
+		free(CP_GNL_LINE);
 	if(all->map_input.current_ide)
 		free(all->map_input.current_ide);
 }

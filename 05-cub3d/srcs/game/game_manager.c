@@ -15,7 +15,7 @@
 void	game_manager(t_all *all)
 {
 	init_game(all);
-	ft_get_player(CPP_MAP, all);
 	draw_map(all);
+	mlx_put_image_to_window(VP_MLX, VP_WIN, VP_IMG, 0, 0);
 	mlx_loop(VP_MLX);
 }

@@ -22,13 +22,14 @@ static void		list_to_matrix(t_all *all, t_list *list)
 	while (!(list == NULL))
 	{
 		CPP_MAP[i] = list->content;
-		printf("Matrix N. %-2d: %s\n", i, CPP_MAP[i]);
+		printf("Matrix line n. %-2d: %s\n", i, CPP_MAP[i]);
 		list = list->next;
 		i++;
 	}
+	printf("\n");
 }
 
-void		map_to_list(t_all *all, t_list *list)
+static void		map_to_list(t_all *all, t_list *list)
 {
 	int lines;
 	t_list *tmp;
@@ -37,18 +38,18 @@ void		map_to_list(t_all *all, t_list *list)
 	while ((lines = get_next_line(I_GNL_FD, &CP_GNL_LINE)) > 0)
 	{
 		ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
-		printf("LIST N. %-2d: %s\n", I_MAP_LINES, tmp->content);
 		I_MAP_LINES++;
 		tmp = tmp->next;
+		printf("LIST N. %-2d: %s\n", I_MAP_LINES, tmp->content);
 	}
 	ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
-	printf("LIST N. %-2d: %s\n\n", I_MAP_LINES, tmp->content);
 	I_MAP_LINES++;
 	tmp = tmp->next;
+	printf("LIST N. %-2d: %s\n\n", I_MAP_LINES, tmp->content);
 	list_to_matrix(all, list);
 }
 
-void		input_manager(t_all *all)
+void			input_manager(t_all *all)
 {
 	t_list	*list;
 

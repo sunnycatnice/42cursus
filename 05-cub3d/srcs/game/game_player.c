@@ -12,32 +12,22 @@
 
 #include "../../includes/cub3d.h"
 
-void	ft_get_player(char **map, t_all *all)
+void	ft_get_player(t_all *all, int x, int y, int i, int j)
 {
-	int x;
-	int y;
-
-	x = -1;
-	while (map[x] && x++)
+	
+	if (CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S' || CPP_MAP[i][j] == 'E' 
+		|| CPP_MAP[i][j] == 'W')
 	{
-		y = -1;
-		while (map[x][y] && y++)
-		{
-			if (map[x][y] == 'N' || map[x][y] == 'S' || map[x][y] == 'E'
-			|| map[x][y] == 'W')
-			{
-				all->player.pos_x = x * SCALE;
-				all->player.pos_y = y * SCALE;
-				if (map[y][x] == 'N')
-					all->player.dir = PI_3_2;
-				else if (map[y][x] == 'E')
-					all->player.dir = 2 * PI;
-				else if (map[y][x] == 'S')
-					all->player.dir = PI_2;
-				else if (map[y][x] == 'W')
-					all->player.dir = PI;
-				return ;
-			}
-		}
+		F_PPX = x;
+		F_PPY = y;
+		if (CPP_MAP[i][j] == 'N')
+			all->player.dir = PI_2;
+		else if (CPP_MAP[i][j] == 'S')
+			all->player.dir = PI_3_4;
+		else if (CPP_MAP[i][j] == 'E')
+			all->player.dir = 2 * PI;
+		else if (CPP_MAP[i][j] == 'W')
+			all->player.dir = PI;
+		return ;
 	}
 }
