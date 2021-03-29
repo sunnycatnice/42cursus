@@ -43,7 +43,8 @@ DIR_GAME = game
 
 SRCS_ROOT = 	cub3d.c
 
-SRCS_INPUT =	input_manager.c		\
+SRCS_INPUT =	input_graphic.c		\
+				input_manager.c		\
 				input_check_arg.c	\
 				input_check_err.c	\
 				input_error.c		\

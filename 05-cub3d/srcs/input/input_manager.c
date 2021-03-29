@@ -14,38 +14,44 @@
 
 static void		list_to_matrix(t_all *all, t_list *list)
 {
-	int 	i;
-
-	i = 0;
+	I_MAP_LINES = 0;
 	list = list->next;
 	CPP_MAP = calloc((ft_lstsize(list) + 1), sizeof(char *));
+	printf("Processing: From list to matrix...\n");
 	while (!(list == NULL))
 	{
-		CPP_MAP[i] = list->content;
-		printf("Matrix line n. %-2d: %s\n", i, CPP_MAP[i]);
+		CPP_MAP[I_MAP_LINES] = list->content;
+		printf("Matrix line n. %-2d: %s\n", I_MAP_LINES, CPP_MAP[I_MAP_LINES]);
 		list = list->next;
-		i++;
+		I_MAP_LINES++;
 	}
-	printf("\n");
+	green_color();
+	printf("\n\u2714 Successful import!\n\n");
+	reset_color();
 }
 
 static void		map_to_list(t_all *all, t_list *list)
 {
-	int lines;
-	t_list *tmp;
+	int		lines;
+	t_list	*tmp;
 
 	tmp = list;
+	print_start();
+	printf("Processing: GNL from .cub file to list...\n");
 	while ((lines = get_next_line(I_GNL_FD, &CP_GNL_LINE)) > 0)
 	{
 		ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
 		I_MAP_LINES++;
 		tmp = tmp->next;
-		printf("LIST N. %-2d: %s\n", I_MAP_LINES, tmp->content);
+		printf("Exporting to list n. %-2d: %s\n", I_MAP_LINES, tmp->content);
 	}
 	ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
 	I_MAP_LINES++;
 	tmp = tmp->next;
-	printf("LIST N. %-2d: %s\n\n", I_MAP_LINES, tmp->content);
+	printf("Exporting to list n. %-2d: %s\n\n", I_MAP_LINES, tmp->content);
+	green_color();
+	printf("\u2714 Export done!\n\n");
+	reset_color();
 	list_to_matrix(all, list);
 }
 

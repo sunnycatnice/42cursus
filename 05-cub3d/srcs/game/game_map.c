@@ -14,7 +14,7 @@
 
 static void	draw_line(t_all *all, int x, int y, int i)
 {
-	int j;
+	short j;
 
 	j = 0;
 	while (CPP_MAP[i][j])
@@ -42,13 +42,13 @@ void		draw_map(t_all *all)
 	int y;
 	int i;
 
-	x = 50;
-	y = 50;
+	x = 200;
+	y = 200;
 	i = 0;
-	printf("Grafic part: reading map...\n");
+	printf("Graphic: drawing map from matrix...\n");
 	while (CPP_MAP[i])
 	{
-		printf("Matrix line n. %-2d: %s\n", i, CPP_MAP[i]);
+		printf("Drawing line n. %-2d: %s\n", i, CPP_MAP[i]);
 		draw_line(all, x, y, i);
 		y = y + PIXEL_SIZE;
 		i++;

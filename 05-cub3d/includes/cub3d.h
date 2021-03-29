@@ -35,6 +35,10 @@ void			init_map_input(t_all *all);
 /*
 ** Input part
 */
+void			red_color();
+void			green_color();
+void			reset_color();
+void			print_start();
 void			print_error(t_all *all, int n);
 void			check_err(int n);
 void			all_map_input_free(t_all *all);
@@ -46,7 +50,7 @@ void			input_manager(t_all *all);
 ** Game part
 */
 void			game_manager(t_all *all);
-void			ft_get_player(t_all *all, int x, int y, int i, int j);
+void			ft_get_player(t_all *all,int x, int y, int i, int j);
 void			init_game(t_all *all);
 void			init_window(t_all *all);
 void			init_dir(t_all *all);
