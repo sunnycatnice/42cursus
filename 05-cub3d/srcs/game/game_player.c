@@ -12,10 +12,10 @@
 
 #include "../../includes/cub3d.h"
 
-void	ft_get_player(t_all *all, int x, int y, int i, int j)
+void	ft_get_player(t_all *all, int i, int j)
 {
-	F_PPX = x;
-	F_PPY = y;
+	F_PPX = I_XSTART;
+	F_PPY = I_YSTART;
 	if (CPP_MAP[i][j] == 'N')
 		all->player.dir = PI_2;
 	else if (CPP_MAP[i][j] == 'S')

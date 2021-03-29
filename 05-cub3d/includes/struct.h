@@ -17,8 +17,10 @@
 
 typedef	struct s_point
 {
-	int				x;
-	int				y;
+	int				x_start;
+	int				y_start;
+	int				x_pl;
+	int				y_pl;
 }				t_point;
 
 typedef struct		s_player

@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-static void	draw_line(t_all *all, int x, int y, int i)
+static void	draw_line(t_all *all, int i)
 {
 	short j;
 
@@ -20,37 +20,35 @@ static void	draw_line(t_all *all, int x, int y, int i)
 	while (CPP_MAP[i][j])
 	{
 		if (CPP_MAP[i][j] == '1')
-			draw_pixel_size(all, x, y, CYAN);
+			draw_pixel_size(all, CYAN);
 		else if (CPP_MAP[i][j] == '2')
-			draw_pixel_size(all, x, y, BLUE);
+			draw_pixel_size(all, BLUE);
 		else if (CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S' ||
 			CPP_MAP[i][j] == 'E' || CPP_MAP[i][j] == 'W')
 		{
-			ft_get_player(all, x, y, i, j);
-			draw_pixel_size(all, x, y, RED);
+			ft_get_player(all, i, j);
+			draw_pixel_size(all, RED);
 		}
 		else
-			draw_pixel_size(all, x, y, BLACK);
-		x = x + PIXEL_SIZE;
+			draw_pixel_size(all, BLACK);
+		I_XSTART = I_XSTART + PIXEL_SIZE;
 		j++;
 	}
 }
 
 void		draw_map(t_all *all)
 {
-	int x;
-	int y;
 	int i;
 
-	x = 200;
-	y = 200;
+	I_YSTART = 200;
 	i = 0;
 	printf("Graphic: drawing map from matrix...\n");
 	while (CPP_MAP[i])
 	{
+		I_XSTART = 200;
 		printf("Drawing line n. %-2d: %s\n", i, CPP_MAP[i]);
-		draw_line(all, x, y, i);
-		y = y + PIXEL_SIZE;
+		draw_line(all, i);
+		I_YSTART = I_YSTART + PIXEL_SIZE;
 		i++;
 	}
 }

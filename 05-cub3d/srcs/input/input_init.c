@@ -34,6 +34,4 @@ void	init_input(t_all *all)
 {
 	VP_MLX = NULL;
 	VP_WIN = NULL;
-	all->point.x = -1;
-	all->point.y = -1;
 }

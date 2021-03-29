@@ -70,8 +70,10 @@
 #define I_MAP_LINES all->map_input.map_lines
 #define F_PPX all->player.pos_x
 #define F_PPY all->player.pos_y
-#define I_XSTART all->point.x
-#define I_YSTART all->point.y
+#define I_XSTART all->point.x_start
+#define I_YSTART all->point.y_start
+#define I_XPL all->point.x_pl
+#define I_YPL all->point.y_pl
 
 
 #endif
