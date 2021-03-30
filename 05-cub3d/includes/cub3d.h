@@ -50,12 +50,17 @@ void			input_manager(t_all *all);
 ** Game part
 */
 void			game_manager(t_all *all);
-void			ft_get_player(t_all *all, int i, int j);
 void			init_game(t_all *all);
 void			init_window(t_all *all);
 void			init_dir(t_all *all);
 void			init_keys(t_all *all);
+int				key_hit(int keycode, t_all *all);
+int				key_release(int keycode, t_all *all);
+int				key_register(t_all *all);
 void			draw_map(t_all *all);
+void			draw_first_map(t_all *all);
+void			get_player(t_all *all, int i, int j);
+void			draw_player(t_all *all, int color);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			draw_pixel_size(t_all *all, int color);
 

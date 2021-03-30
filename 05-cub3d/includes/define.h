@@ -17,6 +17,14 @@
 */
 #define	SCALE 128
 #define PIXEL_SIZE 32
+#define PLAYER_SIZE 4
+/*
+** KEYS
+*/
+# define KEYPRESS 2
+# define KEYRELEASE 3
+# define KEYPRESSMASK 1L
+# define KEYRELEASEMASK 2L
 /*
 ** COLORS
 */
@@ -74,6 +82,7 @@
 #define I_YSTART all->point.y_start
 #define I_XPL all->point.x_pl
 #define I_YPL all->point.y_pl
+#define I_KEYBOARD all->keyboard.keyboard
 
 
 #endif

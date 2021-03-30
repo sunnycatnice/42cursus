@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-void	ft_get_player(t_all *all, int i, int j)
+void	get_player(t_all *all, int i, int j)
 {
 	F_PPX = I_XSTART;
 	F_PPY = I_YSTART;
@@ -25,4 +25,23 @@ void	ft_get_player(t_all *all, int i, int j)
 	else if (CPP_MAP[i][j] == 'W')
 		all->player.dir = PI;
 	return ;
+}
+
+void	draw_player(t_all *all, int color)
+{
+	int	l;
+	int	h;
+
+	h = I_YSTART;
+	l = I_XSTART;
+	while (h < (I_YSTART + PLAYER_SIZE))
+	{
+		l = I_XSTART;
+		while (l < (I_XSTART + PLAYER_SIZE))
+		{
+			my_mlx_pixel_put(&all->data, l, h, color);
+			l++;
+		}
+		h++;
+	}
 }

@@ -56,6 +56,8 @@ SRCS_GAME =		game_manager.c		\
 				game_map.c			\
 				game_player.c		\
 				game_utils.c		\
+				game_basic_keys.c	\
+				game_keys.c			\
 
 SRCS_INPUT_PREFIX_1 = $(addprefix $(DIR_INPUT)/, $(SRCS_INPUT))
 SRCS_GAME_PREFIX_1 = $(addprefix $(DIR_GAME)/, $(SRCS_GAME))

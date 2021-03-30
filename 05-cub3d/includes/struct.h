@@ -15,6 +15,11 @@
 
 #include "../libs/libft/libft.h"
 
+typedef struct	s_keyboard
+{
+	int			keyboard[128];
+}				t_keyboard;
+
 typedef	struct s_point
 {
 	int				x_start;
@@ -108,6 +113,7 @@ typedef struct		s_all
 	t_dir			dir;
 	t_map_input		map_input;
 	t_point			point;
+	t_keyboard		keyboard;
 
 }					t_all;
 
