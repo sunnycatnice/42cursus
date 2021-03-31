@@ -11,15 +11,16 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static char	*genera_avanzi(char *db)
+static char	*ft_remains(char *db)
 {
-	char	*avanzi;
-	int		index_avanzi;
+	char	*remains;
+	int		index_remains;
 	int		index_line;
 
 	index_line = 0;
-	index_avanzi = 0;
+	index_remains = 0;
 	if (!db)
 		return (0);
 	while (db[index_line] && db[index_line] != '\n')
@@ -29,18 +30,18 @@ static char	*genera_avanzi(char *db)
 		free(db);
 		return (0);
 	}
-	if (!(avanzi = malloc(sizeof(char) *
-			((ft_strlen(db) - index_line) + 1))))
+	remains = malloc(sizeof(char) * ((ft_strlen(db) - index_line) + 1));
+	if (!(remains))
 		return (0);
 	index_line++;
 	while (db[index_line])
-		avanzi[index_avanzi++] = db[index_line++];
-	avanzi[index_avanzi] = '\0';
+		remains[index_remains++] = db[index_line++];
+	remains[index_remains] = '\0';
 	free(db);
-	return (avanzi);
+	return (remains);
 }
 
-static char	*fai_copia_inline(char *db)
+static char	*ft_copy_in_line(char *db)
 {
 	size_t		index;
 	char		*line;
@@ -50,7 +51,8 @@ static char	*fai_copia_inline(char *db)
 		return (0);
 	while (db[index] && db[index] != '\n')
 		index++;
-	if (!(line = malloc(sizeof(char) * (index + 1))))
+	line = malloc(sizeof(char) * (index + 1));
+	if (!line)
 		return (0);
 	index = 0;
 	while (db[index] && db[index] != '\n')
@@ -62,7 +64,14 @@ static char	*fai_copia_inline(char *db)
 	return (line);
 }
 
-int		get_next_line(const int fd, char **line)
+static void	ft_doyourjob(char *line, char *db, int fd, char *buffer)
+{
+	*line = *ft_copy_in_line(&db[fd]);
+	db[fd] = *ft_remains(&db[fd]);
+	free(buffer);
+}
+
+int	ft_get_next_line(const int fd, char **line)
 {
 	char		*buffer;
 	static char	*db[MAX_FD];
@@ -71,11 +80,13 @@ int		get_next_line(const int fd, char **line)
 	res = 1;
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
 		return (-1);
 	while (!ft_isline(db[fd]) && res != 0)
 	{
-		if ((res = read(fd, buffer, BUFFER_SIZE)) == -1)
+		res = read(fd, buffer, BUFFER_SIZE);
+		if (res == -1)
 		{
 			free(buffer);
 			return (-1);
@@ -83,9 +94,7 @@ int		get_next_line(const int fd, char **line)
 		buffer[res] = '\0';
 		db[fd] = ft_strjoin(db[fd], buffer);
 	}
-	free(buffer);
-	*line = fai_copia_inline(db[fd]);
-	db[fd] = genera_avanzi(db[fd]);
+	ft_doyourjob(*line, *db, fd, buffer);
 	if (res == 0)
 		return (0);
 	return (1);

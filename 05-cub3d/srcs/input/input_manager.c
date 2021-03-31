@@ -38,7 +38,7 @@ static void		map_to_list(t_all *all, t_list *list)
 	tmp = list;
 	print_start();
 	printf("Processing: GNL from .cub file to list...\n");
-	while ((lines = get_next_line(I_GNL_FD, &CP_GNL_LINE)) > 0)
+	while ((lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE)) > 0)
 	{
 		ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
 		I_MAP_LINES++;

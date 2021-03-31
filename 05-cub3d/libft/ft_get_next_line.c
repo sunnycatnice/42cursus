@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-static char	*genera_avanzi(char *db)
+static char	*ft_remains(char *db)
 {
-	char	*avanzi;
-	int		index_avanzi;
+	char	*remains;
+	int		index_remains;
 	int		index_line;
 
 	index_line = 0;
-	index_avanzi = 0;
+	index_remains = 0;
 	if (!db)
 		return (0);
 	while (db[index_line] && db[index_line] != '\n')
@@ -29,18 +29,18 @@ static char	*genera_avanzi(char *db)
 		free(db);
 		return (0);
 	}
-	if (!(avanzi = malloc(sizeof(char) *
+	if (!(remains = malloc(sizeof(char) *
 			((ft_strlen(db) - index_line) + 1))))
 		return (0);
 	index_line++;
 	while (db[index_line])
-		avanzi[index_avanzi++] = db[index_line++];
-	avanzi[index_avanzi] = '\0';
+		remains[index_remains++] = db[index_line++];
+	remains[index_remains] = '\0';
 	free(db);
-	return (avanzi);
+	return (remains);
 }
 
-static char	*fai_copia_inline(char *db)
+static char	*ft_copy_in_line(char *db)
 {
 	size_t		index;
 	char		*line;
@@ -84,8 +84,8 @@ int		get_next_line(const int fd, char **line)
 		db[fd] = ft_strjoin(db[fd], buffer);
 	}
 	free(buffer);
-	*line = fai_copia_inline(db[fd]);
-	db[fd] = genera_avanzi(db[fd]);
+	*line = ft_copy_in_line(db[fd]);
+	db[fd] = ft_remains(db[fd]);
 	if (res == 0)
 		return (0);
 	return (1);

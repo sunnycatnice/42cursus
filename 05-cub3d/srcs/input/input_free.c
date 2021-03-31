@@ -29,7 +29,7 @@ void		get_next_line_free(t_all *all)
 	char	*line;
 	int		ret;
 
-	while ((ret = get_next_line(all->map_input.gnl_fd, &line)) >= 0)
+	while ((ret = ft_get_next_line(all->map_input.gnl_fd, &line)) >= 0)
 	{
 		free(line);
 		if (!ret)
