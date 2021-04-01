@@ -12,84 +12,86 @@
 
 #include "libft.h"
 
-static int	conta_parole(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	int	i;
-	int	parole;
+	int	words;
 
 	i = 0;
-	parole = 0;
+	words = 0;
 	while (s[i])
 	{
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			parole++;
+			words++;
 		i++;
 	}
-	return (parole);
+	return (words);
 }
 
-static int	lung_parola(char const *s, char c)
+static int	ft_word_len(char const *s, char c)
 {
-	int i;
-	int lung;
+	int	i;
+	int	len;
 
 	i = 0;
-	lung = 0;
+	len = 0;
 	while (s[i] != c && s[i] != '\0')
 	{
 		i++;
-		lung++;
+		len++;
 	}
-	return (lung);
+	return (len);
 }
 
-static void	*libera(char **splittato, int parola)
+static void	*ft_free(char **splitted, int word)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (i < parola)
+	while (i < word)
 	{
-		free(splittato[i]);
+		free(splitted[i]);
 		i++;
 	}
-	free(splittato);
+	free(splitted);
 	return (NULL);
 }
 
-static char	**riempi(char const *s, int parole, char c, char **splittato)
+static char	**ft_fill(char const *s, int words, char c, char **splitted)
 {
 	int	i;
 	int	j;
-	int	lung;
+	int	len;
 
 	i = -1;
-	while (++i < parole)
+	while (++i < words)
 	{
 		while (*s == c)
 			s++;
-		lung = lung_parola(s, c);
-		if (!(splittato[i] = (char *)malloc(sizeof(char) * (lung + 1))))
-			return (libera(splittato, i));
+		len = ft_word_len(s, c);
+		splitted[i] = (char *)malloc(sizeof(char) * (len + 1));
+		if (!splitted)
+			return (ft_free(splitted, i));
 		j = 0;
-		while (j < lung)
-			splittato[i][j++] = *s++;
-		splittato[i][j] = '\0';
+		while (j < len)
+			splitted[i][j++] = *s++;
+		splitted[i][j] = '\0';
 	}
-	splittato[i] = NULL;
-	return (splittato);
+	splitted[i] = NULL;
+	return (splitted);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**splittato;
-	int		num_parole;
+	char	**splitted;
+	int		num_words;
 
 	if (!s)
 		return (NULL);
-	num_parole = conta_parole(s, c);
-	if (!(splittato = (char **)malloc(sizeof(char*) * (num_parole + 1))))
+	num_words = ft_count_words(s, c);
+	splitted = (char **)malloc(sizeof(char *) * (num_words + 1));
+	if (!splitted)
 		return (NULL);
-	splittato = riempi(s, num_parole, c, splittato);
-	return (splittato);
+	splitted = ft_fill(s, num_words, c, splitted);
+	return (splitted);
 }

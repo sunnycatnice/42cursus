@@ -18,7 +18,10 @@ int	ft_numlen_base(int num, int base)
 
 	if (num == -2147483648)
 		return (11);
-	len = num > 0 ? 0 : 1;
+	if (num > 0)
+		len = 0;
+	else
+		len = 1;
 	while (num)
 	{
 		num /= base;
