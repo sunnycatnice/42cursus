@@ -14,7 +14,7 @@
 /*
 ** Drawing all others frames
 */
-static void	draw_line(t_all *all, int i)
+static void	ft_draw_line(t_all *all, int i)
 {
 	short	j;
 
@@ -22,24 +22,24 @@ static void	draw_line(t_all *all, int i)
 	while (CPP_MAP[i][j])
 	{
 		if (CPP_MAP[i][j] == '1')
-			draw_pixel_size(all, CYAN);
+			ft_draw_pixel_size(all, CYAN);
 		else if (CPP_MAP[i][j] == '2')
-			draw_pixel_size(all, BLUE);
+			ft_draw_pixel_size(all, BLUE);
 		else if (CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S'
 			|| CPP_MAP[i][j] == 'E' || CPP_MAP[i][j] == 'W')
 		{
-			get_player(all, i, j);
-			draw_player(all, RED);
-			draw_pixel_size(all, RED);
+			ft_get_player(all, i, j);
+			ft_draw_player(all, RED);
+			ft_draw_pixel_size(all, RED);
 		}
 		else
-			draw_pixel_size(all, BLACK);
+			ft_draw_pixel_size(all, BLACK);
 		I_XSTART = I_XSTART + PIXEL_SIZE;
 		j++;
 	}
 }
 
-void	draw_map(t_all *all)
+void	ft_draw_map(t_all *all)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ void	draw_map(t_all *all)
 	{
 		I_XSTART = 200;
 		printf("Drawing line n. %-2d: %s\n", i, CPP_MAP[i]);
-		draw_line(all, i);
+		ft_draw_line(all, i);
 		I_YSTART = I_YSTART + PIXEL_SIZE;
 		i++;
 	}
@@ -58,7 +58,7 @@ void	draw_map(t_all *all)
 /*
 ** Drawing the first frame
 */
-static void	draw_first_line(t_all *all, int i)
+static void	ft_draw_first_line(t_all *all, int i)
 {
 	short	j;
 
@@ -66,24 +66,24 @@ static void	draw_first_line(t_all *all, int i)
 	while (CPP_MAP[i][j])
 	{
 		if (CPP_MAP[i][j] == '1')
-			draw_pixel_size(all, CYAN);
+			ft_draw_pixel_size(all, CYAN);
 		else if (CPP_MAP[i][j] == '2')
-			draw_pixel_size(all, BLUE);
+			ft_draw_pixel_size(all, BLUE);
 		else if (CPP_MAP[i][j] == 'N' || CPP_MAP[i][j] == 'S'
 			|| CPP_MAP[i][j] == 'E' || CPP_MAP[i][j] == 'W')
 		{
-			get_player(all, i, j);
-			draw_player(all, RED);
-			draw_pixel_size(all, RED);
+			ft_get_player(all, i, j);
+			ft_draw_player(all, RED);
+			ft_draw_pixel_size(all, RED);
 		}
 		else
-			draw_pixel_size(all, BLACK);
+			ft_draw_pixel_size(all, BLACK);
 		I_XSTART = I_XSTART + PIXEL_SIZE;
 		j++;
 	}
 }
 
-void	draw_first_map(t_all *all)
+void	ft_draw_first_map(t_all *all)
 {
 	int	i;
 
@@ -94,7 +94,7 @@ void	draw_first_map(t_all *all)
 	{
 		I_XSTART = 200;
 		printf("Drawing line n. %-2d: %s\n", i, CPP_MAP[i]);
-		draw_first_line(all, i);
+		ft_draw_first_line(all, i);
 		I_YSTART = I_YSTART + PIXEL_SIZE;
 		i++;
 	}

@@ -16,9 +16,9 @@ int	main(int ac, char **av)
 {
 	t_all	all;
 
-	init_map_input(&all);
-	check_arg(&all, ac, av);
-	input_manager(&all);
-	game_manager(&all);
+	ft_init_map_input(&all);
+	ft_check_arg(&all, ac, av);
+	ft_input_manager(&all);
+	ft_game_manager(&all);
 	return (0);
 }

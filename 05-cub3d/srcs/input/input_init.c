@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-void	init_map_input(t_all *all)
+void	ft_init_map_input(t_all *all)
 {
 	I_GNL_FD = -1;
 	all->map_input.tex_fd = -1;
@@ -30,7 +30,7 @@ void	init_map_input(t_all *all)
 	all->map_input.real_ide[7] = "F";
 }
 
-void	init_input(t_all *all)
+void	ft_init_input(t_all *all)
 {
 	VP_MLX = NULL;
 	VP_WIN = NULL;

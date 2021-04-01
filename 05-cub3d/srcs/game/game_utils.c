@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	draw_pixel_size(t_all *all, int color)
+void	ft_draw_pixel_size(t_all *all, int color)
 {
 	int	l;
 	int	h;

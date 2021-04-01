@@ -32,7 +32,7 @@ static void	ft_right(t_all *all)
 	I_XPL += 10;
 }
 
-int	key_register(t_all *all)
+int	ft_key_register(t_all *all)
 {
 	printf("if tasti\n");
 	if (all->keyboard.keyboard[13])
@@ -57,7 +57,7 @@ int	key_register(t_all *all)
 	printf("new image\n");
 	//CP_ADDR = mlx_get_data_addr(VP_IMG, &I_BPP, &I_LL, &I_ENDIAN);
 	printf("mlx data addr\n");
-	draw_map(all);
+	ft_draw_map(all);
 	//mlx_put_image_to_window(VP_MLX,VP_WIN, VP_IMG, 0, 0);
 	return (0);
 }

@@ -30,37 +30,37 @@
 # include "struct.h"
 
 int				main(int ac, char **av);
-void			init_input(t_all *all);
-void			init_map_input(t_all *all);
+void			ft_init_input(t_all *all);
+void			ft_init_map_input(t_all *all);
 /*
 ** Input part
 */
-void			red_color();
-void			green_color();
-void			reset_color();
-void			print_start();
+void			ft_red_color();
+void			ft_green_color();
+void			ft_reset_color();
+void			ft_print_start();
 void			ft_print_error(t_all *all, int n);
-void			check_err(int n);
-void			all_map_input_free(t_all *all);
-void			get_next_line_free(t_all *all);
-void			check_arg(t_all *all, int ac, char **av);
-void			input_manager(t_all *all);
+void			ft_check_err(int n);
+void			ft_all_map_input_free(t_all *all);
+void			ft_get_next_line_free(t_all *all);
+void			ft_check_arg(t_all *all, int ac, char **av);
+void			ft_input_manager(t_all *all);
 /*
 ** Game part
 */
-void			game_manager(t_all *all);
-void			init_game(t_all *all);
-void			init_window(t_all *all);
-void			init_dir(t_all *all);
-void			init_keys(t_all *all);
-int				key_hit(int keycode, t_all *all);
-int				key_release(int keycode, t_all *all);
-int				key_register(t_all *all);
-void			draw_map(t_all *all);
-void			draw_first_map(t_all *all);
-void			get_player(t_all *all, int i, int j);
-void			draw_player(t_all *all, int color);
+void			ft_game_manager(t_all *all);
+void			ft_init_game(t_all *all);
+void			ft_init_window(t_all *all);
+void			ft_init_dir(t_all *all);
+void			ft_init_keys(t_all *all);
+int				ft_key_hit(int keycode, t_all *all);
+int				ft_key_release(int keycode, t_all *all);
+int				ft_key_register(t_all *all);
+void			ft_draw_map(t_all *all);
+void			ft_draw_first_map(t_all *all);
+void			ft_get_player(t_all *all, int i, int j);
+void			ft_draw_player(t_all *all, int color);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void			draw_pixel_size(t_all *all, int color);
+void			ft_draw_pixel_size(t_all *all, int color);
 
 #endif

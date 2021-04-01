@@ -12,24 +12,24 @@
 
 #include "../../includes/cub3d.h"
 
-void	red_color(void)
+void	ft_red_color(void)
 {
 	printf("\033[1;31m");
 }
 
-void	green_color(void)
+void	ft_green_color(void)
 {
 	printf("\033[0;32m");
 }
 
-void	reset_color(void)
+void	ft_reset_color(void)
 {
 	printf("\033[0m");
 }
 
-void	print_start(void)
+void	ft_print_start(void)
 {
-	green_color();
+	ft_green_color();
 	printf("\n                          )(     \n");
 	printf("   )\\     (   ( /(    ( /((()/(  \n");
 	printf(" (((_)   ))\\  )\\())   )\\())/(_)) \n");
@@ -37,9 +37,9 @@ void	print_start(void)
 	printf("((/ __|(_)|( | |(_) |__ (_)|   \\ \n");
 	printf(" | (__ | || || '_ \\  |_ \\  | |) |\n");
 	printf("  \\___| \\_,_||_.__/ |___/  |___/ \n");
-	red_color();
+	ft_red_color();
 	printf("              on fire              \n\n");
-	green_color();
+	ft_green_color();
 	printf("Starting game...\n\n");
-	reset_color();
+	ft_reset_color();
 }

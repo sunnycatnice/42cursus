@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-static void	list_to_matrix(t_all *all, t_list *list)
+static void	ft_list_to_matrix(t_all *all, t_list *list)
 {
 	I_MAP_LINES = 0;
 	list = list->next;
@@ -25,18 +25,18 @@ static void	list_to_matrix(t_all *all, t_list *list)
 		list = list->next;
 		I_MAP_LINES++;
 	}
-	green_color();
+	ft_green_color();
 	printf("\n\u2714 Successful import!\n\n");
-	reset_color();
+	ft_reset_color();
 }
 
-static void	map_to_list(t_all *all, t_list *list)
+static void	ft_map_to_list(t_all *all, t_list *list)
 {
 	int		lines;
 	t_list	*tmp;
 
 	tmp = list;
-	print_start();
+	ft_print_start();
 	printf("Processing: GNL from .cub file to list...\n");
 	lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
 	while (lines > 0)
@@ -48,17 +48,17 @@ static void	map_to_list(t_all *all, t_list *list)
 		tmp = tmp->next;
 		printf("Exporting to list n. %-2d: %s\n", I_MAP_LINES, tmp->content);
 	}
-	green_color();
-	printf("\u2714 Export done!\n\n");
-	reset_color();
-	list_to_matrix(all, list);
+	ft_green_color();
+	printf("\n\u2714 Export done!\n\n");
+	ft_reset_color();
+	ft_list_to_matrix(all, list);
 }
 
-void	input_manager(t_all *all)
+void	ft_input_manager(t_all *all)
 {
 	t_list	*list;
 
 	list = ft_lstnew("");
-	map_to_list(all, list);
+	ft_map_to_list(all, list);
 	close(I_GNL_FD);
 }

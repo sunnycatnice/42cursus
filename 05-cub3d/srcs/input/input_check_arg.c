@@ -30,7 +30,7 @@ static int	find_cub_file(char *s)
 	return (1);
 }
 
-void	check_arg(t_all *all, int ac, char **av)
+void	ft_check_arg(t_all *all, int ac, char **av)
 {
 	short	err;
 

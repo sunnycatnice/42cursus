@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-void	check_err(n)
+void	ft_check_err(n)
 {
 	if (n == 0)
 		printf("ERROR N. %d: Malloc failed\n", n);

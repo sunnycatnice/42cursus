@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-void	get_player(t_all *all, int i, int j)
+void	ft_get_player(t_all *all, int i, int j)
 {
 	F_PPX = I_XSTART;
 	F_PPY = I_YSTART;
@@ -27,7 +27,7 @@ void	get_player(t_all *all, int i, int j)
 	return ;
 }
 
-void	draw_player(t_all *all, int color)
+void	ft_draw_player(t_all *all, int color)
 {
 	int	l;
 	int	h;

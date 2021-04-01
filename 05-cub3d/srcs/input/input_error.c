@@ -14,10 +14,10 @@
 
 void	ft_print_error(t_all *all, int n)
 {
-	check_err(n);
+	ft_check_err(n);
 	if (I_GNL_FD > -1)
-		get_next_line_free(all);
+		ft_get_next_line_free(all);
 	//all_input_free(all);
-	all_map_input_free(all);
+	ft_all_map_input_free(all);
 	exit(1);
 }
