@@ -26,6 +26,7 @@ SRC = 	./ft_atoi.c 		\
  		./ft_memcpy.c 		\
  		./ft_memmove.c 		\
  		./ft_memset.c 		\
+		./ft_strcpy.c		\
 		./ft_strlcpy.c		\
  		./ft_strlen.c 		\
 		./ft_strncmp.c		\
@@ -50,9 +51,7 @@ SRC = 	./ft_atoi.c 		\
 		./ft_putendl_fd.c	\
 		./ft_putnbr_fd.c	\
 		./ft_numlen_base.c	\
-
-
-BONUS = ft_lstnew.c			\
+		ft_lstnew.c			\
 		ft_lstadd_front.c	\
 		ft_lstsize.c 		\
 		ft_lstlast.c		\
@@ -61,10 +60,9 @@ BONUS = ft_lstnew.c			\
 		ft_lstclear.c		\
 		ft_lstiter.c		\
 		ft_lstmap.c			\
+		./ft_get_next_line.c 	\
 
 OBJS = $(SRC:.c=.o)
-
-BONUS_OBJS = ${BONUS:.c=.o}
 
 HDRS = libft.h
 
@@ -84,8 +82,5 @@ fclean: clean
 	/bin/rm -f $(NAME) ${BONUS_OBJS}
 
 re: fclean all
-
-bonus:	${OBJS} ${BONUS_OBJS}
-		ar -crs ${NAME} ${OBJS} ${BONUS_OBJS}
 
 .PHONY:		all clean fclean re bonus
