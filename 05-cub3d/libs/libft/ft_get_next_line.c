@@ -11,22 +11,52 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int ft_get_next_line(int fd, char **line)
+char	*ft_get_line_read(int fd, char **remainder)
 {
-    char    buffer[512];
-    int     reader , i = 0;
-    if (read(fd, &buffer[0], 0) < 0 || (!line))
-        return (-1);
-    while ((reader = read(fd, &buffer[i], 1)) > 0 && buffer[i] != '\n')
-        i++;
-    buffer[i] = '\0';
-    if (reader != -1 && (*line = malloc(i + sizeof(char))) && (i = -1))
-    {
-        while (buffer[++i])
-            (*line)[i] = buffer[i];
-        (*line)[i] = '\0';
-    }
-    return (reader > 0 ? 1 : reader);
+	char	buf[BUFFER_SIZE + 1];
+	int		currently_read;
+	char	*mem_to_free;
+
+	if (*remainder == NULL)
+		*remainder = ft_strdup("");
+	while (!(ft_strchr(*remainder, '\n')))
+	{
+		currently_read = read(fd, buf, BUFFER_SIZE);
+		if (currently_read < 0)
+			return (0);
+		buf[currently_read] = '\0';
+		mem_to_free = *remainder;
+		*remainder = ft_strjoin(*remainder, buf);
+		free(mem_to_free);
+		if (currently_read == 0)
+			break ;
+	}
+	return (*remainder);
+}
+
+int	ft_get_next_line(int fd, char **line)
+{
+	static char		*remainder[256];
+	char			*ptr_n;
+
+	if (fd < 0 || fd > 256 || BUFFER_SIZE < 1)
+		return (0);
+	remainder[fd] = ft_get_line_read(fd, &remainder[fd]);
+	if (!line || !remainder[fd])
+		return (-1);
+	ptr_n = ft_strchr(remainder[fd], '\n');
+	if (!ptr_n)
+	{
+		*line = remainder[fd];
+		remainder[fd] = NULL;
+		return (0);
+	}
+	else
+	{
+		*ptr_n = '\0';
+		*line = ft_strdup(remainder[fd]);
+		ft_strcpy(remainder[fd], ++ptr_n);
+		return (1);
+	}
 }
