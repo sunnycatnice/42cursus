@@ -14,7 +14,7 @@
 
 static void	ft_forward(t_all *all)
 {
-	I_YPL-= 10;
+	I_YPL -= 10;
 }
 
 static void	ft_backward(t_all *all)
@@ -32,17 +32,17 @@ static void	ft_right(t_all *all)
 	I_XPL += 10;
 }
 
-int		 key_register(t_all *all)
+int	key_register(t_all *all)
 {
 	printf("if tasti\n");
-    if (all->keyboard.keyboard[13])
-        ft_forward(all);
-    if (all->keyboard.keyboard[1])
-        ft_backward(all);
+	if (all->keyboard.keyboard[13])
+		ft_forward(all);
+	if (all->keyboard.keyboard[1])
+		ft_backward(all);
 	if (all->keyboard.keyboard[0])
-        ft_left(all);
+		ft_left(all);
 	if (all->keyboard.keyboard[2])
-        ft_right(all);
+		ft_right(all);
 	if (all->keyboard.keyboard[53])
 	{
 		printf("Tasto esc");

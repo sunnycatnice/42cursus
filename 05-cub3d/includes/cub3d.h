@@ -39,12 +39,11 @@ void			red_color();
 void			green_color();
 void			reset_color();
 void			print_start();
-void			print_error(t_all *all, int n);
+void			ft_print_error(t_all *all, int n);
 void			check_err(int n);
 void			all_map_input_free(t_all *all);
 void			get_next_line_free(t_all *all);
 void			check_arg(t_all *all, int ac, char **av);
-void			print_error(t_all *all, int n);
 void			input_manager(t_all *all);
 /*
 ** Game part

@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-void	print_error(t_all *all, int n)
+void	ft_print_error(t_all *all, int n)
 {
 	check_err(n);
 	if (I_GNL_FD > -1)

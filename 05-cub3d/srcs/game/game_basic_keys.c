@@ -12,13 +12,13 @@
 
 #include "../../includes/cub3d.h"
 
-int			key_hit(int keycode, t_all *all)
+int	key_hit(int keycode, t_all *all)
 {
 	I_KEYBOARD[keycode] = 1;
 	return (0);
 }
 
-int			key_release(int keycode, t_all *all)
+int	key_release(int keycode, t_all *all)
 {
 	I_KEYBOARD[keycode] = 0;
 	return (0);
