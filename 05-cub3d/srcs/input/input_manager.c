@@ -12,53 +12,68 @@
 
 #include "../../includes/cub3d.h"
 
-static void	ft_list_to_matrix(t_all *all, t_list *list)
+static void	ft_take_data(t_all *all, int i)
 {
-	I_MAP_LINES = 0;
-	list = list->next;
-	CPP_MAP = calloc((ft_lstsize(list) + 1), sizeof(char *));
-	printf("Processing: From list to matrix...\n");
-	while (!(list == NULL))
-	{
-		CPP_MAP[I_MAP_LINES] = list->content;
-		printf("Matrix line n. %-2d: %s\n", I_MAP_LINES, CPP_MAP[I_MAP_LINES]);
-		list = list->next;
-		I_MAP_LINES++;
-	}
-	ft_green_color();
-	printf("\n\u2714 Successful import!\n\n");
-	ft_reset_color();
+	if (i < 5)
+		take_texture(all, i);
+	else if (i == 5)
+		take_res(all, i);
+	else if (i > 5)
+		take_color_or_texture(all, i);
 }
 
-static void	ft_map_to_list(t_all *all, t_list *list)
+static void	ft_store_data(t_all *all, t_list *list)
 {
-	int		lines;
-	t_list	*tmp;
+	static int	at_map = 0;
+	int			i;
 
-	tmp = list;
+	if (at_map > 7)
+		return (ft_map_to_list(all, list));
+	i = 0;
+	CP_CURR_IDE = ft_first_split(CP_GNL_LINE);
+	if (!CP_CURR_IDE)
+		ft_print_error(all, 0);
+	while (i < 8)
+	{
+		if (!ft_strcmp(CP_CURR_IDE, CP_REAL_IDE[i]))
+		{
+			ft_take_data(all, i);
+			at_map++;
+			free(CP_CURR_IDE);
+			CP_CURR_IDE = 0;
+			break ;
+		}
+		i++;
+	}
+	if (i == 8)
+		ft_print_error(all, 6);
+}
+
+static void	ft_get_data(t_all *all, t_list *list)
+{
+	int	lines;
+
 	ft_print_start();
-	printf("Processing: GNL from .cub file to list...\n");
+	printf("Processing 1: GNL to structure...\n");
 	lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
 	while (lines > 0)
 	{
-		if (I_MAP_LINES > 0)
-			lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
-		ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
+		lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
+		if (!(!CP_GNL_LINE[0] || ft_isspace_string(CP_GNL_LINE)))
+			ft_store_data(all, list);
 		I_MAP_LINES++;
-		tmp = tmp->next;
-		printf("Exporting to list n. %-2d: %s\n", I_MAP_LINES, tmp->content);
+		printf("Parsed line n. %-2d: %s\n", I_MAP_LINES, CP_GNL_LINE);
 	}
 	ft_green_color();
-	printf("\n\u2714 Export done!\n\n");
+	printf("\n\u2714 Data export done!\n\n");
 	ft_reset_color();
-	ft_list_to_matrix(all, list);
 }
 
-void	ft_input_manager(t_all *all)
+void	ft_input(t_all *all)
 {
 	t_list	*list;
 
 	list = ft_lstnew("");
-	ft_map_to_list(all, list);
+	ft_get_data(all, list);
 	close(I_GNL_FD);
 }

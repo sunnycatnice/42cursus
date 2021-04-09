@@ -30,6 +30,7 @@ SRC = 	./ft_atoi.c 		\
 		./ft_strlcpy.c		\
  		./ft_strlen.c 		\
 		./ft_strncmp.c		\
+		./ft_strcmp.c		\
 		./ft_strchr.c		\
 		./ft_strrchr.c		\
  		./ft_tolower.c 		\
@@ -42,6 +43,7 @@ SRC = 	./ft_atoi.c 		\
 		./ft_strjoin.c		\
 		./ft_strtrim.c		\
 		./ft_split.c		\
+		./ft_first_split.c  \
 		./ft_putchar_fd.c	\
 		./ft_putstr_fd.c	\
 		./ft_itoa.c			\
@@ -60,6 +62,10 @@ SRC = 	./ft_atoi.c 		\
 		ft_lstclear.c		\
 		ft_lstiter.c		\
 		ft_lstmap.c			\
+		ft_isnbr.c			\
+		ft_isspace.c		\
+		ft_isspace_str.c	\
+		ft_jump_spaces.c	\
 		./ft_get_next_line.c 	\
 
 OBJS = $(SRC:.c=.o)

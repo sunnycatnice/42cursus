@@ -15,19 +15,19 @@
 void	ft_init_map_input(t_all *all)
 {
 	I_GNL_FD = -1;
-	all->map_input.tex_fd = -1;
+	CP_TEX_FD = -1;
 	I_MAP_LINES = 0;
 	CP_GNL_LINE = 0;
-	all->map_input.current_ide = 0;
-	all->map_input.input = 0;
-	all->map_input.real_ide[0] = "S";
-	all->map_input.real_ide[1] = "NO";
-	all->map_input.real_ide[2] = "SO";
-	all->map_input.real_ide[3] = "WE";
-	all->map_input.real_ide[4] = "EA";
-	all->map_input.real_ide[5] = "R";
-	all->map_input.real_ide[6] = "C";
-	all->map_input.real_ide[7] = "F";
+	CP_CURR_IDE = 0;
+	CPP_INPUT = 0;
+	CP_REAL_IDE[0] = "S";
+	CP_REAL_IDE[1] = "NO";
+	CP_REAL_IDE[2] = "SO";
+	CP_REAL_IDE[3] = "WE";
+	CP_REAL_IDE[4] = "EA";
+	CP_REAL_IDE[5] = "R";
+	CP_REAL_IDE[6] = "C";
+	CP_REAL_IDE[7] = "F";
 }
 
 void	ft_init_input(t_all *all)

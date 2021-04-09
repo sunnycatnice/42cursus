@@ -41,7 +41,7 @@ int	ft_get_next_line(int fd, char **line)
 	char			*ptr_n;
 
 	if (fd < 0 || fd > 256 || BUFFER_SIZE < 1)
-		return (0);
+		return (-1);
 	remainder[fd] = ft_get_line_read(fd, &remainder[fd]);
 	if (!line || !remainder[fd])
 		return (-1);

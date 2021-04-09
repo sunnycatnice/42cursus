@@ -93,6 +93,7 @@ typedef struct		s_input
 typedef struct			s_map_input
 {
 	int				gnl_fd;
+	int				gnl_first_space;
 	int				tex_fd;
 	int				map_lines;
 	char			*line;

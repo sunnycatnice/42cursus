@@ -13,7 +13,7 @@
 NAME = cub3D
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 MLXFLAGS = -framework OpenGL -framework AppKit -o
 
 MAKE = make -C
@@ -45,6 +45,10 @@ SRCS_ROOT = 	cub3d.c
 
 SRCS_INPUT =	input_graphic.c		\
 				input_manager.c		\
+				ft_get_col_tex.c	\
+				ft_get_resolution.c	\
+				ft_get_texture.c	\
+				input_list_matrix.c	\
 				input_check_arg.c	\
 				input_check_err.c	\
 				input_error.c		\

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_isnbr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:52:54 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/05 16:52:55 by dmangola         ###   ########.fr       */
+/*   Created: 2021/04/08 12:07:46 by dmangola          #+#    #+#             */
+/*   Updated: 2021/04/08 12:08:58 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isnbr(char *str)
 {
-	t_all	all;
-
-	ft_init_map_input(&all);
-	ft_check_arg(&all, ac, av);
-	ft_input(&all);
-	ft_game_manager(&all);
-	return (0);
+	while (*str)
+	{
+		if (ft_isdigit(*str) == 0 && str[0] != '-')
+			return (0);
+		str++;
+	}
+	return (1);
 }

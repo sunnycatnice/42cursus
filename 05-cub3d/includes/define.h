@@ -61,6 +61,10 @@
 #define VP_WIN all->mlx.win
 #define VP_IMG all->data.img
 #define CP_ADDR all->data.addr
+#define CP_CURR_IDE all->map_input.current_ide
+#define CP_REAL_IDE all->map_input.real_ide
+#define CP_TEX_FD all->map_input.tex_fd
+#define CPP_INPUT all->map_input.input
 #define I_BPP all->data.bits_per_pixel
 #define I_LL all->data.line_length
 #define I_ENDIAN all->data.endian
@@ -74,6 +78,7 @@
 #define I_EA all->dir.ea
 #define I_WE all->dir.we
 #define I_GNL_FD all->map_input.gnl_fd
+#define I_FIRST_SPACE all->map_input.gnl_first_space
 #define CP_GNL_LINE all->map_input.line
 #define I_MAP_LINES all->map_input.map_lines
 #define F_PPX all->player.pos_x

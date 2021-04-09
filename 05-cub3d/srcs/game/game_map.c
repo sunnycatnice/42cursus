@@ -32,8 +32,8 @@ static void	ft_draw_line(t_all *all, int i)
 			ft_draw_player(all, RED);
 			ft_draw_pixel_size(all, RED);
 		}
-		else
-			ft_draw_pixel_size(all, BLACK);
+		//else
+			//ft_draw_pixel_size(all, RED);
 		I_XSTART = I_XSTART + PIXEL_SIZE;
 		j++;
 	}
@@ -45,7 +45,7 @@ void	ft_draw_map(t_all *all)
 
 	I_YSTART = 200;
 	i = 0;
-	printf("Graphic part 2: drawing movement...\n");
+	printf("Graphic part 2: drawing map...\n");
 	while (CPP_MAP[i])
 	{
 		I_XSTART = 200;
@@ -54,6 +54,8 @@ void	ft_draw_map(t_all *all)
 		I_YSTART = I_YSTART + PIXEL_SIZE;
 		i++;
 	}
+	CPP_MAP[I_MAP_LINES] = "\0";
+	printf("Drawing line n. %-2d: %s\n", I_MAP_LINES, "\\0");
 }
 /*
 ** Drawing the first frame
@@ -89,7 +91,7 @@ void	ft_draw_first_map(t_all *all)
 
 	I_YSTART = 200;
 	i = 0;
-	printf("Graphic part 1: drawing map...\n");
+	printf("Graphic part 1: drawing first map...\n");
 	while (CPP_MAP[i])
 	{
 		I_XSTART = 200;
@@ -98,4 +100,6 @@ void	ft_draw_first_map(t_all *all)
 		I_YSTART = I_YSTART + PIXEL_SIZE;
 		i++;
 	}
+	CPP_MAP[I_MAP_LINES] = "\0";
+	printf("Drawing line n. %-2d: %s\n", I_MAP_LINES, "\\0");
 }
