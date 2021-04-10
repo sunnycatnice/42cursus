@@ -12,14 +12,14 @@
 
 #include "../../includes/cub3d.h"
 
-static int		ft_atoi_color(t_mlx *mlx, const char *s, int *i, int color)
+static int	ft_atoi_color(t_all *all, const char *s, int *i, int color)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	ft_jump_spaces(s, i);
 	if (!ft_isdigit(s[*i]))
-		exit_manager(mlx, 14);
+		ft_print_error(all, 14);
 	while (ft_isdigit(s[*i]))
 	{
 		ret = ret * 10 + (s[*i] - '0');
@@ -29,11 +29,11 @@ static int		ft_atoi_color(t_mlx *mlx, const char *s, int *i, int color)
 	if ((s[*i] == ',' && color != 2) || (color == 2 && !s[*i]))
 		(*i)++;
 	else
-		exit_manager(mlx, 14);
+		ft_print_error(all, 14);
 	return (ret);
 }
 
-static void		take_color(t_mlx *mlx, int i)
+static void	take_color(t_all *all, int i)
 {
 	int	red;
 	int	green;
@@ -41,52 +41,55 @@ static void		take_color(t_mlx *mlx, int i)
 	int	j;
 
 	j = 0;
-	red = ft_atoi_color(mlx, mlx->tmp_input.line, &j, 0);
-	green = ft_atoi_color(mlx, mlx->tmp_input.line, &j, 1);
-	blue = ft_atoi_color(mlx, mlx->tmp_input.line, &j, 2);
+	red = ft_atoi_color(all, CP_GNL_LINE, &j, 0);
+	green = ft_atoi_color(all, CP_GNL_LINE, &j, 1);
+	blue = ft_atoi_color(all, CP_GNL_LINE, &j, 2);
 	if (red < 0 || red > 255 || green < 0 || green > 255
-	|| blue < 0 || blue > 255)
-		exit_manager(mlx, 13);
+		|| blue < 0 || blue > 255)
+		ft_print_error(all, 13);
 	if (i == 6)
-		mlx->input.color_ceiling = (red * 16 * 16 * 16 * 16) +
-		(green * 16 * 16) + blue;
+		I_COLOR_CEILING = (red * 16 * 16 * 16 * 16) + (green * 16 * 16) + blue;
 	else if (i == 7)
-		mlx->input.color_floor = (red * 16 * 16 * 16 * 16) +
-		(green * 16 * 16) + blue;
+		I_COLOR_FLOOR = (red * 16 * 16 * 16 * 16) + (green * 16 * 16) + blue;
 }
 
-static void		take_z_texture(t_mlx *mlx, int i)
+static void	take_z_texture(t_all *all, int i)
 {
-	if (!(mlx->tmp_input.input = ft_split(mlx->tmp_input.line, " \t\v\r\f")))
-		exit_manager(mlx, 0);
-	if (!mlx->tmp_input.input[0] || mlx->tmp_input.input[1] ||
-	((mlx->tmp_input.tex_fd = open(mlx->tmp_input.input[0], O_RDONLY)) < 0))
-		exit_manager(mlx, (mlx->tmp_input.tex_fd > -1 ? 9 : 10));
+	int	exit;
+
+	CPP_INPUT = ft_split(*CPP_INPUT, " \t\v\r\f");
+	if (!CPP_INPUT)
+		ft_print_error(all, 0);
+	CP_TEX_FD = open(*CPP_INPUT, O_RDONLY);
+	if (!CPP_INPUT[0] || CPP_INPUT[1] || (CP_TEX_FD < 0))
+	{
+		if (CP_TEX_FD > -1)
+			exit = 9;
+		else
+			exit = 10;
+		ft_print_error(all, exit);
+	}
 	if (i == 6)
-		mlx->input.texture_ceiling = mlx->tmp_input.input[0];
+		all->input.texture_ceiling = CPP_INPUT[0];
 	else if (i == 7)
-		mlx->input.texture_floor = mlx->tmp_input.input[0];
-	free(mlx->tmp_input.input);
-	mlx->tmp_input.input = 0;
-	close(mlx->tmp_input.tex_fd);
-	mlx->tmp_input.tex_fd = -1;
+		all->input.texture_floor = CPP_INPUT[0];
+	free(CPP_INPUT);
+	CPP_INPUT = 0;
+	close(CP_TEX_FD);
+	CP_TEX_FD = -1;
 }
 
-void			take_color_or_texture(t_mlx *mlx, int i)
+void	ft_take_color_or_texture(t_all *all, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
-	mlx->tmp_input.tex_fd = 0;
-	if (I_INPUT_DEFINED[i])
-		exit_manager(mlx, 8);
-	I_INPUT_DEFINED[i] = 1;
-	ft_jump_spaces(mlx->tmp_input.line, &j);
-	if (mlx->tmp_input.line[j] == '.')
-		take_z_texture(mlx, i);
-	else if (ft_isdigit(mlx->tmp_input.line[j]))
-		take_color(mlx, i);
+	CP_TEX_FD = 0;
+	ft_jump_spaces(CP_GNL_LINE, &j);
+	if (CP_GNL_LINE[j] == '.')
+		take_z_texture(all, i);
+	else if (ft_isdigit(CP_GNL_LINE[j]))
+		take_color(all, i);
 	else
-		exit_manager(mlx, 14);
+		ft_print_error(all, 14);
 }
-

@@ -67,6 +67,7 @@
 #define CPP_INPUT all->map_input.input
 #define I_BPP all->data.bits_per_pixel
 #define I_LL all->data.line_length
+#define I_INPUT_DEFINED all->input.defined
 #define I_ENDIAN all->data.endian
 #define I_W all->keys.w
 #define	I_A all->keys.a
@@ -88,6 +89,23 @@
 #define I_XPL all->point.x_pl
 #define I_YPL all->point.y_pl
 #define I_KEYBOARD all->keyboard.keyboard
+#define I_RES_WIDTH all->input.res_width
+#define I_RES_HEIGHT all->input.res_height
+#define I_COLOR_FLOOR all->input.color_floor
+#define I_COLOR_CEILING all->input.color_ceiling
+#define CP_TEXT_S all->input.texture_s
+#define CP_TEXT_NO all->input.texture_no
+#define CP_TEXT_SO all->input.texture_so
+#define CP_TEXT_EA all->input.texture_ea
+#define CP_TEXT_WE all->input.texture_we
+#define CP_TEXT_FLOOR all->input.texture_floor
+#define CP_TEXT_CEILING all->input.texture_ceiling
+#define I_MAP_WIDTH all->input.map_width
+#define I_MAP_HEIGHT all->input.map_height
+#define I_PLAYER all->input.player
+#define I_PLAYER_X all->input.player_x
+#define I_PLAYER_Y all->input.player_y
+#define I_SAVE_FLAG all->input.save_flag
 
 
 #endif

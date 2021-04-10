@@ -12,86 +12,79 @@
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
-{
-	int	i;
-	int	words;
+int		g_nbr;
 
-	i = 0;
-	words = 0;
-	while (s[i])
+static char		*ft_strncpy(char *dest, char *src,
+unsigned int n, unsigned int index)
+{
+	while (src[index] && index < n)
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			words++;
-		i++;
+		dest[index] = src[index];
+		index++;
 	}
-	return (words);
+	dest[index] = '\0';
+	return (dest);
 }
 
-static int	ft_word_len(char const *s, char c)
+static int		is_in_charset(char *charset, char to_find, int index)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	len = 0;
-	while (s[i] != c && s[i] != '\0')
+	while (charset[index])
 	{
-		i++;
-		len++;
+		if (to_find == charset[index])
+			return (1);
+		index++;
 	}
-	return (len);
+	return (0);
 }
 
-static void	*ft_free(char **splitted, int word)
+static char		*ft_find_next(char **actual, int *str_len,
+char *charset, int index)
 {
-	int	i;
+	char	*str_start;
 
-	i = 0;
-	while (i < word)
+	*str_len = 0;
+	str_start = 0;
+	while (actual[0][index])
 	{
-		free(splitted[i]);
-		i++;
+		if (is_in_charset(charset, actual[0][index], 0) && str_start != 0)
+		{
+			actual[0] = str_start + *str_len;
+			return (str_start);
+		}
+		else if (!is_in_charset(charset, actual[0][index], 0) && str_start == 0)
+			str_start = &actual[0][index];
+		if (!is_in_charset(charset, actual[0][index], 0))
+			*str_len += 1;
+		index++;
 	}
-	free(splitted);
-	return (NULL);
+	actual[0] = str_start + *str_len;
+	if (*str_len == 0)
+		return (0);
+	return (str_start);
 }
 
-static char	**ft_fill(char const *s, int words, char c, char **splitted)
+char			**ft_split(char *str, char *charset)
 {
-	int	i;
-	int	j;
-	int	len;
+	char	**matrix;
+	char	*next;
+	char	*actual;
+	int		index;
+	int		str_len;
 
-	i = -1;
-	while (++i < words)
+	actual = str;
+	g_nbr = 0;
+	while (ft_find_next(&actual, &str_len, charset, 0))
+		g_nbr++;
+	if (!(matrix = (char **)malloc((g_nbr + 1) * sizeof(char *))))
+		return (0);
+	index = 0;
+	actual = str;
+	while ((next = ft_find_next(&actual, &str_len, charset, 0)))
 	{
-		while (*s == c)
-			s++;
-		len = ft_word_len(s, c);
-		splitted[i] = (char *)malloc(sizeof(char) * (len + 1));
-		if (!splitted)
-			return (ft_free(splitted, i));
-		j = 0;
-		while (j < len)
-			splitted[i][j++] = *s++;
-		splitted[i][j] = '\0';
+		if (!(matrix[index] = (char *)malloc((str_len + 1) * sizeof(char))))
+			return (0);
+		ft_strncpy(matrix[index++], next, str_len, 0);
 	}
-	splitted[i] = NULL;
-	return (splitted);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**splitted;
-	int		num_words;
-
-	if (!s)
-		return (NULL);
-	num_words = ft_count_words(s, c);
-	splitted = (char **)malloc(sizeof(char *) * (num_words + 1));
-	if (!splitted)
-		return (NULL);
-	splitted = ft_fill(s, num_words, c, splitted);
-	return (splitted);
+	matrix[index] = 0;
+	return (matrix);
 }

@@ -32,6 +32,12 @@ void	ft_init_map_input(t_all *all)
 
 void	ft_init_input(t_all *all)
 {
+	int	i;
+	
+	i = 0;
+	while (i < 8)
+		I_INPUT_DEFINED[i++] = 0;
 	VP_MLX = NULL;
 	VP_WIN = NULL;
+	
 }

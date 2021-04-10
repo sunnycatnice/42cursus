@@ -10,32 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/input.h"
+#include "../../includes/cub3d.h"
 
-void	take_texture(t_mlx *mlx, int i)
+static void	finish(t_all *all)
 {
-	mlx->tmp_input.tex_fd = 0;
-	if (I_INPUT_DEFINED[i])
-		exit_manager(mlx, 8);
-	I_INPUT_DEFINED[i] = 1;
-	if (!(mlx->tmp_input.input = ft_split(mlx->tmp_input.line, " \t\v\r\f")))
-		exit_manager(mlx, 0);
-	if (!mlx->tmp_input.input[0] || mlx->tmp_input.input[1] ||
-	((mlx->tmp_input.tex_fd = open(mlx->tmp_input.input[0], O_RDONLY)) < 0))
-		exit_manager(mlx, (mlx->tmp_input.tex_fd > -1 ? 9 : 10));
-	if (i == 0)
-		mlx->input.texture_s = mlx->tmp_input.input[0];
-	else if (i == 1)
-		mlx->input.texture_no = mlx->tmp_input.input[0];
-	else if (i == 2)
-		mlx->input.texture_so = mlx->tmp_input.input[0];
-	else if (i == 3)
-		mlx->input.texture_we = mlx->tmp_input.input[0];
-	else if (i == 4)
-		mlx->input.texture_ea = mlx->tmp_input.input[0];
-	free(mlx->tmp_input.input);
-	mlx->tmp_input.input = 0;
-	close(mlx->tmp_input.tex_fd);
-	mlx->tmp_input.tex_fd = -1;
+	free(CPP_INPUT);
+	CPP_INPUT = 0;
+	close(CP_TEX_FD);
+	CP_TEX_FD = -1;
 }
 
+static void	ft_take_texture_1(t_all *all, int i)
+{
+	if (i == 0)
+		CP_TEXT_S = CPP_INPUT[0];
+	else if (i == 1)
+		CP_TEXT_NO = CPP_INPUT[0];
+	else if (i == 2)
+		CP_TEXT_SO = CPP_INPUT[0];
+	else if (i == 3)
+		CP_TEXT_WE = CPP_INPUT[0];
+	else if (i == 4)
+		CP_TEXT_EA = CPP_INPUT[0];
+}
+
+void	ft_take_texture(t_all *all, int i)
+{
+	int	exit;
+
+	CP_TEX_FD = 0;
+	if (I_INPUT_DEFINED[i])
+		ft_print_error(all, 8);
+	I_INPUT_DEFINED[i] = 1;
+	CPP_INPUT = ft_split(CP_GNL_LINE, " \t\v\r\f");
+	if (!CPP_INPUT)
+		ft_print_error(all, 0);
+	CP_TEX_FD = open(CPP_INPUT[0], O_RDONLY);
+	if (!CPP_INPUT[0] || CP_GNL_LINE[1] || (CP_TEX_FD) < 0)
+	{
+		if (CP_TEX_FD > -1)
+			exit = 9;
+		else
+			exit = 10;
+		ft_print_error(all, (CP_TEX_FD > -1 ? 9 : 10));
+	}
+	ft_take_texture_1(all, i);
+	finish(all);
+}

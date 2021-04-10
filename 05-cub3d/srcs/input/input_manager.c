@@ -15,11 +15,11 @@
 static void	ft_take_data(t_all *all, int i)
 {
 	if (i < 5)
-		take_texture(all, i);
+		ft_take_texture(all, i);
 	else if (i == 5)
-		take_res(all, i);
+		ft_take_res(all);
 	else if (i > 5)
-		take_color_or_texture(all, i);
+		ft_take_color_or_texture(all, i);
 }
 
 static void	ft_store_data(t_all *all, t_list *list)

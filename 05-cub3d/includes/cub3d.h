@@ -45,10 +45,10 @@ void			ft_all_map_input_free(t_all *all);
 void			ft_get_next_line_free(t_all *all);
 void			ft_check_arg(t_all *all, int ac, char **av);
 void			ft_input(t_all *all);
-void			take_input(t_all *all);
-void			take_texture(t_all *all, int i);
-void			take_res(t_all *all, int i);
-void			take_color_or_texture(t_all *all, int i);
+void			ft_take_input(t_all *all);
+void			ft_take_texture(t_all *all, int i);
+void			ft_take_res(t_all *all);
+void			ft_take_color_or_texture(t_all *all, int i);
 void			ft_map_to_list(t_all *all, t_list *list);
 void			ft_list_to_matrix(t_all *all, t_list *list);
 /*
