@@ -58,11 +58,11 @@ static void	ft_get_data(t_all *all, t_list *list)
 	lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
 	while (lines > 0)
 	{
-		lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
+		printf("Parsed line n. %-2d: %s\n", I_MAP_LINES, CP_GNL_LINE);
 		if (!(!CP_GNL_LINE[0] || ft_isspace_string(CP_GNL_LINE)))
 			ft_store_data(all, list);
+		lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
 		I_MAP_LINES++;
-		printf("Parsed line n. %-2d: %s\n", I_MAP_LINES, CP_GNL_LINE);
 	}
 	ft_green_color();
 	printf("\n\u2714 Data export done!\n\n");

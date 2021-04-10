@@ -46,13 +46,13 @@ void	ft_take_texture(t_all *all, int i)
 	if (!CPP_INPUT)
 		ft_print_error(all, 0);
 	CP_TEX_FD = open(CPP_INPUT[0], O_RDONLY);
-	if (!CPP_INPUT[0] || CP_GNL_LINE[1] || (CP_TEX_FD) < 0)
+	if (!CPP_INPUT[0] || CPP_INPUT[1] || (CP_TEX_FD) < 0)
 	{
 		if (CP_TEX_FD > -1)
 			exit = 9;
 		else
 			exit = 10;
-		ft_print_error(all, (CP_TEX_FD > -1 ? 9 : 10));
+		ft_print_error(all, exit);
 	}
 	ft_take_texture_1(all, i);
 	finish(all);
