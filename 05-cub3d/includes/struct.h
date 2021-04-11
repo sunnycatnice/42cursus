@@ -88,6 +88,7 @@ typedef struct		s_input
 	int				player_x;
 	int				player_y;
 	int				save_flag;
+	int				at_map_clone;
 }					t_input;
 
 typedef struct			s_map_input

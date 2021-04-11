@@ -22,13 +22,11 @@ static void	ft_take_data(t_all *all, int i)
 		ft_take_color_or_texture(all, i);
 }
 
-static void	ft_store_data(t_all *all, t_list *list)
+static void	ft_store_data(t_all *all)
 {
 	static int	at_map = 0;
 	int			i;
 
-	if (at_map > 7)
-		return (ft_map_to_list(all, list));
 	i = 0;
 	CP_CURR_IDE = ft_first_split(CP_GNL_LINE);
 	if (!CP_CURR_IDE)
@@ -47,6 +45,7 @@ static void	ft_store_data(t_all *all, t_list *list)
 	}
 	if (i == 8)
 		ft_print_error(all, 6);
+	I_AT_MAP_CLONE++;
 }
 
 static void	ft_get_data(t_all *all, t_list *list)
@@ -54,19 +53,26 @@ static void	ft_get_data(t_all *all, t_list *list)
 	int	lines;
 
 	ft_print_start();
-	printf("Processing 1: GNL to structure...\n");
+	printf("Processing: GNL to structure...\n");
 	lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
 	while (lines > 0)
 	{
-		printf("Parsed line n. %-2d: %s\n", I_MAP_LINES, CP_GNL_LINE);
-		if (!(!CP_GNL_LINE[0] || ft_isspace_string(CP_GNL_LINE)))
-			ft_store_data(all, list);
-		lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
-		I_MAP_LINES++;
+		if (I_AT_MAP_CLONE < 8)
+		{
+			printf("Parsed line n. %-2d: %s\n", I_MAP_LINES, CP_GNL_LINE);
+			if (!(!CP_GNL_LINE[0] || ft_isspace_string(CP_GNL_LINE)))
+				ft_store_data(all);
+			lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
+			I_MAP_LINES++;
+		}
+		else
+		{
+			msg(0);
+			break ;
+		}
 	}
-	ft_green_color();
-	printf("\n\u2714 Data export done!\n\n");
-	ft_reset_color();
+	I_MAP_LINES = 0;
+	ft_map_to_list(all, list);
 }
 
 void	ft_input(t_all *all)

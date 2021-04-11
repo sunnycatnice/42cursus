@@ -53,7 +53,8 @@ SRCS_INPUT =	input_graphic.c		\
 				input_check_err.c	\
 				input_error.c		\
 				input_free.c		\
-				input_init.c
+				input_init.c		\
+				input_msg.c
 
 SRCS_GAME =		game_manager.c		\
 				game_init.c			\

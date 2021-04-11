@@ -1,10 +1,10 @@
 R  1920 1080
-NO ./textures/brickx256.xpm
-SO ./textures/mossyx256.xpm
+NO ./textures/wood.xpm
+SO ./textures/eagle.xpm
 EA ./textures/rockx256.xpm
-WE ./textures/stonex256.xpm
+WE ./textures/graystone.xpm
 
-S ./path_to_the_sprite_texture
+S ./textures/zombiex64.xpm
 F 220,100,35
 C 225,30,16
 

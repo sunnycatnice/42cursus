@@ -39,6 +39,7 @@ void			ft_red_color();
 void			ft_green_color();
 void			ft_reset_color();
 void			ft_print_start();
+void			msg(int n);
 void			ft_print_error(t_all *all, int n);
 void			ft_check_err(int n);
 void			ft_all_map_input_free(t_all *all);

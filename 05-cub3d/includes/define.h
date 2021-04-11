@@ -106,6 +106,6 @@
 #define I_PLAYER_X all->input.player_x
 #define I_PLAYER_Y all->input.player_y
 #define I_SAVE_FLAG all->input.save_flag
-
+#define I_AT_MAP_CLONE all->input.at_map_clone
 
 #endif

@@ -26,10 +26,7 @@ void	ft_list_to_matrix(t_all *all, t_list *list)
 		I_MAP_LINES++;
 	}
 	CPP_MAP[I_MAP_LINES] = "\0";
-	printf("Matrix line n. %-2d: %s\n", I_MAP_LINES, "\\0");
-	ft_green_color();
-	printf("\n\u2714 Successful import!\n\n");
-	ft_reset_color();
+	msg(2);
 }
 
 void	ft_map_to_list(t_all *all, t_list *list)
@@ -49,7 +46,6 @@ void	ft_map_to_list(t_all *all, t_list *list)
 		tmp = tmp->next;
 		printf("Exported to list n. %-2d: %s\n", I_MAP_LINES, tmp->content);
 	}
-	ft_green_color();
-	printf("\n\u2714 Map export done!\n\n");
-	ft_reset_color();
+	msg(1);
+	ft_list_to_matrix(all, list);
 }

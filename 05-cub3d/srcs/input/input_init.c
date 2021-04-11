@@ -23,8 +23,8 @@ void	ft_init_map_input(t_all *all)
 	CP_REAL_IDE[0] = "S";
 	CP_REAL_IDE[1] = "NO";
 	CP_REAL_IDE[2] = "SO";
-	CP_REAL_IDE[3] = "WE";
-	CP_REAL_IDE[4] = "EA";
+	CP_REAL_IDE[3] = "EA";
+	CP_REAL_IDE[4] = "WE";
 	CP_REAL_IDE[5] = "R";
 	CP_REAL_IDE[6] = "C";
 	CP_REAL_IDE[7] = "F";
@@ -37,6 +37,7 @@ void	ft_init_input(t_all *all)
 	i = 0;
 	while (i < 8)
 		I_INPUT_DEFINED[i++] = 0;
+	I_AT_MAP_CLONE = 0;
 	VP_MLX = NULL;
 	VP_WIN = NULL;
 	
