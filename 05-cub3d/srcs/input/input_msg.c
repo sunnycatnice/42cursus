@@ -24,4 +24,4 @@ void	msg(int n)
 		printf("Successful import!");
 	printf("\n\n");
 	ft_reset_color();
-}	
+}

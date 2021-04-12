@@ -57,7 +57,7 @@ int	ft_key_register(t_all *all)
 	printf("new image\n");
 	//CP_ADDR = mlx_get_data_addr(VP_IMG, &I_BPP, &I_LL, &I_ENDIAN);
 	printf("mlx data addr\n");
-	ft_draw_map(all);
-	//mlx_put_image_to_window(VP_MLX,VP_WIN, VP_IMG, 0, 0);
+	//ft_draw_map(all);
+	mlx_put_image_to_window(VP_MLX,VP_WIN, VP_IMG, 0, 0);
 	return (0);
 }

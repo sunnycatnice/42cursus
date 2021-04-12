@@ -48,7 +48,7 @@ static void	ft_store_data(t_all *all)
 	I_AT_MAP_CLONE++;
 }
 
-static void	ft_get_data(t_all *all, t_list *list)
+static void	ft_get_data(t_all *all)
 {
 	int	lines;
 
@@ -72,7 +72,6 @@ static void	ft_get_data(t_all *all, t_list *list)
 		}
 	}
 	I_MAP_LINES = 0;
-	ft_map_to_list(all, list);
 }
 
 void	ft_input(t_all *all)
@@ -80,6 +79,7 @@ void	ft_input(t_all *all)
 	t_list	*list;
 
 	list = ft_lstnew("");
-	ft_get_data(all, list);
+	ft_get_data(all);
+	ft_map_to_list(all, list);
 	close(I_GNL_FD);
 }

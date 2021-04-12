@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-void		ft_all_map_input_free(t_all *all)
+void	ft_all_map_input_free(t_all *all)
 {
 	if (I_GNL_FD > -1)
 		close(I_GNL_FD);
@@ -24,12 +24,13 @@ void		ft_all_map_input_free(t_all *all)
 		free(all->map_input.current_ide);
 }
 
-void		ft_get_next_line_free(t_all *all)
+void	ft_get_next_line_free(t_all *all)
 {
 	char	*line;
 	int		ret;
 
-	while ((ret = ft_get_next_line(all->map_input.gnl_fd, &line)) >= 0)
+	ret = ft_get_next_line(all->map_input.gnl_fd, &line);
+	while (ret >= 0)
 	{
 		free(line);
 		if (!ret)
