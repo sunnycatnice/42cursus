@@ -81,5 +81,7 @@ void	ft_input(t_all *all)
 	list = ft_lstnew("");
 	ft_get_data(all);
 	ft_map_to_list(all, list);
+	control_map(all);
+	adjust_map(all);
 	close(I_GNL_FD);
 }
