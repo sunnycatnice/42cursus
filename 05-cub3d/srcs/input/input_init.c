@@ -17,6 +17,8 @@ void	ft_init_map_input(t_all *all)
 	I_GNL_FD = -1;
 	CP_TEX_FD = -1;
 	I_MAP_LINES = 0;
+	I_MAP_WIDTH = 0;
+	I_MAP_HEIGHT = 0;
 	CP_GNL_LINE = 0;
 	CP_CURR_IDE = 0;
 	CPP_INPUT = 0;
@@ -32,7 +34,7 @@ void	ft_init_map_input(t_all *all)
 
 void	ft_init_input(t_all *all)
 {
-	int	i;
+	short	i;
 
 	i = 0;
 	while (i < 8)

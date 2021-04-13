@@ -22,9 +22,11 @@ void	ft_list_to_matrix(t_all *all, t_list *list)
 	{
 		CPP_MAP[I_MAP_LINES] = list->content;
 		printf("Matrix line n. %-2d: %s\n", I_MAP_LINES, CPP_MAP[I_MAP_LINES]);
+		check_width(all);
 		list = list->next;
 		I_MAP_LINES++;
 	}
+	I_MAP_HEIGHT = I_MAP_LINES;
 	CPP_MAP[I_MAP_LINES] = "\0";
 	msg(2);
 }
@@ -34,6 +36,7 @@ void	ft_map_to_list(t_all *all, t_list *list)
 	int		lines;
 	t_list	*tmp;
 
+	I_MAP_LINES = 0;
 	tmp = list;
 	printf("Processing 2: GNL map to list...\n");
 	lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);

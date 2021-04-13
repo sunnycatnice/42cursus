@@ -56,6 +56,7 @@ SRCS_INPUT =	input_graphic.c		\
 				input_init.c		\
 				input_msg.c			\
 				input_control_correct.c \
+				input_check_width.c	\
 
 SRCS_GAME =		game_manager.c		\
 				game_init.c			\

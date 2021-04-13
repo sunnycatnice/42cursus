@@ -50,19 +50,19 @@ static void	ft_store_data(t_all *all)
 
 static void	ft_get_data(t_all *all)
 {
-	int	lines;
+	int	line;
 
 	ft_print_start();
 	printf("Processing: GNL to structure...\n");
-	lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
-	while (lines > 0)
+	line = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
+	while (line > 0)
 	{
 		if (I_AT_MAP_CLONE < 8)
 		{
 			printf("Parsed line n. %-2d: %s\n", I_MAP_LINES, CP_GNL_LINE);
 			if (!(!CP_GNL_LINE[0] || ft_isspace_string(CP_GNL_LINE)))
 				ft_store_data(all);
-			lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
+			line = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
 			I_MAP_LINES++;
 		}
 		else
@@ -71,7 +71,6 @@ static void	ft_get_data(t_all *all)
 			break ;
 		}
 	}
-	I_MAP_LINES = 0;
 }
 
 void	ft_input(t_all *all)

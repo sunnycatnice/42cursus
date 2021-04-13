@@ -52,6 +52,7 @@ void			ft_take_res(t_all *all);
 void			ft_take_color_or_texture(t_all *all, int i);
 void			ft_map_to_list(t_all *all, t_list *list);
 void			ft_list_to_matrix(t_all *all, t_list *list);
+void			check_width(t_all *all);
 void			control_map(t_all *all);
 void			control_constraits(t_all *all, int i, int j);
 void			adjust_map(t_all *all);
