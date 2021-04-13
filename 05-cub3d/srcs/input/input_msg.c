@@ -22,6 +22,8 @@ void	msg(int n)
 		printf("Map export done!");
 	else if (n == 2)
 		printf("Successful import!");
+	else if (n == 3)
+		printf("GGWP! Everything went alright\n\nProgram closed.");
 	printf("\n\n");
 	ft_reset_color();
 }

@@ -73,7 +73,7 @@ static void	ft_get_data(t_all *all)
 	}
 }
 
-void	ft_input(t_all *all)
+void	ft_input_manager(t_all *all)
 {
 	t_list	*list;
 

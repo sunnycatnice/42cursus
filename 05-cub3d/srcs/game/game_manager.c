@@ -15,10 +15,10 @@
 void	ft_game_manager(t_all *all)
 {
 	ft_init_game(all);
-	ft_draw_first_map(all);
-	mlx_put_image_to_window(VP_MLX, VP_WIN, VP_IMG, 0, 0);
-	mlx_hook(VP_WIN, KEYPRESS, KEYPRESSMASK, ft_key_hit, &all);
-	mlx_hook(VP_WIN, KEYRELEASE, KEYRELEASEMASK, ft_key_release, &all);
-	mlx_loop_hook(VP_MLX, ft_key_register, &all);
-	mlx_loop(VP_MLX);
+	mlx_hook(VP_WIN, KEYESC, KEYPRESSMASK, close_program_x, &all);
+	mlx_hook(VP_WIN, KEYPRESS, KEYPRESSMASK, init_move_press, &all);
+	mlx_hook(VP_WIN, KEYRELEASE, KEYRELEASEMASK, init_move_release, &all);
+	mlx_hook(VP_WIN, KEYMOUSE, KEYRELEASEMASK, move_mouse, &all);
+	mlx_loop_hook(VP_MLX, render_frame, &all);
+	// mlx_loop(VP_MLX);
 }

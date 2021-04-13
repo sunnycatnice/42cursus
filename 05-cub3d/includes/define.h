@@ -21,10 +21,13 @@
 /*
 ** KEYS
 */
+# define KEYESC 17
 # define KEYPRESS 2
 # define KEYRELEASE 3
-# define KEYPRESSMASK 1L
-# define KEYRELEASEMASK 2L
+# define KEYMOUSE 06
+# define KEYPRESSMASK 1L<<0
+# define KEYRELEASEMASK 1L<<1
+# define KEYRELEASEMOUSE 1L<<6
 /*
 ** COLORS
 */
@@ -69,11 +72,16 @@
 #define I_LL all->data.line_length
 #define I_INPUT_DEFINED all->input.defined
 #define I_ENDIAN all->data.endian
-#define I_W all->keys.w
-#define	I_A all->keys.a
-#define I_S all->keys.s
-#define I_D all->keys.d
-#define I_ESC all->keys.esc
+#define I_W all->keycode.w
+#define	I_A all->keycode.a
+#define I_S all->keycode.s
+#define I_D all->keycode.d
+#define I_AR all->keycode.ar
+#define I_AL all->keycode.al
+#define I_ESC all->keycode.esc
+#define I_SAVE_FLAG all->flags.save
+#define UCP_SCREEN all->flags.screenshot
+#define I_FINISH_FLAG all->flags.finish
 #define I_NO all->dir.no
 #define I_SO all->dir.so
 #define I_EA all->dir.ea
@@ -88,7 +96,6 @@
 #define I_YSTART all->point.y_start
 #define I_XPL all->point.x_pl
 #define I_YPL all->point.y_pl
-#define I_KEYBOARD all->keyboard.keyboard
 #define I_RES_WIDTH all->input.res_width
 #define I_RES_HEIGHT all->input.res_height
 #define I_COLOR_FLOOR all->input.color_floor
@@ -105,7 +112,6 @@
 #define I_PLAYER all->input.player
 #define I_PLAYER_X all->input.player_x
 #define I_PLAYER_Y all->input.player_y
-#define I_SAVE_FLAG all->input.save_flag
 #define I_AT_MAP_CLONE all->input.at_map_clone
 
 #endif

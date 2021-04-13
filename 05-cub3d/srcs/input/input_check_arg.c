@@ -46,7 +46,7 @@ void	ft_check_arg(t_all *all, int ac, char **av)
 					err = 2;
 				ft_print_error(all, err);
 			}
-			all->input.save_flag = 1;
+			I_SAVE_FLAG = 1;
 		}
 		else
 			ft_print_error(all, 3);

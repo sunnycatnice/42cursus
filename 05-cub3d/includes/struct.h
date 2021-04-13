@@ -13,13 +13,6 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-#include "../libs/libft/libft.h"
-
-typedef struct	s_keyboard
-{
-	int			keyboard[128];
-}				t_keyboard;
-
 typedef	struct s_point
 {
 	int				x_start;
@@ -27,6 +20,13 @@ typedef	struct s_point
 	int				x_pl;
 	int				y_pl;
 }				t_point;
+
+typedef struct  s_flags
+{
+    short			save;
+    short			finish;
+	unsigned char	*screenshot;
+}               t_flags;
 
 typedef struct		s_player
 {
@@ -37,14 +37,16 @@ typedef struct		s_player
 	double			rot_speed;
 }					t_player;
 
-typedef struct		s_keys
+typedef struct		s_keycode
 {
-	int				w;
-	int				a;
-	int				s;
-	int				d;
+	short			w;
+	short			a;
+	short			s;
+	short			d;
+	short			ar;
+	short			al;
 	int				esc;
-}					t_keys;
+}					t_keycode;
 
 typedef struct		s_dir
 {
@@ -63,7 +65,8 @@ typedef struct		s_data
 	int				endian;
 }					t_data;
 
-typedef struct  s_mlx {
+typedef struct  s_mlx
+{
     void        *mlx;
     void        *win;
 }               t_mlx;
@@ -111,11 +114,11 @@ typedef struct		s_all
 	t_mlx			mlx;
 	t_data			data;
 	t_player		player;
-	t_keys			keys;
+	t_keycode		keycode;
+	t_flags			flags;
 	t_dir			dir;
 	t_map_input		map_input;
 	t_point			point;
-	t_keyboard		keyboard;
 
 }					t_all;
 

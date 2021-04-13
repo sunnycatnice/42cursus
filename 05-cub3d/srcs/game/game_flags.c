@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    game_basic_keys.c                                 :+:      :+:    :+:   */
+/*   game_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/30 12:48:23 by dmangola          #+#    #+#             */
-/*   Updated: 2021/03/30 12:48:25 by dmangola         ###   ########.fr       */
+/*   Created: 2021/04/13 18:42:40 by dmangola          #+#    #+#             */
+/*   Updated: 2021/04/13 18:42:51 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	ft_key_hit(int keycode, t_all *all)
+void	ft_check_flags(t_all *all)
 {
-	I_KEYBOARD[keycode] = 1;
-	return (0);
-}
-
-int	ft_key_release(int keycode, t_all *all)
-{
-	I_KEYBOARD[keycode] = 0;
-	return (0);
+	if (I_FINISH_FLAG == 1)
+	{
+		I_ENDIAN = mlx_png_file_to_image(VP_MLX, "textures/THE_END.png",
+					&I_RES_WIDTH, &I_RES_HEIGHT);
+		mlx_put_image_to_window(VP_MLX, VP_WIN, I_ENDIAN, 0, 0);
+		return 0;
+	}
+	if (I_SAVE_FLAG == 1)
+	{
+		UCP_SCREEN = malloc(sizeof(unsigned char) * I_RES_HEIGHT * I_RES_WIDTH
+						* 4);
+		if (!UCP_SCREEN)
+			ft_print_error(all, 0);
+	}
 }

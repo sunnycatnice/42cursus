@@ -12,52 +12,74 @@
 
 #include "../../includes/cub3d.h"
 
-static void	ft_forward(t_all *all)
+int close_program_x(t_all *all)
 {
-	I_YPL -= 10;
+	msg(3);
+	mlx_destroy_image(VP_MLX, VP_IMG);
+	mlx_destroy_window(VP_MLX, VP_WIN);
+	exit(0);
 }
 
-static void	ft_backward(t_all *all)
+int	init_move_press(int keycode, t_all *all)
 {
-	I_YPL += 10;
-}
-
-static void	ft_left(t_all *all)
-{
-	I_XPL -= 10;
-}
-
-static void	ft_right(t_all *all)
-{
-	I_XPL += 10;
-}
-
-int	ft_key_register(t_all *all)
-{
-	printf("if tasti\n");
-	if (all->keyboard.keyboard[13])
-		ft_forward(all);
-	if (all->keyboard.keyboard[1])
-		ft_backward(all);
-	if (all->keyboard.keyboard[0])
-		ft_left(all);
-	if (all->keyboard.keyboard[2])
-		ft_right(all);
-	if (all->keyboard.keyboard[53])
-	{
-		printf("Tasto esc");
-		mlx_destroy_image(VP_MLX, VP_IMG);
-		mlx_destroy_window(VP_MLX, VP_WIN);
-		exit (0);
-	}
-	printf("Esco if tasti\n");
-	//mlx_destroy_image(VP_MLX, VP_IMG);
-	printf("Destroy img\n");
-	//VP_IMG = mlx_new_image(VP_MLX, 1920, 1080);
-	printf("new image\n");
-	//CP_ADDR = mlx_get_data_addr(VP_IMG, &I_BPP, &I_LL, &I_ENDIAN);
-	printf("mlx data addr\n");
-	//ft_draw_map(all);
-	mlx_put_image_to_window(VP_MLX,VP_WIN, VP_IMG, 0, 0);
+	if (keycode == 13)
+		I_W = 1;
+	if (keycode == 1)
+		I_S = 1;
+	if (keycode == 0)
+		I_A = 1;
+	if (keycode == 2)
+		I_D = 1;
+	if (keycode == 124)
+		I_AR = 1;
+	if (keycode == 123)	
+		I_AL = 1;
+	if (keycode == 53)
+		I_ESC = 1;
 	return (0);
+}
+
+int	init_move_release(int keycode, t_all *all)
+{
+	if (keycode == 13)
+		I_W = 0;
+	if (keycode == 1)
+		I_S = 0;
+	if (keycode == 0)
+		I_A = 0;
+	if (keycode == 2)
+		I_D = 0;
+	if (keycode == 124)
+		I_AR = 0;
+	if (keycode == 123)	
+		I_AL = 0;
+	if (keycode == 53)
+		I_ESC = 0;
+	return (0);
+}
+
+int	move_mouse(int pos, t_all *all)
+{
+	static	int tmp;
+
+	if (tmp == pos || (pos >= (tmp - 5) && pos <= (tmp + 5)))
+	{
+		I_AR = 0;
+		I_AL = 0;
+		return 0;
+	}
+
+	if (tmp > pos)
+	{
+		I_AR = 0;
+		I_AL = 1;
+
+	}
+	else
+	{
+		I_AR = 1;
+		I_AL = 0;
+	}
+	tmp = pos;
+	return (1);
 }
