@@ -12,58 +12,58 @@
 
 #include "../../includes/cub3d.h"
 
-static void	ft_take_data(t_all *all, int i)
+static void	ft_take_data(t_a *a, int i)
 {
 	if (i < 5)
-		ft_take_texture(all, i);
+		ft_take_texture(a, i);
 	else if (i == 5)
-		ft_take_res(all);
+		ft_take_res(a);
 	else if (i > 5)
-		ft_take_color_or_texture(all, i);
+		ft_take_color_or_texture(a, i);
 }
 
-static void	ft_store_data(t_all *all)
+static void	ft_store_data(t_a *a)
 {
 	static int	at_map = 0;
 	int			i;
 
 	i = 0;
-	CP_CURR_IDE = ft_first_split(CP_GNL_LINE);
-	if (!CP_CURR_IDE)
-		ft_print_error(all, 0);
+	a->map_in.current_ide = ft_first_split(a->map_in.line);
+	if (!a->map_in.current_ide)
+		ft_print_error(a, 0);
 	while (i < 8)
 	{
-		if (!ft_strcmp(CP_CURR_IDE, CP_REAL_IDE[i]))
+		if (!ft_strcmp(a->map_in.current_ide, a->map_in.real_ide[i]))
 		{
-			ft_take_data(all, i);
+			ft_take_data(a, i);
 			at_map++;
-			free(CP_CURR_IDE);
-			CP_CURR_IDE = 0;
+			free(a->map_in.current_ide);
+			a->map_in.current_ide = 0;
 			break ;
 		}
 		i++;
 	}
 	if (i == 8)
-		ft_print_error(all, 6);
-	I_AT_MAP_CLONE++;
+		ft_print_error(a, 6);
+	a->in.at_map_clone++;
 }
 
-static void	ft_get_data(t_all *all)
+static void	ft_get_data(t_a *a)
 {
 	int	line;
 
 	ft_print_start();
 	printf("Processing: GNL to structure...\n");
-	line = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
+	line = ft_get_next_line(a->map_in.gnl_fd, &a->map_in.line);
 	while (line > 0)
 	{
-		if (I_AT_MAP_CLONE < 8)
+		if (a->in.at_map_clone < 8)
 		{
-			printf("Parsed line n. %-2d: %s\n", I_MAP_LINES, CP_GNL_LINE);
-			if (!(!CP_GNL_LINE[0] || ft_isspace_string(CP_GNL_LINE)))
-				ft_store_data(all);
-			line = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
-			I_MAP_LINES++;
+			printf("Parsed line n. %-2d: %s\n", a->map_in.map_lines, a->map_in.line);
+			if (!(!a->map_in.line[0] || ft_isspace_string(a->map_in.line)))
+				ft_store_data(a);
+			line = ft_get_next_line(a->map_in.gnl_fd, &a->map_in.line);
+			a->map_in.map_lines++;
 		}
 		else
 		{
@@ -73,14 +73,14 @@ static void	ft_get_data(t_all *all)
 	}
 }
 
-void	ft_input_manager(t_all *all)
+void	ft_input_manager(t_a *a)
 {
 	t_list	*list;
 
 	list = ft_lstnew("");
-	ft_get_data(all);
-	ft_map_to_list(all, list);
-	control_map(all);
-	adjust_map(all);
-	close(I_GNL_FD);
+	ft_get_data(a);
+	ft_map_to_list(a, list);
+	control_map(a);
+	adjust_map(a);
+	close(a->map_in.gnl_fd);
 }

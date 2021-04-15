@@ -30,12 +30,12 @@ DIR_INCLUDES = includes
 
 DIR_LIBS = libs
 DIR_LIBFT = libft
-DIR_MLX = mlx/minilibx_opengl_20191021
+DIR_MLX = mlx/minilibx_mms_20200219
 LIBFT = $(addprefix $(DIR_LIBS)/, $(DIR_LIBFT))
 LIBMLX = $(addprefix $(DIR_LIBS)/, $(DIR_MLX))
 
 MYLIB = libft.a
-MLXLIB = libmlx.a
+MLXLIB = libmlx.dylib
 
 DIR_SRCS = srcs
 DIR_INPUT = input
@@ -61,7 +61,7 @@ SRCS_INPUT =	input_graphic.c		\
 SRCS_GAME =		game_manager.c		\
 				game_init.c			\
 				game_map.c			\
-				game_player.c		\
+				game_flags.c		\
 				game_utils.c		\
 				game_keys.c			\
 

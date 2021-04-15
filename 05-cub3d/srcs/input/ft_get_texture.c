@@ -12,48 +12,48 @@
 
 #include "../../includes/cub3d.h"
 
-static void	finish(t_all *all)
+static void	finish(t_a *a)
 {
-	free(CPP_INPUT);
-	CPP_INPUT = 0;
-	close(CP_TEX_FD);
-	CP_TEX_FD = -1;
+	free(a->map_in.input);
+	a->map_in.input = 0;
+	close(a->map_in.tex_fd);
+	a->map_in.tex_fd = -1;
 }
 
-static void	ft_take_texture_1(t_all *all, int i)
+static void	ft_take_texture_1(t_a *a, int i)
 {
 	if (i == 0)
-		CP_TEXT_S = CPP_INPUT[0];
+		a->in.txt_s = a->map_in.input[0];
 	else if (i == 1)
-		CP_TEXT_NO = CPP_INPUT[0];
+		a->in.txt_no = a->map_in.input[0];
 	else if (i == 2)
-		CP_TEXT_SO = CPP_INPUT[0];
+		a->in.txt_so = a->map_in.input[0];
 	else if (i == 3)
-		CP_TEXT_WE = CPP_INPUT[0];
+		a->in.txt_we = a->map_in.input[0];
 	else if (i == 4)
-		CP_TEXT_EA = CPP_INPUT[0];
+		a->in.txt_ea = a->map_in.input[0];
 }
 
-void	ft_take_texture(t_all *all, int i)
+void	ft_take_texture(t_a *a, int i)
 {
 	int	exit;
 
-	CP_TEX_FD = 0;
+	a->map_in.tex_fd = 0;
 	if (I_INPUT_DEFINED[i])
-		ft_print_error(all, 8);
+		ft_print_error(a, 8);
 	I_INPUT_DEFINED[i] = 1;
-	CPP_INPUT = ft_split(CP_GNL_LINE, " \t\v\r\f");
-	if (!CPP_INPUT)
-		ft_print_error(all, 0);
-	CP_TEX_FD = open(CPP_INPUT[0], O_RDONLY);
-	if (!CPP_INPUT[0] || CPP_INPUT[1] || (CP_TEX_FD) < 0)
+	a->map_in.input = ft_split(a->map_in.line, " \t\v\r\f");
+	if (!a->map_in.input)
+		ft_print_error(a, 0);
+	a->map_in.tex_fd = open(a->map_in.input[0], O_RDONLY);
+	if (!a->map_in.input[0] || a->map_in.input[1] || (a->map_in.tex_fd) < 0)
 	{
-		if (CP_TEX_FD > -1)
+		if (a->map_in.tex_fd > -1)
 			exit = 9;
 		else
 			exit = 10;
-		ft_print_error(all, exit);
+		ft_print_error(a, exit);
 	}
-	ft_take_texture_1(all, i);
-	finish(all);
+	ft_take_texture_1(a, i);
+	finish(a);
 }

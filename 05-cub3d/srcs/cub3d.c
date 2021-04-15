@@ -14,11 +14,11 @@
 
 int	main(int ac, char **av)
 {
-	t_all	all;
+	t_a	a;
 
-	ft_init_map_input(&all);
-	ft_check_arg(&all, ac, av);
-	ft_input_manager(&all);
-	ft_game_manager(&all);
+	ft_init_map_input(&a);
+	ft_check_arg(&a, ac, av);
+	ft_input_manager(&a);
+	ft_game_manager(&a);
 	return (0);
 }

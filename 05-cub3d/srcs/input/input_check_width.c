@@ -12,11 +12,11 @@
 
 #include "../../includes/cub3d.h"
 
-void	check_width(t_all *all)
+void	check_width(t_a *a)
 {
 	int i;
 
-	i = ft_strlen(CPP_MAP[I_MAP_LINES]) + 1;
-	if (i > I_MAP_WIDTH)
-		I_MAP_WIDTH = i;
+	i = ft_strlen(a->map[a->map_in.map_lines]) + 1;
+	if (i > a->in.map_width)
+		a->in.map_width = i;
 }

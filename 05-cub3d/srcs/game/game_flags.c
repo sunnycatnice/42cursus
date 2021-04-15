@@ -12,13 +12,13 @@
 
 #include "../../includes/cub3d.h"
 
-void	ft_check_flags(t_all *all)
+int	ft_check_flags(t_all *all)
 {
 	if (I_FINISH_FLAG == 1)
 	{
-		I_ENDIAN = mlx_png_file_to_image(VP_MLX, "textures/THE_END.png",
+		VP_ENDGAME_IMG = mlx_png_file_to_image(VP_MLX, "textures/THE_END.png",
 					&I_RES_WIDTH, &I_RES_HEIGHT);
-		mlx_put_image_to_window(VP_MLX, VP_WIN, I_ENDIAN, 0, 0);
+		mlx_put_image_to_window(VP_MLX, VP_WIN, VP_ENDGAME_IMG, 0, 0);
 		return 0;
 	}
 	if (I_SAVE_FLAG == 1)
@@ -28,4 +28,5 @@ void	ft_check_flags(t_all *all)
 		if (!UCP_SCREEN)
 			ft_print_error(all, 0);
 	}
+	return (1);
 }

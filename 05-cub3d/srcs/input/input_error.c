@@ -12,12 +12,11 @@
 
 #include "../../includes/cub3d.h"
 
-void	ft_print_error(t_all *all, int n)
+void	ft_print_error(t_a *a, int n)
 {
 	ft_check_err(n);
-	if (I_GNL_FD > -1)
-		ft_get_next_line_free(all);
-	//all_input_free(all);
-	ft_all_map_input_free(all);
+	if (a->map_in.gnl_fd > -1)
+		ft_get_next_line_free(a);
+	ft_all_map_input_free(a);
 	exit(1);
 }

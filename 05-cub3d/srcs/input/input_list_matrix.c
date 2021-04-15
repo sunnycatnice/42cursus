@@ -12,43 +12,45 @@
 
 #include "../../includes/cub3d.h"
 
-void	ft_list_to_matrix(t_all *all, t_list *list)
+void	ft_list_to_matrix(t_a *a, t_list *list)
 {
-	I_MAP_LINES = 0;
+	a->map_in.map_lines = 0;
 	list = list->next;
-	CPP_MAP = calloc((ft_lstsize(list) + 1), sizeof(char *));
+	a->map = calloc((ft_lstsize(list) + 1), sizeof(char *));
 	printf("Processing 3: From list to matrix...\n");
 	while (!(list == NULL))
 	{
-		CPP_MAP[I_MAP_LINES] = list->content;
-		printf("Matrix line n. %-2d: %s\n", I_MAP_LINES, CPP_MAP[I_MAP_LINES]);
-		check_width(all);
+		a->map[a->map_in.map_lines] = list->content;
+		printf("Matrix line n. %-2d: %s\n", a->map_in.map_lines,
+			a->map[a->map_in.map_lines]);
+		check_width(a);
 		list = list->next;
-		I_MAP_LINES++;
+		a->map_in.map_lines++;
 	}
-	I_MAP_HEIGHT = I_MAP_LINES;
-	CPP_MAP[I_MAP_LINES] = "\0";
+	a->in.map_height = a->map_in.map_lines;
+	a->map[a->map_in.map_lines] = "\0";
 	msg(2);
 }
 
-void	ft_map_to_list(t_all *all, t_list *list)
+void	ft_map_to_list(t_a *a, t_list *list)
 {
 	int		lines;
 	t_list	*tmp;
 
-	I_MAP_LINES = 0;
+	a->map_in.map_lines = 0;
 	tmp = list;
 	printf("Processing 2: GNL map to list...\n");
-	lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
+	lines = ft_get_next_line(a->map_in.gnl_fd, &a->map_in.line);
 	while (lines > 0)
 	{
-		if (I_MAP_LINES > 0)
-			lines = ft_get_next_line(I_GNL_FD, &CP_GNL_LINE);
-		ft_lstadd_back(&tmp, ft_lstnew(CP_GNL_LINE));
-		I_MAP_LINES++;
+		if (a->map_in.map_lines > 0)
+			lines = ft_get_next_line(a->map_in.gnl_fd, &a->map_in.line);
+		ft_lstadd_back(&tmp, ft_lstnew(a->map_in.line));
+		a->map_in.map_lines++;
 		tmp = tmp->next;
-		printf("Exported to list n. %-2d: %s\n", I_MAP_LINES, tmp->content);
+		printf("Exported to list n. %-2d: %s\n", a->map_in.map_lines,
+			tmp->content);
 	}
 	msg(1);
-	ft_list_to_matrix(all, list);
+	ft_list_to_matrix(a, list);
 }

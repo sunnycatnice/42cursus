@@ -30,7 +30,7 @@ static int	find_cub_file(char *s)
 	return (1);
 }
 
-void	ft_check_arg(t_all *all, int ac, char **av)
+void	ft_check_arg(t_a *a, int ac, char **av)
 {
 	short	err;
 
@@ -44,16 +44,16 @@ void	ft_check_arg(t_all *all, int ac, char **av)
 					err = 1;
 				else
 					err = 2;
-				ft_print_error(all, err);
+				ft_print_error(a, err);
 			}
-			I_SAVE_FLAG = 1;
+			a->flags.save = 1;
 		}
 		else
-			ft_print_error(all, 3);
+			ft_print_error(a, 3);
 	}
 	if (!find_cub_file(av[1]))
-		ft_print_error(all, 3);
+		ft_print_error(a, 3);
 	I_GNL_FD = open(av[1], O_RDONLY);
 	if (I_GNL_FD < 0)
-		ft_print_error(all, 4);
+		ft_print_error(a, 4);
 }

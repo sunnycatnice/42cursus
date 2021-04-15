@@ -12,7 +12,9 @@
 
 #include "../../includes/cub3d.h"
 
-int		render_frame(t_data *img)
+int		render_frame(t_all *all)
 {
-
+	ft_check_flags(all);
+	
+	return (0);
 }

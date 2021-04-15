@@ -23,84 +23,84 @@ static int	is_in_charset_adjust(char c)
 	return (3);
 }
 
-void		adjust_map(t_all *all)
+void		adjust_map(t_a *a)
 {
 	int	i;
 	int	j;
 	int	ret;
 
 	i = 0;
-	while (i < I_MAP_HEIGHT)
+	while (i < a->in.map_height)
 	{
 		j = 0;
-		while (j < I_MAP_WIDTH)
+		while (j < a->in.map_width)
 		{
-			ret = is_in_charset_adjust(CPP_MAP[i][j]);
+			ret = is_in_charset_adjust(a->map[i][j]);
 			if (!ret)
-				CPP_MAP[i][j] = 0;
+				a->map[i][j] = 0;
 			else if (ret == 1)
-				CPP_MAP[i][j] = 1;
+				a->map[i][j] = 1;
 			else if (ret == 2)
-				CPP_MAP[i][j] = 2;
+				a->map[i][j] = 2;
 			else
-				ft_print_error(all, 18);
+				ft_print_error(a, 18);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	is_in_charset_control(t_all *all, char c, int i, int j)
+static void	is_in_charset_control(t_a *a, char c, int i, int j)
 {
 	if (c == '0' || c == '1' || c == '2' || ft_isspace(c) || !c)
 		return ;
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
-		if (I_PLAYER)
-			ft_print_error(all, 17);
-		I_PLAYER = CPP_MAP[i][j];
-		I_PLAYER_X = j;
-		I_PLAYER_Y = i;
+		if (a->in.player)
+			ft_print_error(a, 17);
+		a->in.player = a->map[i][j];
+		a->player.posx = j;
+		a->player.posy = i;
 		return ;
 	}
-	ft_print_error(all, 18);
+	ft_print_error(a, 18);
 }
 
-void		control_constraits(t_all *all, int i, int j)
+void		control_constraits(t_a *a, int i, int j)
 {
 	if (i - 1 < 0 || j - 1 < 0 ||
-	i + 1 == I_MAP_HEIGHT || j + 1 == I_MAP_WIDTH)
-		ft_print_error(all, 16);
-	if (!CPP_MAP[i + 1][j + 1] || CPP_MAP[i + 1][j + 1] == ' ')
-		ft_print_error(all, 16);
-	if (!CPP_MAP[i - 1][j - 1] || CPP_MAP[i - 1][j - 1] == ' ')
-		ft_print_error(all, 16);
-	if (!CPP_MAP[i + 1][j - 1] || CPP_MAP[i + 1][j - 1] == ' ')
-		ft_print_error(all, 16);
-	if (!CPP_MAP[i - 1][j + 1] || CPP_MAP[i - 1][j + 1] == ' ')
-		ft_print_error(all, 16);
+	i + 1 == a->in.map_height || j + 1 == a->in.map_width)
+		ft_print_error(a, 16);
+	if (!a->map[i + 1][j + 1] || a->map[i + 1][j + 1] == ' ')
+		ft_print_error(a, 16);
+	if (!a->map[i - 1][j - 1] || a->map[i - 1][j - 1] == ' ')
+		ft_print_error(a, 16);
+	if (!a->map[i + 1][j - 1] || a->map[i + 1][j - 1] == ' ')
+		ft_print_error(a, 16);
+	if (!a->map[i - 1][j + 1] || a->map[i - 1][j + 1] == ' ')
+		ft_print_error(a, 16);
 }
 
-void		control_map(t_all *all)
+void		control_map(t_a *a)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < I_MAP_HEIGHT)
+	while (i < a->in.map_height)
 	{
 		j = 0;
-		while (j < I_MAP_WIDTH)
+		while (j < a->in.map_width)
 		{
-			is_in_charset_control(all, CPP_MAP[i][j], i, j);
-			if (!is_in_charset_adjust(CPP_MAP[i][j]) ||
-			is_in_charset_adjust(CPP_MAP[i][j]) == 2)
-				control_constraits(all, i, j);
+			is_in_charset_control(a, a->map[i][j], i, j);
+			if (!is_in_charset_adjust(a->map[i][j]) ||
+			is_in_charset_adjust(a->map[i][j]) == 2)
+				control_constraits(a, i, j);
 			j++;
 		}
 		i++;
 	}
-	if (!I_PLAYER)
-		ft_print_error(all, 15);
+	if (!a->in.player)
+		ft_print_error(a, 15);
 }
 

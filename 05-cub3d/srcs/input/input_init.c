@@ -12,34 +12,33 @@
 
 #include "../../includes/cub3d.h"
 
-void	ft_init_map_input(t_all *all)
+void	ft_init_map_input(t_a *a)
 {
-	I_GNL_FD = -1;
-	CP_TEX_FD = -1;
-	I_MAP_LINES = 0;
-	I_MAP_WIDTH = 0;
-	I_MAP_HEIGHT = 0;
-	CP_GNL_LINE = 0;
-	CP_CURR_IDE = 0;
-	CPP_INPUT = 0;
-	CP_REAL_IDE[0] = "S";
-	CP_REAL_IDE[1] = "NO";
-	CP_REAL_IDE[2] = "SO";
-	CP_REAL_IDE[3] = "EA";
-	CP_REAL_IDE[4] = "WE";
-	CP_REAL_IDE[5] = "R";
-	CP_REAL_IDE[6] = "C";
-	CP_REAL_IDE[7] = "F";
+	a->map_in.gnl_fd = -1;
+	a->map_in.tex_fd = -1;
+	a->map_in.map_lines = 0;
+	a->in.map_width = 0;
+	a->in.map_height = 0;
+	a->map_in.line = 0;
+	a->map_in.input = 0;
+	a->map_in.real_ide[0] = "S";
+	a->map_in.real_ide[1] = "NO";
+	a->map_in.real_ide[2] = "SO";
+	a->map_in.real_ide[3] = "EA";
+	a->map_in.real_ide[4] = "WE";
+	a->map_in.real_ide[5] = "R";
+	a->map_in.real_ide[6] = "C";
+	a->map_in.real_ide[7] = "F";
 }
 
-void	ft_init_input(t_all *all)
+void	ft_init_input(t_a *a)
 {
 	short	i;
 
 	i = 0;
 	while (i < 8)
-		I_INPUT_DEFINED[i++] = 0;
-	I_AT_MAP_CLONE = 0;
-	VP_MLX = NULL;
-	VP_WIN = NULL;
+		a->in.defined[i++] = 0;
+	a->in.at_map_clone = 0;
+	a->mlx.mlx = NULL;
+	a->mlx.win = NULL;
 }

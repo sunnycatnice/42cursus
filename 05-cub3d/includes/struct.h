@@ -13,13 +13,14 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef	struct s_point
+typedef struct		s_data
 {
-	int				x_start;
-	int				y_start;
-	int				x_pl;
-	int				y_pl;
-}				t_point;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_data;
 
 typedef struct  s_flags
 {
@@ -28,14 +29,27 @@ typedef struct  s_flags
 	unsigned char	*screenshot;
 }               t_flags;
 
-typedef struct		s_player
+typedef struct 	s_player 
 {
-	float			pos_x;
-	float			pos_y;
-	double			speed;
-	float			dir;
-	double			rot_speed;
-}					t_player;
+	double 		posx;
+	double		posy;
+  	double 		dirx;
+	double		diry;
+  	double 		planex;
+	double		planey;
+	char		initial_direction;
+}				t_player;
+
+typedef	struct  	s_txt
+{
+	void			*img;
+	unsigned int 	*data;
+	int				bits_per_pixel;
+    int				line_length;
+    int				endian;
+	int				width;
+	int				height;
+}					t_txt;
 
 typedef struct		s_keycode
 {
@@ -45,7 +59,7 @@ typedef struct		s_keycode
 	short			d;
 	short			ar;
 	short			al;
-	int				esc;
+	short			esc;
 }					t_keycode;
 
 typedef struct		s_dir
@@ -56,14 +70,7 @@ typedef struct		s_dir
 	int				we;
 }					t_dir;
 
-typedef struct		s_data
-{
-	void			*img;
-	char			*addr;
-	int				bits_per_pixel;
-	int				line_length;
-	int				endian;
-}					t_data;
+
 
 typedef struct  s_mlx
 {
@@ -71,30 +78,28 @@ typedef struct  s_mlx
     void        *win;
 }               t_mlx;
 
-typedef struct		s_input
+typedef struct		s_in
 {
 	int				defined[8];
 	int				res_width;
 	int				res_height;
 	int				color_floor;
 	int				color_ceiling;
-	char			*texture_s;
-	char			*texture_no;
-	char			*texture_so;
-	char			*texture_we;
-	char			*texture_ea;
-	char			*texture_floor;
-	char			*texture_ceiling;
+	char			*txt_s;
+	char			*txt_no;
+	char			*txt_so;
+	char			*txt_ea;
+	char			*txt_we;
+	char			*txt_fl;
+	char			*txt_ce;
 	int				map_width;
 	int				map_height;
 	int				player;
-	int				player_x;
-	int				player_y;
 	int				save_flag;
 	int				at_map_clone;
-}					t_input;
+}					t_in;
 
-typedef struct			s_map_input
+typedef struct			s_map_in
 {
 	int				gnl_fd;
 	int				gnl_first_space;
@@ -105,21 +110,21 @@ typedef struct			s_map_input
 	char			*real_ide[8];
 	char			**input;
 	char			**new_;
-}					t_map_input;
+}					t_map_in;
 
-typedef struct		s_all
+typedef struct		s_a
 {
 	char			**map;
-	t_input			input;
-	t_mlx			mlx;
 	t_data			data;
-	t_player		player;
-	t_keycode		keycode;
+	t_mlx			mlx;
+	t_in			in;
 	t_flags			flags;
+	t_player		player;
+	t_txt			txt;
+	t_keycode		keycode;
 	t_dir			dir;
-	t_map_input		map_input;
-	t_point			point;
+	t_map_in		map_in;
 
-}					t_all;
+}					t_a;
 
 #endif
