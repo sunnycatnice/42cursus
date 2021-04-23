@@ -23,7 +23,7 @@ static int	is_in_charset_adjust(char c)
 	return (3);
 }
 
-void		adjust_map(t_a *a)
+void	adjust_map(t_a *a)
 {
 	int	i;
 	int	j;
@@ -59,17 +59,17 @@ static void	is_in_charset_control(t_a *a, char c, int i, int j)
 		if (a->in.player)
 			ft_print_error(a, 17);
 		a->in.player = a->map[i][j];
-		a->player.posx = j;
-		a->player.posy = i;
+		a->eng.pos_x = j;
+		a->eng.pos_y = i;
 		return ;
 	}
 	ft_print_error(a, 18);
 }
 
-void		control_constraits(t_a *a, int i, int j)
+void	control_constraits(t_a *a, int i, int j)
 {
-	if (i - 1 < 0 || j - 1 < 0 ||
-	i + 1 == a->in.map_height || j + 1 == a->in.map_width)
+	if (i - 1 < 0 || j - 1 < 0
+		|| i + 1 == a->in.map_height || j + 1 == a->in.map_width)
 		ft_print_error(a, 16);
 	if (!a->map[i + 1][j + 1] || a->map[i + 1][j + 1] == ' ')
 		ft_print_error(a, 16);
@@ -81,7 +81,7 @@ void		control_constraits(t_a *a, int i, int j)
 		ft_print_error(a, 16);
 }
 
-void		control_map(t_a *a)
+void	control_map(t_a *a)
 {
 	int	i;
 	int	j;
@@ -93,8 +93,8 @@ void		control_map(t_a *a)
 		while (j < a->in.map_width)
 		{
 			is_in_charset_control(a, a->map[i][j], i, j);
-			if (!is_in_charset_adjust(a->map[i][j]) ||
-			is_in_charset_adjust(a->map[i][j]) == 2)
+			if (!is_in_charset_adjust(a->map[i][j])
+				|| is_in_charset_adjust(a->map[i][j]) == 2)
 				control_constraits(a, i, j);
 			j++;
 		}
@@ -103,4 +103,3 @@ void		control_map(t_a *a)
 	if (!a->in.player)
 		ft_print_error(a, 15);
 }
-

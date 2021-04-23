@@ -14,7 +14,7 @@
 
 void	check_width(t_a *a)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(a->map[a->map_in.map_lines]) + 1;
 	if (i > a->in.map_width)

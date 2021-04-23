@@ -59,7 +59,8 @@ static void	ft_get_data(t_a *a)
 	{
 		if (a->in.at_map_clone < 8)
 		{
-			printf("Parsed line n. %-2d: %s\n", a->map_in.map_lines, a->map_in.line);
+			printf("Parsed line n. %-2d: %s\n", a->map_in.map_lines,
+				a->map_in.line);
 			if (!(!a->map_in.line[0] || ft_isspace_string(a->map_in.line)))
 				ft_store_data(a);
 			line = ft_get_next_line(a->map_in.gnl_fd, &a->map_in.line);

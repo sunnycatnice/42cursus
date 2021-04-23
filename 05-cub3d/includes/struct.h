@@ -20,8 +20,10 @@ typedef struct		s_data
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
+	int				w;
+	int				h;
 }					t_data;
-
+ 
 typedef struct  s_flags
 {
     short			save;
@@ -29,27 +31,34 @@ typedef struct  s_flags
 	unsigned char	*screenshot;
 }               t_flags;
 
-typedef struct 	s_player 
+typedef struct 	s_eng 
 {
-	double 		posx;
-	double		posy;
-  	double 		dirx;
-	double		diry;
-  	double 		planex;
-	double		planey;
-	char		initial_direction;
-}				t_player;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		rdx;
+	double		rdy;
+	double		plane_x;
+	double		plane_y;
+	double		cam_x;
+	int			side;
+	double		pwd;
+	double		w_x;
+	int			map_x;
+	int			map_y;
+	int			x;
+	double		*z_buff;
+}				t_eng;
 
-typedef	struct  	s_txt
+typedef struct s_tex
 {
-	void			*img;
-	unsigned int 	*data;
-	int				bits_per_pixel;
-    int				line_length;
-    int				endian;
-	int				width;
-	int				height;
-}					t_txt;
+	t_data		*no;
+	t_data		*we;
+	t_data		*ea;
+	t_data		*so;
+	t_data		*sp;
+}				t_tex;
 
 typedef struct		s_keycode
 {
@@ -69,8 +78,6 @@ typedef struct		s_dir
 	int				ea;
 	int				we;
 }					t_dir;
-
-
 
 typedef struct  s_mlx
 {
@@ -119,8 +126,8 @@ typedef struct		s_a
 	t_mlx			mlx;
 	t_in			in;
 	t_flags			flags;
-	t_player		player;
-	t_txt			txt;
+	t_eng			eng;
+	t_tex			tex;
 	t_keycode		keycode;
 	t_dir			dir;
 	t_map_in		map_in;
