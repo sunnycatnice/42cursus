@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 14:09:47 by gfratini          #+#    #+#             */
-/*   Updated: 2021/04/08 17:58:21 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/04/26 17:31:14 by dmangola          #+#    #+#             */
+/*   Updated: 2021/04/26 17:36:01 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	save(t_vars *vars)
 	i = 0;
 	fd = open("deepthought.bmp", O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	write_header(fd, vars->parse.x_res, vars->parse.y_res,
-								vars->img.bpp);
+		ars->img.bpp);
 	while (i < vars->parse.y_res)
 	{
 		line = (unsigned int *)&vars->img.addr[(vars->parse.y_res - i++ - 1) \

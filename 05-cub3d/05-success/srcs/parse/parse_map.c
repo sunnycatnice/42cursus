@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/08 12:25:55 by gfratini          #+#    #+#             */
-/*   Updated: 2021/04/08 17:38:35 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/04/26 17:37:10 by dmangola          #+#    #+#             */
+/*   Updated: 2021/04/26 17:37:13 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	valid_char(char c)
 		c != 'E' && \
 		c != ' ')
 	{
-		printf("Error\nInvalid Configuration");
+		ft_perror("Error\n*18* Invalid Configuration");
 		exit(-1);
 	}
 	return (1);
@@ -34,13 +34,13 @@ void	check_adj(t_parse *config, int i, int j)
 {
 	if (i == 0 || j == 0 || j == (int)ft_strlen(config->map[i]) - 1 \
 		 || i == matrix_len(config->map) - 1)
-		ft_perror("Error\nMap is Invalid");
+		ft_perror("Error\n*17* Map is Invalid");
 	if (
 		config->map[i][j - 1] == ' ' || \
 		config->map[i][j + 1] == ' ' || \
 		config->map[i - 1][j] == ' ' || \
 		config->map[i + 1][j] == ' ')
-		ft_perror("Error\nMap is Invalid");
+		ft_perror("Error\n*17* Map is Invalid");
 	if ((config->map[i][j] == 'N' || config->map[i][j] == 'S' || \
 			config->map[i][j] == 'W' || config->map[i][j] == 'E'))
 	{
@@ -55,12 +55,12 @@ void	check_spawn(int *ptr)
 {
 	if (ptr[0] == -1)
 	{
-		printf("Error\nNo Spawn Point Set");
+		ft_perror("Error\n*16* No Spawn Point Set");
 		exit(-1);
 	}
 	if (ptr[3] != 0)
 	{
-		printf("Error\n%d Spawn Points Set", ptr[3] + 1);
+		ft_perror("Error\n*15* Spawn Points Set");
 		exit(-1);
 	}
 }
@@ -100,7 +100,7 @@ void	parse_map(int fd, t_parse *config)
 	{
 		stop = get_next_line(fd, &line);
 		if (!line && buff)
-			ft_perror("Error\nInvalid Map");
+			ft_perror("Error\n*14* Invalid Map");
 		if (is_map(line))
 		{
 			if (!buff)

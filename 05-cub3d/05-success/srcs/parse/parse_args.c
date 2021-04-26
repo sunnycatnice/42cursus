@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/06 15:35:37 by gfratini          #+#    #+#             */
-/*   Updated: 2021/04/08 17:31:03 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/04/26 17:36:53 by dmangola          #+#    #+#             */
+/*   Updated: 2021/04/26 17:36:54 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	parse_res(char **args, t_parse *config)
 {
 	if (matrix_len(args) != 3)
-		ft_perror("Error\nInvalid Resolution");
+		ft_perror("Error\n*15* Invalid Resolution");
 	check_res(args);
 	if (config->x_res > 0 || config->y_res > 0)
-		ft_perror("Error\nTwo or More Resolutions Specified");
+		ft_perror("Error\n*14* Two or More Resolutions Specified");
 	config->x_res = ft_atoi(args[1]);
 	if (config->x_res <= 0)
-		ft_perror("Error\nInvalid Resolution");
+		ft_perror("Error\n*13* Invalid Resolution");
 	config->y_res = ft_atoi(args[2]);
 	if (config->y_res <= 0)
-		ft_perror("Error\nInvalid Resolution");
+		ft_perror("Error\n*12* Invalid Resolution");
 }
 
 void	parse_path(char **args, t_parse *config)
@@ -35,7 +35,7 @@ void	parse_path(char **args, t_parse *config)
 		ft_perror("Error\nSpecify Only 1 Path");
 	tmp_fd = open(args[1], O_RDONLY);
 	if ((tmp_fd < 0))
-		ft_perror("Error\nTexture File Is Invalid For Some Reason");
+		ft_perror("Error\n*11* Texture File Is Invalid For Some Reason");
 	close(tmp_fd);
 	if (ft_strcmp(args[0], "NO") && !config->no_path)
 		config->no_path = ft_strdup(args[1]);
@@ -48,7 +48,7 @@ void	parse_path(char **args, t_parse *config)
 	else if (ft_strcmp(args[0], "S") && !config->sp_path)
 		config->sp_path = ft_strdup(args[1]);
 	else
-		ft_perror("Error\nInvalid Configuration");
+		ft_perror("Error\n*10* Invalid Configuration");
 }
 
 int	color_check(char **args)
@@ -74,7 +74,7 @@ int	color_check(char **args)
 int	color_encoder(int r, int g, int b)
 {
 	if (r > 255 || g > 255 || b > 255)
-		ft_perror("Error\nInvalid Color");
+		ft_perror("Error\n*9* Invalid Color");
 	return (0 | r << 16 | g << 8 | b);
 }
 
@@ -84,14 +84,14 @@ void	parse_color(char **args, t_parse *config)
 
 	color = ft_split(args[1], ',');
 	if (matrix_len(args) != 2 || matrix_len(color) != 3 || !color_check(color))
-		ft_perror("Error\nInvalid Color");
+		ft_perror("Error\n*7* Invalid Color");
 	if (!ft_isdigit(args[1][0]))
-		ft_perror("Error\nInvalid Color");
+		ft_perror("Error\n*7* Invalid Color");
 	check_commas(args[1]);
 	if (ft_strcmp(args[0], "C") && config->ceiling >= 0)
-		ft_perror("Error\nInvalid Configuration");
+		ft_perror("Error\n*8* Invalid Configuration: C");
 	if (ft_strcmp(args[0], "F") && config->floor >= 0)
-		ft_perror("Error\nInvalid Configuration");
+		ft_perror("Error\n*8* Invalid Configuration: F");
 	if (ft_strcmp(args[0], "C") && config->ceiling < 0)
 		config->ceiling = color_encoder(ft_atoi(color[0]), \
 		 ft_atoi(color[1]), ft_atoi(color[2]));
