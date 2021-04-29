@@ -14,7 +14,7 @@
 
 char	*genera_avanzi(char *db)
 {
-	char	*avanzi;
+	char	*remains;
 	int		index_avanzi;
 	int		index_line;
 
@@ -29,15 +29,15 @@ char	*genera_avanzi(char *db)
 		free(db);
 		return (0);
 	}
-	if (!(avanzi = malloc(sizeof(char) *
-			((ft_strlen(db) - index_line) + 1))))
+	remains = malloc(sizeof(char) * ((ft_strlen(db) - index_line) + 1));
+	if (!remains)
 		return (0);
 	index_line++;
 	while (db[index_line])
-		avanzi[index_avanzi++] = db[index_line++];
-	avanzi[index_avanzi] = '\0';
+		remains[index_avanzi++] = db[index_line++];
+	remains[index_avanzi] = '\0';
 	free(db);
-	return (avanzi);
+	return (remains);
 }
 
 char	*fai_copia_inline(char *db)
@@ -50,7 +50,8 @@ char	*fai_copia_inline(char *db)
 		return (0);
 	while (db[index] && db[index] != '\n')
 		index++;
-	if (!(line = malloc(sizeof(char) * (index + 1))))
+	line = malloc(sizeof(char) * (index + 1));
+	if (!line)
 		return (0);
 	index = 0;
 	while (db[index] && db[index] != '\n')
@@ -62,7 +63,7 @@ char	*fai_copia_inline(char *db)
 	return (line);
 }
 
-int		get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	char		*buffer;
 	static char	*db[MAX_FD];

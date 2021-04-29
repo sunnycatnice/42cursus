@@ -52,7 +52,7 @@ void	save(t_vars *vars)
 	i = 0;
 	fd = open("deepthought.bmp", O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	write_header(fd, vars->parse.x_res, vars->parse.y_res,
-		ars->img.bpp);
+		vars->img.bpp);
 	while (i < vars->parse.y_res)
 	{
 		line = (unsigned int *)&vars->img.addr[(vars->parse.y_res - i++ - 1) \
