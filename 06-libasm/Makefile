@@ -11,17 +11,17 @@ OBJS = $(SRCS:.s=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@ar -rcs $(NAME) $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
 run: $(NAME)
-	@gcc -Wall -Wextra -Werror -L. -lasm main.c grafic.c main.h
-	@./a.out
+	gcc -Wall -Wextra -Werror -L. -lasm main.c grafic.c main.h
+	./a.out
 
 clean:
-	@rm -f $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME) a.out
+	rm -f $(NAME) a.out
 
 re: fclean run
 
