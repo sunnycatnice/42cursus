@@ -15,7 +15,9 @@
 int main(int ac, char **av)
 {
 	short	i;
+	t_list *lst;
 
+	lst = ft_lstnew("");
 	i = 0;
 	if (ac == 1)
 		exit(0);
@@ -23,7 +25,7 @@ int main(int ac, char **av)
 	{
 		while (av[i])
 		{
-			ft_atoi(av[i]);
+			lst->content = ft_atoi(av[i]);
 		}
 	}
 }

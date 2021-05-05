@@ -14,6 +14,7 @@
 # define CHECKER_H
 
 #include "utils.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 typedef struct s_list
