@@ -37,6 +37,7 @@ SRC = 	./ft_atoi.c 		\
 		./ft_strlcat.c		\
 		./ft_strdup.c		\
 		./ft_calloc.c		\
+		./ft_simple_gnl.c	\
 		./ft_strnstr.c		\
 		./ft_substr.c		\
 		./ft_strjoin.c		\
