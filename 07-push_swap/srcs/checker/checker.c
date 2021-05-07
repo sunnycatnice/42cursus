@@ -52,6 +52,8 @@ static void	ft_read_stdin(char *av)
 		take_stuff(line);
 		free(line);
 	}
+	if (ret == -1)
+		perror();
 	if (line)
 		free (line);
 }
@@ -60,6 +62,8 @@ int main(int ac, char **av)
 {
 	t_list *lst;
 
+	ft_print_start_ck();
+	ft_get_numbers();
 	lst = ft_lstnew("");
 	ft_read_stdin(*av);
 }

@@ -15,5 +15,6 @@
 
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
+void	ft_print_start_ck(void);
 
 #endif

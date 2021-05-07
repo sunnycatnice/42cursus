@@ -16,7 +16,7 @@ int	ft_stdin_gnl(char **line)
 {
 	char	buffer[512];
 	int		reader;
-	int		i;
+	short	i;
 
 	i = 0;
 	if (read(0, &buffer[0], 0) < 0 || (!line))

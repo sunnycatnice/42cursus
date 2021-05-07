@@ -1,29 +1,21 @@
-/* ************************************************************************** */
+* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 12:17:49 by dmangola          #+#    #+#             */
-/*   Updated: 2021/05/05 12:17:50 by dmangola         ###   ########.fr       */
+/*   Created: 2021/05/07 13:15:38 by dmangola          #+#    #+#             */
+/*   Updated: 2021/05/07 13:15:45 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 #include "utils.h"
 #include "struct.h"
-#include "../libft/libft.h"
 #include <stdlib.h>
-
-typedef struct s_list
-{
-	char			*content;
-	struct s_list	*prev;
-	struct s_list	*next;
-}				t_list;
 
 int main(int ac, char **av);
 

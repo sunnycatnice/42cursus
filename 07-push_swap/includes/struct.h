@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 12:17:49 by dmangola          #+#    #+#             */
-/*   Updated: 2021/05/05 12:17:50 by dmangola         ###   ########.fr       */
+/*   Created: 2021/05/07 13:13:43 by dmangola          #+#    #+#             */
+/*   Updated: 2021/05/07 13:14:35 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-#include "utils.h"
-#include "struct.h"
-#include "../libft/libft.h"
-#include <stdlib.h>
+#include "checker.h"
 
-typedef struct s_list
+typedef struct		s_args
 {
-	char			*content;
-	struct s_list	*prev;
-	struct s_list	*next;
-}				t_list;
+	int	*curr;
+	int len;
+	int	min;
+	int	max;
+}					t_args;
 
-int main(int ac, char **av);
+typedef struct		s_info
+{
+	int				len;
+	int				max;
+	int				min;
+	int				pos_max;
+	int				pos_min;
+}					t_info;
+
+typedef struct		s_a
+{
+	t_args		args;
+	t_info		info_a;
+	t_info		info_b;
+}					t_a;
 
 #endif
