@@ -16,25 +16,25 @@ static void take_stuff(char *line)
 {
 	if (!ft_strcmp(line, "sa"))
 		op_swap();
-	if (!ft_strcmp(line, "sb"))
+	else if (!ft_strcmp(line, "sb"))
 		op_swap();
-	if (!ft_strcmp(line, "ss"))
+	else if (!ft_strcmp(line, "ss"))
 		op_d_swap();
-	if (!ft_strcmp(line, "pa"))
+	else if (!ft_strcmp(line, "pa"))
 		op_push_a();
-	if (!ft_strcmp(line, "pb"))
+	else if (!ft_strcmp(line, "pb"))
 		op_push_b();
-	if (!ft_strcmp(line, "ra"))
+	else if (!ft_strcmp(line, "ra"))
 		op_rotate();
-	if (!ft_strcmp(line, "rb"))
+	else if (!ft_strcmp(line, "rb"))
 		op_rotate();
-	if (!ft_strcmp(line, "rr"))
+	else if (!ft_strcmp(line, "rr"))
 		op_double_rot();
-	if (!ft_strcmp(line, "rra"))
+	else if (!ft_strcmp(line, "rra"))
 		op_rev_rot();
-	if (!ft_strcmp(line, "rrb"))
+	else if (!ft_strcmp(line, "rrb"))
 		op_rev_rot();
-	if (!ft_double_rev_rot(line, "rrr"))
+	else if (!ft_double_rev_rot(line, "rrr"))
 		op_swap();
 	else
 		op_swap();
@@ -52,8 +52,6 @@ static void	ft_read_stdin(char *av)
 		take_stuff(line);
 		free(line);
 	}
-	if (ret == -1)
-		perror();
 	if (line)
 		free (line);
 }

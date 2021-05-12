@@ -14,6 +14,18 @@
 
 static int		*append_to_tab(t_a *a, char *s)
 {
+	char **tmp;
+	char *new;
+	int tmp_len;
+	short i;
+
+	if (!(tmp = ft_split(s, " ")))
+		ft_perror("ERROR: not gnl free");
+	tmp_len = ft_matrixlen(tmp);
+	if(!(new = (int *)malloc((a->info_a.len + tmp_len) * sizeof(int))))
+	{
+		i = 0;
+	}
 	return 0;
 }
 

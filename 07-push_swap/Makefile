@@ -10,8 +10,8 @@ DIR_UTILS = utils
 
 SRCS_CHECKER = 	checker.c
 SRCS_PUSH_SWAP =	push_swap.c
-SRCS_UTILS = 	ft_atoi.c \
-				ft_isdigit.c\
+SRCS_UTILS = 	ft_graphic.c	\
+				parse_utils.c	\
 
 CHECKER_PREFIX = $(addprefix ${DIR_CHECKER}/, ${SRCS_CHECKER})
 PUSH_SWAP_PREFIX = $(addprefix ${DIR_PUSH_SWAP}/, ${SRCS_PUSH_SWAP})
