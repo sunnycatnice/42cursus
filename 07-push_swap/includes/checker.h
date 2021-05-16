@@ -14,16 +14,8 @@
 # define CHECKER_H
 
 #include "utils.h"
-#include "struct.h"
 #include "../libft/libft.h"
 #include <stdlib.h>
-
-typedef struct s_list
-{
-	char			*content;
-	struct s_list	*prev;
-	struct s_list	*next;
-}				t_list;
 
 int main(int ac, char **av);
 

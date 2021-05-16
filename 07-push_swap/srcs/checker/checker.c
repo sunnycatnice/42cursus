@@ -12,34 +12,34 @@
 
 #include "../../includes/checker.h"
 
-static void take_stuff(char *line)
-{
-	if (!ft_strcmp(line, "sa"))
-		op_swap();
-	else if (!ft_strcmp(line, "sb"))
-		op_swap();
-	else if (!ft_strcmp(line, "ss"))
-		op_d_swap();
-	else if (!ft_strcmp(line, "pa"))
-		op_push_a();
-	else if (!ft_strcmp(line, "pb"))
-		op_push_b();
-	else if (!ft_strcmp(line, "ra"))
-		op_rotate();
-	else if (!ft_strcmp(line, "rb"))
-		op_rotate();
-	else if (!ft_strcmp(line, "rr"))
-		op_double_rot();
-	else if (!ft_strcmp(line, "rra"))
-		op_rev_rot();
-	else if (!ft_strcmp(line, "rrb"))
-		op_rev_rot();
-	else if (!ft_double_rev_rot(line, "rrr"))
-		op_swap();
-	else
-		op_swap();
+// static void take_stuff(char *line)
+// {
+// 	if (!ft_strcmp(line, "sa"))
+// 		op_swap();
+// 	if (!ft_strcmp(line, "sb"))
+// 		op_swap();
+// 	if (!ft_strcmp(line, "ss"))
+// 		op_d_swap();
+// 	if (!ft_strcmp(line, "pa"))
+// 		op_push_a();
+// 	if (!ft_strcmp(line, "pb"))
+// 		op_push_b();
+// 	if (!ft_strcmp(line, "ra"))
+// 		op_rotate();
+// 	if (!ft_strcmp(line, "rb"))
+// 		op_rotate();
+// 	if (!ft_strcmp(line, "rr"))
+// 		op_double_rot();
+// 	if (!ft_strcmp(line, "rra"))
+// 		op_rev_rot();
+// 	if (!ft_strcmp(line, "rrb"))
+// 		op_rev_rot();
+// 	if (!ft_double_rev_rot(line, "rrr"))
+// 		op_swap();
+// 	else
+// 		op_swap();
 	
-}
+// }
 
 static void	ft_read_stdin(char *av)
 {
@@ -49,7 +49,7 @@ static void	ft_read_stdin(char *av)
 	ret = ft_stdin_gnl(&line);
 	while (ret > 0)
 	{
-		take_stuff(line);
+		//take_stuff(line);
 		free(line);
 	}
 	if (line)
@@ -60,8 +60,6 @@ int main(int ac, char **av)
 {
 	t_list *lst;
 
-	ft_print_start_ck();
-	ft_get_numbers();
 	lst = ft_lstnew("");
 	ft_read_stdin(*av);
 }

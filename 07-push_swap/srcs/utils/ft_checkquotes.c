@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   ft_checkquotes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 13:13:43 by dmangola          #+#    #+#             */
-/*   Updated: 2021/05/07 13:14:35 by dmangola         ###   ########.fr       */
+/*   Created: 2021/05/16 16:22:20 by dmangola          #+#    #+#             */
+/*   Updated: 2021/05/16 16:22:21 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "../../includes/push_swap.h"
 
-#include "checker.h"
-
-typedef struct		s_args
+int		ft_checkquotes(char *argument)
 {
-	int	*curr;
-	int len;
-	int	min;
-	int	max;
-}					t_args;
+	int n;
 
-typedef struct		s_info
-{
-	int				len;
-	int				max;
-	int				min;
-	int				pos_max;
-	int				pos_min;
-}					t_info;
-
-typedef struct		s_a
-{
-	t_args		args;
-	t_info		info_a;
-	t_info		info_b;
-}					t_a;
-
-#endif
+	n = 0;
+	while (argument[n])
+	{
+		if (argument[0] == '-')
+        	n++;
+		if (!ft_isdigit(argument[n]))
+			return(1);
+		n++;
+	}
+	return(0);
+}

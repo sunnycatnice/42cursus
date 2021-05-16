@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphic.c                                          :+:      :+:    :+:   */
+/*   ft_graphic.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -38,9 +38,9 @@ void	ft_print_start_ck(void)
 	printf("| _ \\| | | |/ __| | || |     / __| \\ \\((_)/ /(_)_\\(_)| _ \\ \n");
 	printf("|  _/| |_| |\\__ \\ | __ |     \\__ \\  \\ \\/\\/ /  / _ \\  |  _/ \n");
 	printf("|_|   \\___/ |___/ |_||_|_____|___/   \\_/\\_/  /_/ \\_\\ |_|   \n");
-	printf("                       |_____|                             \n");
+	printf("                       |_____|                             \n\n");
 	ft_red_color();
-	printf("              on fire              \n\n");
+	printf("                       on fire                             \n\n");
 	ft_green_color();
 	printf("Starting CHECKER...\n\n");
 	ft_reset_color();
@@ -57,9 +57,9 @@ void	ft_print_start_ps(void)
 	printf("| _ \\| | | |/ __| | || |     / __| \\ \\((_)/ /(_)_\\(_)| _ \\ \n");
 	printf("|  _/| |_| |\\__ \\ | __ |     \\__ \\  \\ \\/\\/ /  / _ \\  |  _/ \n");
 	printf("|_|   \\___/ |___/ |_||_|_____|___/   \\_/\\_/  /_/ \\_\\ |_|   \n");
-	printf("                       |_____|                             \n");
+	printf("                       |_____|                             \n\n");
 	ft_red_color();
-	printf("              on fire              \n\n");
+	printf("                       on fire                             \n\n");
 	ft_green_color();
 	printf("Starting PUSH_SWAP...\n\n");
 	ft_reset_color();

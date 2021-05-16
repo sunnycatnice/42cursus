@@ -13,9 +13,20 @@
 #ifndef HEADER_H
 # define HEADER_H
 
+# include "checker.h"
+# include "push_swap.h"
+# include "struct.h"
+# include <stdio.h>
+
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
+/*
+** Graphic part
+*/
+void	ft_red_color(void);
+void	ft_green_color(void);
+void	ft_reset_color(void);
 void	ft_print_start_ck(void);
-void	ft_perror(char *error);
+void	ft_print_start_ps(void);
 
 #endif
