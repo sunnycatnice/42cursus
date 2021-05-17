@@ -109,27 +109,33 @@ int main(int argc, char **argv)
 			i++;
 			x++;
 		}
+		i = 0;
+
+		//ft_find_minmax_a(&all, &a);
+
 		
 		printf("***** UNORDERED stack a:\n"); 
 		ft_print_stack(&all, &a);
+		ft_strategy(&all, &a);		//in utils
 		
-		ft_bubblesort(&all, &a);
-		printf("***** ORDERED stack a: \n"); 
+		// ft_bubblesort(&all, &a);
+		// printf("***** ORDERED stack a: \n"); 
+		// ft_print_stack(&all, &a);
+
+		// ft_rotate(&all, &a);
+		// printf("***** ROTATE stack a: \n");
+		printf("nuova stack:\n");	//per ora funziona con 2 e 3 numeri
 		ft_print_stack(&all, &a);
 
-		ft_rotate(&all, &a);
-		printf("***** ROTATE stack a: \n"); 
-		ft_print_stack(&all, &a);
+		// ft_rotate_rev(&all, &a);
+		// printf("***** REVERSE ROTATE stack a: \n"); 
+		// ft_print_stack(&all, &a);
 
-		ft_rotate_rev(&all, &a);
-		printf("***** REVERSE ROTATE stack a: \n"); 
-		ft_print_stack(&all, &a);
+		// ft_rotate_rev(&all, &a);
+		// printf("***** REVERSE ROTATE stack a: \n"); 
+		// ft_print_stack(&all, &a);
 
-		ft_rotate_rev(&all, &a);
-		printf("***** REVERSE ROTATE stack a: \n"); 
-		ft_print_stack(&all, &a);
-
-		printf("moves: %d\n", all.moves);
+		// printf("moves: %d\n", all.moves);
 	}
 	return (0);
 }

@@ -20,6 +20,7 @@ SRCS_UTILS = 	ft_atoi.c \
 				rotate.c \
 				swap_s.c \
 				ft_graphic.c \
+				three_nbrs.c
 
 CHECKER_PREFIX = $(addprefix ${DIR_CHECKER}/, ${SRCS_CHECKER})
 PUSH_SWAP_PREFIX = $(addprefix ${DIR_PUSH_SWAP}/, ${SRCS_PUSH_SWAP})

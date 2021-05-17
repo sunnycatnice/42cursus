@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   three_nbrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 12:38:27 by dmangola          #+#    #+#             */
-/*   Updated: 2021/05/05 12:38:28 by dmangola         ###   ########.fr       */
+/*   Created: 2021/05/17 12:29:16 by dmangola          #+#    #+#             */
+/*   Updated: 2021/05/17 12:29:38 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "../../includes/push_swap.h"
 
-# include "checker.h"
-# include "push_swap.h"
-# include <stdio.h>
+void	ft_three_nbrs(t_all *all, t_stack *a)
+{
+	ft_find_minmax_a(all, a);
 
-int	ft_atoi(const char *str);
-int	ft_isdigit(int c);
-/*
-** Graphic part
-*/
-void	ft_red_color(void);
-void	ft_green_color(void);
-void	ft_reset_color(void);
-void	ft_print_start_ck(void);
-void	ft_print_start_ps(void);
-
-#endif
+	printf("tre numeri. il massimo e' %d e il minimo e' %d\n", a->max, a->min);
+} 
