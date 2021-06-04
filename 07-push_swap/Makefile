@@ -1,59 +1,30 @@
-NAME_CK = checker
-NAME_PS = push_swap
+CHECKER_DIR=./checker_dir
+CHECKER=${CHECKER_DIR}/checker
+PUSH_SWAP_DIR=./push_swap_dir
+PUSH_SWAP=${PUSH_SWAP_DIR}/push_swap
+MAKE=make -C
+MAKE_F=make fclean -C
+MAKE_C=make clean -C
+MOVE=mv ${CHECKER} ${PUSH_SWAP} .
+RM=rm -rf
+COPY_CHECKER = cp ${CHECKER} .
+COPY_PUSH_SWAP = cp ${PUSH_SWAP} .
 
-LIBFT = libft.a
-
-DIR_SRCS = srcs
-DIR_CHECKER = checker
-DIR_PUSH_SWAP = push_swap
-DIR_UTILS = utils
-
-SRCS_CHECKER = 	checker.c
-
-SRCS_PUSH_SWAP =	push_swap.c \
-					initializer.c \
-
-SRCS_UTILS = 	ft_atoi.c \
-				atoi_new.c \
-				ft_checkquotes.c \
-				reader.c \
-				rotate.c \
-				swap_s.c \
-				ft_graphic.c \
-				three_nbrs.c
-
-CHECKER_PREFIX = $(addprefix ${DIR_CHECKER}/, ${SRCS_CHECKER})
-PUSH_SWAP_PREFIX = $(addprefix ${DIR_PUSH_SWAP}/, ${SRCS_PUSH_SWAP})
-UTILS_PREFIX = $(addprefix ${DIR_UTILS}/, $(SRCS_UTILS))
-
-SRCS_CHECKER_PREFIX = $(addprefix ${DIR_SRCS}/, ${CHECKER_PREFIX})
-SRCS_PUSH_SWAP_PREFIX = $(addprefix ${DIR_SRCS}/, ${PUSH_SWAP_PREFIX})
-SRCS_UTILS_PREFIX = $(addprefix ${DIR_SRCS}/, $(UTILS_PREFIX))
-
-OBJS_CHECKER = $(SRCS_CHECKER_PREFIX:.c=.o)
-OBJS_PUSH_SWAP = $(SRCS_PUSH_SWAP_PREFIX:.c=.o)
-OBJS_UTILS = $(SRCS_UTILS_PREFIX:.c=.o)
-
-all: $(NAME_CK) $(NAME_PS)
-
-.o.c: gcc -Wall -Wextra -Werror $<
-
-$(NAME_CK): $(OBJS_CHECKER) $(OBJS_UTILS) $(LIBFT)
-	gcc -Wall -Wextra -Werror -g $(OBJS_CHECKER) $(OBJS_UTILS) $(LIBFT) -o $(NAME_CK)
-
-$(NAME_PS): $(OBJS_PUSH_SWAP) $(OBJS_UTILS) $(LIBFT)
-	gcc -Wall -Wextra -Werror -g $(OBJS_PUSH_SWAP) $(OBJS_UTILS) $(LIBFT) -o $(NAME_PS)
-
-$(LIBFT):
-	make -C ./libft
-	cp ./libft/$(LIBFT) .
+all:
+	${MAKE} ${CHECKER_DIR}
+	${MAKE} ${PUSH_SWAP_DIR}
+	${COPY_CHECKER}
+	${COPY_PUSH_SWAP}
 
 clean:
-	rm -rf $(OBJS_CHECKER) $(OBJS_PUSH_SWAP) $(OBJS_UTILS) $(LIBFT)
-	make clean -C libft
-fclean: clean
-	rm -rf $(NAME_CK) $(NAME_PS)
-	make fclean -C libft
+	${MAKE_C} ${CHECKER_DIR}
+	${MAKE_C} ${PUSH_SWAP_DIR}
+
+fclean:
+	${MAKE_F} ${CHECKER_DIR}
+	${MAKE_F} ${PUSH_SWAP_DIR}
+	${RM} push_swap
+	${RM} checker
 
 re: fclean all
 
