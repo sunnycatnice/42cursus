@@ -18,7 +18,7 @@ void	check_args(int ac, char **av)
 	if (ac != 5)
 	{
 		ft_putstr_fd("Correct syntax: ./pipex inputfile cmd1 cmd2 outputfile \
-				\n");
+				\n", 2);
 	}
 }
 
