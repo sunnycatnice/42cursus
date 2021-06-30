@@ -1,31 +1,35 @@
-CHECKER_DIR=./checker_dir
-CHECKER=${CHECKER_DIR}/checker
-PUSH_SWAP_DIR=./push_swap_dir
-PUSH_SWAP=${PUSH_SWAP_DIR}/push_swap
-MAKE=make -C
-MAKE_F=make fclean -C
-MAKE_C=make clean -C
-MOVE=mv ${CHECKER} ${PUSH_SWAP} .
-RM=rm -rf
-COPY_CHECKER = cp ${CHECKER} .
-COPY_PUSH_SWAP = cp ${PUSH_SWAP} .
+NAME = push_swap
 
-all:
-	${MAKE} ${CHECKER_DIR}
-	${MAKE} ${PUSH_SWAP_DIR}
-	${COPY_CHECKER}
-	${COPY_PUSH_SWAP}
+RM = rm -rf
+
+CC = gcc
+
+FLAGS = -Wall -Wextra -Werror
+
+FILES =	source/checkab.c \
+		source/error_add.c \
+		source/libft1.c \
+		source/libft2.c \
+		source/libft3.c \
+		source/libft4.c \
+		source/num_add.c \
+		source/ops.c \
+		source/sort_3_num.c \
+		source/sort_6_num.c \
+		source/sort_x_num.c
+
+
+all:	$(NAME)
+
+$(NAME):
+		$(CC) $(FLAGS) push_swap.c $(FILES) -o $(NAME)
 
 clean:
-	${MAKE_C} ${CHECKER_DIR}
-	${MAKE_C} ${PUSH_SWAP_DIR}
+		rm $(NAME)
 
-fclean:
-	${MAKE_F} ${CHECKER_DIR}
-	${MAKE_F} ${PUSH_SWAP_DIR}
-	${RM} push_swap
-	${RM} checker
+fclean: clean
+		$(RM) all
 
-re: fclean all
+re:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY:	all clean fclean re

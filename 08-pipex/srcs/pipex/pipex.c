@@ -25,6 +25,7 @@ void	check_args(int ac, char **av)
 int	main(int ac, char **av, char **envp)
 {
 	pid_t	pid;
+	int p[2];
 
 	check_args(ac, av);
 	if (pipe(p) == -1)

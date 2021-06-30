@@ -28,6 +28,8 @@ PIPEX_PATH = $(addprefix $(DIR_SRCS)/, $(DIR_PIPEX))
 MINILIBFT_FILES = ft_putstr_fd.c \
 				   ft_strcat.c \
 				   ft_strcmp.c \
+				   ft_strlen.c \
+				   ft_putchar_fd.c \
 
 PIPEX_FILES  = pipex.c \
 			   utils.c \
@@ -41,19 +43,19 @@ OBJ = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME) : $(SRCS)
-	echo Compiling: $(NAME)
+	@echo Compiling: $(NAME)
 	$(CC) $(FLAGS) $(HPATH) $(SRCS) -o $(NAME)
-	echo Compiled successfully
+	@echo Compiled successfully
 
 clean:
-	echo Deleting objects files...
+	@echo Deleting objects files...
 	@rm -f $(OBJ)
-	echo Deleting done
+	@echo Deleting done!
 
 fclean: clean
-	echo Deleting $(NAME)
+	@echo Deleting $(NAME)
 	@rm -f $(NAME)
-	echo Deleting done !
+	@echo Deleting done!
 
 re: fclean all
 
