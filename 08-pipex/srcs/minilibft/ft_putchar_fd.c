@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:12:09 by dmangola          #+#    #+#             */
-/*   Updated: 2021/06/14 15:12:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/06/17 14:29:43 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../../includes/pipex.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 17:06:36 by dmangola          #+#    #+#             */
-/*   Updated: 2021/06/17 14:29:54 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/01/12 18:41:33 by bde-luca          #+#    #+#             */
+/*   Updated: 2021/07/06 13:42:10 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
-	int	j;
+	size_t	i;
 
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] != '\0')
+	i = 0;
+	if (!dstsize)
+		return (ft_strlen(src));
+	if (!dst || !src)
+		return (0);
+	while (i < dstsize - 1 && src[i])
 	{
-		s1[i + j] = s2[j];
-		j++;
+		dst[i] = src[i];
+		i++;
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	dst[i] = '\0';
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }

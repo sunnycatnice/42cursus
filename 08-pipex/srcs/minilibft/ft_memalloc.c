@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 17:06:36 by dmangola          #+#    #+#             */
-/*   Updated: 2021/06/17 14:29:54 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/07/05 19:31:54 by bde-luca          #+#    #+#             */
+/*   Updated: 2021/07/05 19:32:08 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+void	*ft_memalloc(size_t size)
 {
-	int	i;
-	int	j;
+	char	*ptr;
 
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] != '\0')
+	ptr = NULL;
+	if (size <= 0)
+		return (NULL);
+	if ((ptr = (char *)malloc(size)))
 	{
-		s1[i + j] = s2[j];
-		j++;
+		ft_bzero(ptr, size);
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	return ((void *)ptr);
 }

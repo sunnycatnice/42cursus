@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 17:06:36 by dmangola          #+#    #+#             */
-/*   Updated: 2021/06/17 14:29:54 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/06/30 17:49:34 by bde-luca          #+#    #+#             */
+/*   Updated: 2021/07/06 18:28:56 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+void	ft_strdel(char **as)
 {
-	int	i;
-	int	j;
-
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] != '\0')
+	if (as && *as)
 	{
-		s1[i + j] = s2[j];
-		j++;
+		free(*as);
+		*as = NULL;
 	}
-	s1[i + j] = '\0';
-	return (s1);
 }

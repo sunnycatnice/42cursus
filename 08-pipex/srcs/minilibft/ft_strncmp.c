@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 17:06:36 by dmangola          #+#    #+#             */
-/*   Updated: 2021/06/17 14:29:54 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/06/12 17:07:31 by dmangola          #+#    #+#             */
+/*   Updated: 2021/06/17 14:30:06 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
-	int	j;
-
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] != '\0')
+	if (n == 0)
+		return (0);
+	while (*s1 && *s1 == *s2 && --n)
 	{
-		s1[i + j] = s2[j];
-		j++;
+		s1++;
+		s2++;
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	return (*s1 - *s2);
 }

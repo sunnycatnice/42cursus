@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 17:07:31 by dmangola          #+#    #+#             */
-/*   Updated: 2021/06/12 17:07:53 by dmangola         ###   ########.fr       */
+/*   Created: 2021/01/12 18:41:33 by bde-luca          #+#    #+#             */
+/*   Updated: 2021/07/06 13:45:57 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minilibft.h>
+#include "../../includes/pipex.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+size_t		ft_strcpy(char *dst, const char *src)
 {
-	if (n == 0)
+	size_t	i;
+
+	i = 0;
+	if (!dst || !src)
 		return (0);
-	while (*s1 && *s1 == *s2 && --n)
+	while (src[i])
 	{
-		s1++;
-		s2++;
+		dst[i] = src[i];
+		i++;
 	}
-	return (*s1 - *s2);
+	dst[i] = '\0';
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }

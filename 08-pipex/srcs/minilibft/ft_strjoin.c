@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 17:06:36 by dmangola          #+#    #+#             */
-/*   Updated: 2021/06/17 14:29:54 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/06/30 17:44:33 by bde-luca          #+#    #+#             */
+/*   Updated: 2021/07/06 13:46:56 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	j;
+	char	*ptr;
+	int		i;
 
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] != '\0')
+	ptr = NULL;
+	ptr = (char *) malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (s1 && s2 && ptr)
 	{
-		s1[i + j] = s2[j];
-		j++;
+		ft_strcpy(ptr, s1);
+		if (ft_strlen(s1) == 0)
+			i = 0;
+		else
+			i = ft_strlen(s1) - 1;
+		ft_strcat(&ptr[i], s2);
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	return (ptr);
 }
