@@ -15,3 +15,4 @@
 | ft_server | `100` |
 | cub3d | `101` |
 | libasm | `100` |
+| push_swap | `88` |
