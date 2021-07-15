@@ -6,7 +6,7 @@
 /*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 19:15:10 by bde-luca          #+#    #+#             */
-/*   Updated: 2021/07/06 13:55:47 by bde-luca         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:09:12 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strnew(size_t size)
 {
 	char	*ptr;
 
-	ptr = (char*)ft_memalloc((size + 1) * sizeof(char));
+	ptr = (char *)ft_memalloc((size + 1) * sizeof(char));
 	return (ptr);
 }
 
@@ -70,7 +70,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	ptr = NULL;
-	if (s && (ptr = (char *)malloc(sizeof(char) * (len + 1))))
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (s && ptr)
 	{
 		while (i < len)
 		{

@@ -12,7 +12,7 @@
 
 #include "../../includes/pipex.h"
 
-size_t		ft_strcpy(char *dst, const char *src)
+size_t	ft_strcpy(char *dst, const char *src)
 {
 	size_t	i;
 

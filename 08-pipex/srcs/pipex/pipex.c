@@ -6,67 +6,68 @@
 /*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:18:36 by bde-luca          #+#    #+#             */
-/*   Updated: 2021/07/06 19:35:21 by bde-luca         ###   ########.fr       */
+/*   Updated: 2021/07/15 15:24:18 by bde-luca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-void ft_call_father(char **argv, t_data *data)
+void	ft_check_args(t_data *data, char **argv, char **envp)
 {
-	int		n;					//byte letti in read
-	char	line[MAXLINE];		//buffer per lettura
-
-	// waitpid(0, data->pipe_fd, 0);	//il primo 0 e' il pid child e il secondo zero e' l'exit del processo indicato (child)
-		//si puo' mettere anche wait(NULL) che aspetta che tutti i processi child abbiano exit(0) per eseguire il parent.
-	close(data->pipe_fd[1]);	//chiude la scrittura
-	n = read(data->pipe_fd[0], line, MAXLINE);		//legge dall'estremo di lettura della pipe
-	write(STDOUT_FILENO, line, n);		//scrive in output quello che legge dalla pipe
-	printf("father programma: %s\n", argv[0]);
-	// open_file(data->file_2, envp, O_RDWR | O_CREAT | O_TRUNC, 777);
+	ft_parse_cmd_1(data, argv, envp);
+	ft_parse_cmd_2(data, argv, envp);
+	ft_checkfile_1(data, argv, envp);
+	ft_checkfile_2(data, argv, envp);
 }
 
-void ft_call_child(char **argv, t_data *data)
+void	ft_call_parent(pid_t pid, t_data *data, char **envp)
 {
-	close(data->pipe_fd[0]);	//chiude la lettura
-	write(data->pipe_fd[1], "hello world\n", 12);	//scrive sull'estremo di scrittura della pipe
-	printf("child programma: %s\n", argv[0]);
-	// open_file(data->file_1, envp, O_RDONLY, 0);
+	int	status;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		ft_exec_cmd_2(data, envp);
+		exit(1);
+	}
+	else
+	{
+		close(data->pipe_fd[0]);
+		close(data->pipe_fd[1]);
+		waitpid(pid, &status, 0);
+	}
 }
 
-int	main(int argc, char **argv, char **envp)		//aggiungere char **envp quando serve int argc, char **argv
+void	ft_init(t_data *data)
+{
+	data->path_cmd_1 = NULL;
+	data->path_cmd_2 = NULL;
+	data->i = 0;
+	data->x = 0;
+}
+
+int	main(int argc, char **argv, char **envp)
 {
 	pid_t	pid;
 	t_data	data;
 
 	if (argc == 5)
 	{
-		ft_parse_cmd_1(&data, argv, envp);
-		ft_parse_cmd_2(&data, argv, envp);
-		ft_checkfile_1(&data, argv, envp);
-		ft_checkfile_2(&data, argv, envp);
-
-		if (pipe(data.pipe_fd) < 0)		//CREA LA PIPE
-		{
-			perror("pipe\n");
+		ft_init(&data);
+		ft_check_args(&data, argv, envp);
+		if (pipe(data.pipe_fd) < 0)
 			exit(1);
-		}
-		if ((pid = fork()) < 0)		//CREA PARENT/CHILD CON FORK
-		{
-			perror("fork\n");
+		pid = fork();
+		if (pid < 0)
 			exit(1);
-		}
-
-		printf("argc: %d argv: %s pid: %d\n", argc, argv[1], pid);
-		waitpid(0, data.pipe_fd, 0);	//il primo 0 e' il pid child e il secondo zero e' l'exit del processo indicato (child)
-		//si puo' mettere anche wait(NULL) che aspetta che tutti i processi child abbiano exit(0) per eseguire il parent.
-
 		if (pid == 0)
-			ft_call_child(argv, &data);	//dopo aggiungere envp
+			ft_exec_cmd_1(&data, envp);
 		else
-			ft_call_father(argv, &data);	//dopo aggiungere envp
+			ft_call_parent(pid, &data, envp);
 	}
 	else
 		ft_putstr_fd("Format: ./pipex infile \"cmd1\" \"cmd2\" outfile\n", 2);
+	free(data.path_cmd_1);
+	free(data.path_cmd_2);
 	return (0);
 }
