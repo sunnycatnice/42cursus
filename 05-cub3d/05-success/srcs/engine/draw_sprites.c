@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 17:30:21 by dmangola          #+#    #+#             */
-/*   Updated: 2021/04/26 17:30:27 by dmangola         ###   ########.fr       */
+/*   Created: 2021/03/16 11:23:36 by gfratini          #+#    #+#             */
+/*   Updated: 2021/04/08 17:43:27 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	drw_init(t_vars *cub, double *i_d, int i)
 		cub->eng.dir_x * cub->eng.plane_y));
 	cub->drw.transf[0] = (double)(*i_d * (cub->eng.dir_y * cub->drw.s_c[0] - \
 		cub->eng.dir_x * cub->drw.s_c[1]));
-	cub->drw.transf[1] = (double)((- *i_d * (-cub->eng.plane_y * cub->drw.s_c[0] \
-	 + cub->eng.plane_x * cub->drw.s_c[1])));
+	cub->drw.transf[1] = (double)((- *i_d * (-cub->eng.plane_y * \
+		cub->drw.s_c[0] + cub->eng.plane_x * cub->drw.s_c[1])));
 	cub->drw.s_s[1] = (int)((cub->parse.x_res / 2) * \
 		(1 + cub->drw.transf[0] / cub->drw.transf[1]));
 	cub->drw.s_s[0] = abs((int)(cub->parse.y_res / cub->drw.transf[1]));

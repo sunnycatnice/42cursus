@@ -47,24 +47,24 @@ void	ft_print_start(void);
 /*
 ** parse_args.c
 */
-void			parse_res(char **args, t_parse *config);
-void			parse_path(char **args, t_parse *config);
-void			parse_color(char **args, t_parse *config);
+void	parse_res(char **args, t_parse *config);
+void	parse_path(char **args, t_parse *config);
+void	parse_color(char **args, t_parse *config);
 
 /*
 ** parse_map.c
 */
-void			parse_map(int fd, t_parse *config);
+void	parse_map(int fd, t_parse *config);
 
 /*
 ** parse_utils.c
 */
-int				matrix_len(char **matrix);
-void			ft_perror(char *error);
-void			free_matrix(char **ptr);
-int				is_map(char *line);
-char			*ft_append(char *dst, char *src);
-void			check_commas(char *color);
-void			check_res(char **args);
+int		matrix_len(char **matrix);
+void	ft_perror(char *error);
+void	free_matrix(char **ptr);
+int		is_map(char *line);
+char	*ft_append(char *dst, char *src);
+void	check_commas(char *color);
+void	check_res(char **args);
 
 #endif

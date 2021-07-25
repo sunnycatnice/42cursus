@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 17:30:37 by dmangola          #+#    #+#             */
-/*   Updated: 2021/04/26 17:35:00 by dmangola         ###   ########.fr       */
+/*   Created: 2021/03/10 14:50:15 by gfratini          #+#    #+#             */
+/*   Updated: 2021/04/08 17:46:18 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ void	drawtex(t_vars *cub, int l_h, int d_s, int d_e)
 	while (d_s < d_e)
 	{
 		t_p += (1.0 * t_h / l_h);
-		put_pixel(&cub->img, cub->eng.x, d_s, ((int *)addr)
-		[t_h * ((int)t_p & (t_h - 1)) + t_x]);
+		put_pixel(&cub->img, cub->eng.x, d_s, ((int *)addr) \
+			[t_h * ((int)t_p & (t_h - 1)) + t_x]);
 		d_s++;
 	}
 }
