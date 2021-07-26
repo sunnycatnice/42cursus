@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_isfigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 19:31:54 by bde-luca          #+#    #+#             */
-/*   Updated: 2021/07/05 19:32:08 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/01/12 16:37:59 by dmangola          #+#    #+#             */
+/*   Updated: 2021/01/12 16:49:36 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
-
-void	*ft_memalloc(size_t size)
+int	ft_isdigit(int c)
 {
-	char	*ptr;
-
-	ptr = NULL;
-	if (size <= 0)
-		return (NULL);
-	ptr = (char *)malloc(size);
-	if (ptr)
-	{
-		ft_bzero(ptr, size);
-	}
-	return ((void *)ptr);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

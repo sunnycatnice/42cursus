@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pipex.h"
+#include "../../includes/philo.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pipex.h"
+#include "../../includes/philo.h"
 
 size_t	ft_strcpy(char *dst, const char *src)
 {

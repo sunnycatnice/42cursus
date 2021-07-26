@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pipex.h"
+#include "../../includes/philo.h"
 
 void	ft_bzero(void *s, size_t n)
 {

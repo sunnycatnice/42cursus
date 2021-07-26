@@ -8,18 +8,17 @@ FLAGS = -Wall -Wextra -Werror -g
 
 DIR_SRCS = srcs
 DIR_MINILIBFT= minilibft
-DIR_PIPEX = program
+DIR_PHILO = program
 DIR_OBJS = objs
 CURRENT_FOLDER = $(shell pwd)
 OBJS_PATH = $(addprefix $(CURRENT_FOLDER)/, $(DIR_OBJS))
 
 MINILIBFT_PATH = $(addprefix $(DIR_SRCS)/, $(DIR_MINILIBFT))
-PIPEX_PATH = $(addprefix $(DIR_SRCS)/, $(DIR_PIPEX))
+PHILO_PATH = $(addprefix $(DIR_SRCS)/, $(DIR_PHILO))
 
 MINILIBFT_FILES =	ft_putstr_fd.c \
 					ft_memalloc.c \
 					ft_strjoin.c \
-					ft_strsplit.c \
 					ft_strcat.c \
 				 	ft_strncmp.c \
 					ft_strlen.c \
@@ -29,20 +28,15 @@ MINILIBFT_FILES =	ft_putstr_fd.c \
 					ft_strlcpy.c \
 					ft_split.c \
 					ft_strdup.c \
+					ft_isdigit.c \
 
-PIPEX_FILES	=	pipex.c \
-				utils.c \
-				parse_cmd_1.c \
-				parse_cmd_2.c \
-				check_files.c \
-				string.c \
-				exec_cmds.c \
+PHILO_FILES	=	main.c \
 
 SRCS_MINILIBFT = $(addprefix $(MINILIBFT_PATH)/, $(MINILIBFT_FILES))
-SRCS_PIPEX = $(addprefix $(PIPEX_PATH)/, $(PIPEX_FILES))
-SRCS = $(SRCS_MINILIBFT) $(SRCS_PIPEX)
+SRCS_PHILO = $(addprefix $(PHILO_PATH)/, $(PHILO_FILES))
+SRCS = $(SRCS_MINILIBFT) $(SRCS_PHILO)
 
-OBJS_FILES = $(PIPEX_FILES:.c=.o) $(MINILIBFT_FILES:.c=.o)
+OBJS_FILES = $(PHILO_FILES:.c=.o) $(MINILIBFT_FILES:.c=.o)
 OBJS = $(addprefix $(DIR_OBJS)/, $(OBJS_FILES))
 
 all: $(NAME)
