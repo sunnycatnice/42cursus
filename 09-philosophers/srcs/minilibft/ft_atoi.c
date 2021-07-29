@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isfigit.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 16:37:59 by dmangola          #+#    #+#             */
-/*   Updated: 2021/01/12 16:49:36 by dmangola         ###   ########.fr       */
+/*   Created: 2021/07/27 16:36:29 by dmangola          #+#    #+#             */
+/*   Updated: 2021/07/27 16:36:35 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-int	ft_isdigit(char c)
+int	ft_atoi(const char *str)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
+		i++;
+	while (str[i])
+	{
+		n = n * 10 + (str[i] - 48);
+		if (str[i] <= '0' || str[i] >= '9')
+			return (0);
+		i++;
+	}
+	return (n);
 }
