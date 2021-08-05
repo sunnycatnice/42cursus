@@ -19,7 +19,7 @@ void	ft_init(t_philo *philo)
 	philo->todie = 0;
 	philo->toeat = 0;
 	philo->tosleep = 0;
-	philo->n_musteat = 0;
+	philo->n_musteat = -1;
 	philo->i = 0;
 }
 
@@ -65,8 +65,13 @@ int	ft_parser_checker(int ac, char **av, t_philo *philo)
 	philo->todie = ft_atoi(av[2]);
 	philo->toeat = ft_atoi(av[3]);
 	philo->tosleep = ft_atoi(av[4]);
+	printf("%d\n", philo->n_philo);
+	printf("%d\n", philo->todie);
+	printf("%d\n", philo->toeat);
+	printf("%d\n", philo->tosleep);
 	if (ac == 6)
 		philo->n_musteat = ft_atoi(av[5]);
+	printf("%d\n", philo->n_musteat);
 	ft_checker(philo);
 	return (0);
 }
