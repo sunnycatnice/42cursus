@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   check_by_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 19:31:54 by bde-luca          #+#    #+#             */
-/*   Updated: 2021/07/05 19:32:08 by bde-luca         ###   ########.fr       */
+/*   Created: 2021/08/12 17:41:01 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 17:57:50 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-void	*ft_memalloc(size_t size)
+int	check_bychar(char const *c)
 {
-	char	*ptr;
+	int	i;
 
-	ptr = NULL;
-	if (size <= 0)
-		return (NULL);
-	ptr = (char *)malloc(size);
-	if (ptr)
+	i = 0;
+	while (c[i])
 	{
-		ft_bzero(ptr, size);
+		if (c[i] >= '0' && c[i] <= '9')
+			i++;
+		else
+			return (1);
 	}
-	return ((void *)ptr);
+	return (0);
 }

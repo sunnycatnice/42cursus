@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:28:53 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 18:28:54 by dmangola         ###   ########.fr       */
+/*   Created: 2021/07/15 18:27:25 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:34 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-size_t	ft_strlen(const char *s1)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	size_t	count;
-
-	count = 0;
-	while (*(s1 + count) != '\0')
-		count++;
-	return (count);
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

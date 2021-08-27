@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 17:16:35 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 17:16:37 by dmangola         ###   ########.fr       */
+/*   Created: 2021/07/15 18:27:05 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:33 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../philosophers.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned char	*i;
-
-	i = (unsigned char *)s;
-	while (n > 0)
-	{
-		*i = '\0';
-		i++;
-		n--;
-	}
+	write(fd, &c, 1);
 }

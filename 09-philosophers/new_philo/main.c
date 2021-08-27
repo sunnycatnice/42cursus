@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "philosophers.h"
 
 static void	*notinfinite_loop(void *state_v)
 {

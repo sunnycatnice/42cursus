@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   check_by_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:29:11 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 18:29:13 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/12 17:41:01 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 17:57:50 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../philosophers.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	check_bychar(char const *c)
 {
-	if (n == 0)
-		return (0);
-	while (*s1 && *s1 == *s2 && --n)
+	int	i;
+
+	i = 0;
+	while (c[i])
 	{
-		s1++;
-		s2++;
+		if (c[i] >= '0' && c[i] <= '9')
+			i++;
+		else
+			return (1);
 	}
-	return (*s1 - *s2);
+	return (0);
 }

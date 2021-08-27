@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   is_digit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:28:14 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 18:28:16 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/12 17:36:03 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 17:51:58 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-char	*ft_strdup(const char *s1)
+int	ft_isdigit(char c)
 {
-	size_t		len;
-	size_t		i;
-	char		*dest;
-
-	i = 0;
-	len = ft_strlen(s1);
-	dest = (char *)malloc(len + 1);
-	if (dest == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

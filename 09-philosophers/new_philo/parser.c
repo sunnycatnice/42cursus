@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "philosophers.h"
 
 void	ft_print_start_msg(void)
 {

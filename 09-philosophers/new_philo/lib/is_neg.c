@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   is_neg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:27:43 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 18:27:45 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/12 17:35:21 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 17:52:01 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../philosophers.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+int	is_neg(char c)
 {
-	int	i;
-	int	j;
-
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] != '\0')
-	{
-		s1[i + j] = s2[j];
-		j++;
-	}
-	s1[i + j] = '\0';
-	return (s1);
+	if (c == '-')
+		return (-1);
+	return (1);
 }

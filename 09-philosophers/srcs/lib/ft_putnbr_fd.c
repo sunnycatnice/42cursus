@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:28:42 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 18:28:43 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/04 13:20:46 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:35 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	ft_putnbr_fd(uint64_t n, int fd)
 {
-	size_t	i;
+	char	str[13];
+	int		length;
 
-	i = 0;
-	if (!dstsize)
-		return (ft_strlen(src));
-	if (!dst || !src)
-		return (0);
-	while (i < dstsize - 1 && src[i])
+	if (n == 0)
+		str[0] = '0';
+	length = 0;
+	while (n != 0)
 	{
-		dst[i] = src[i];
-		i++;
+		str[length++] = '0' + (n % 10);
+		n = (n / 10);
 	}
-	dst[i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	if (length > 0)
+		length--;
+	while (length >= 0)
+		write(fd, &str[length--], 1);
+	write(1, "\t", 1);
 }

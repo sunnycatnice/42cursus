@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   is_digit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:27:05 by dmangola          #+#    #+#             */
-/*   Updated: 2021/07/15 18:27:15 by dmangola         ###   ########.fr       */
+/*   Created: 2021/08/12 17:36:03 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 17:51:58 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo.h"
+#include "../philosophers.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_isdigit(char c)
 {
-	write(fd, &c, 1);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
