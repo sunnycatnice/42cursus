@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   is_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 18:27:05 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/12 18:50:33 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/12 17:35:32 by rpaderi           #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:28 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../includes/ashella.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	is_space(char c)
 {
-	write(fd, &c, 1);
+	if (c == '\t' || c == '\n' || c == '\r' || \
+		c == '\v' || c == '\f' || c == ' ')
+		return (1);
+	return (0);
 }

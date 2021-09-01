@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../includes/ashella.h"
 
 int	is_neg(char c)
 {

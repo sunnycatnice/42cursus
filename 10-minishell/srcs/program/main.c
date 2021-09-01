@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_digit.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:36:03 by rpaderi           #+#    #+#             */
-/*   Updated: 2021/08/12 17:51:58 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/08/28 17:33:00 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/28 17:33:02 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include <../../includes/ashella.h>
 
-int	ft_isdigit(char c)
+int main()
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	printf("PEPPERE");
+	return 0;
 }

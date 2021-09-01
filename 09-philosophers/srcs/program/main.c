@@ -45,6 +45,7 @@ static void	*monitor(void *philo_v)
 			show_msg(philo, DEAD_MSG);
 			pthread_mutex_unlock(&philo->mtx);
 			pthread_mutex_unlock(&philo->state->someone_died);
+			exit(0);
 			return ((void *)0);
 		}
 		pthread_mutex_unlock(&philo->mtx);

@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 12:40:45 by ncolomer          #+#    #+#             */
-/*   Updated: 2021/08/12 18:00:36 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/07/15 18:27:05 by dmangola          #+#    #+#             */
+/*   Updated: 2021/08/12 18:50:33 by rpaderi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../../includes/ashella.h"
 
-int
-	ft_strlen(char const *str)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-uint64_t
-	get_time(void)
-{
-	static struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
+	write(fd, &c, 1);
 }

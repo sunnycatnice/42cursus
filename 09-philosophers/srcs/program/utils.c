@@ -40,3 +40,7 @@ void	ft_usleep(int time)
 	while (get_time() < end)
 		usleep(time);
 }
+void ft_finish(void)
+{
+	exit(0);
+}
