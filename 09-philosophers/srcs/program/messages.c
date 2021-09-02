@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   messages.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/05 18:56:15 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/14 16:47:53 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/09/02 16:58:51 by dmangola          #+#    #+#             */
+/*   Updated: 2021/09/02 16:58:52 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	show_msg(t_philo *philo, int type)
 		{
 			printf("Everyone eat %d times. Stopping! ✅\n", \
 				philo->state->n_musteat);
-				exit (0);
+			exit (0);
 		}
 		else
 			write(1, get_message(type), ft_strlen(get_message(type)));

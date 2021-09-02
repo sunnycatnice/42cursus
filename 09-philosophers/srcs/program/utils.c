@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaderi <rpaderi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 12:40:45 by ncolomer          #+#    #+#             */
-/*   Updated: 2021/08/12 18:00:36 by rpaderi          ###   ########.fr       */
+/*   Created: 2021/09/02 16:59:23 by dmangola          #+#    #+#             */
+/*   Updated: 2021/09/02 16:59:32 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ft_usleep(int time)
 	while (get_time() < end)
 		usleep(time);
 }
-void ft_finish(void)
+
+void	ft_finish(void)
 {
 	exit(0);
 }
