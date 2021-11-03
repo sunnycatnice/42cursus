@@ -8,4 +8,5 @@ rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service Worker/Cache
 rm -rf ~/Library/Application\ Support/Slack/Service Worker/CacheStorage/*
 rm -rf ~/Library/Application\ Support/com.operasoftware.OperaGX/Service Worker/CacheStorage/*
 rm -rf ~/Library/Application\ Support/Slack/Cache/*
+rm -rf ~/Library/Application\ Support/Telegram\ Desktop/tdata
 rm -rf ~/Library/Application\ Support/com.operasoftware.OperaGX/Service\ Worker/CacheStorage/*
