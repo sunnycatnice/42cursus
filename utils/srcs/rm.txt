@@ -1,0 +1,12 @@
+~/Library/Caches/*
+/Users/dmangola/Library/Application\ Support/Code/User/*
+/Users/dmangola/Library/Application\ Support/Code/CachedExtensionVSIXs/*
+/Users/dmangola/Library/Application\ Support/Code/Cache/*
+/Users/dmangola/Library/Application\ Support/Code/CachedData/*
+/Users/dmangola/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/*
+/Users/dmangola/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/CacheStorage/*
+/Users/dmangola/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/*
+/Users/dmangola/Library/Application\ Support/com.operasoftware.OperaGX/Service Worker/CacheStorage/*
+/Users/dmangola/Library/Application\ Support/Slack/Cache/*
+/Users/dmangola/Library/Application\ Support/Telegram\ Desktop/tdata
+/Users/dmangola/Library/Application\ Support/com.operasoftware.OperaGX/Service\ Worker/CacheStorage/*

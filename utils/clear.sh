@@ -1,12 +1,17 @@
-rm -rf ~/Library/Caches/*
-rm -rf ~/Library/Application\ Support/Code/User/*
-rm -rf ~/Library/Application\ Support/Code/CachedExtensionVSIXs/*
-rm -rf ~/Library/Application\ Support/Code/Cache/*
-rm -rf ~/Library/Application\ Support/Code/CachedData/*
-rm -rf ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/*
-rm -rf ~/Library/Application\ Support/Google/Chrome/Default/Service Worker/CacheStorage/*
-rm -rf ~/Library/Application\ Support/Slack/Service Worker/CacheStorage/*
-rm -rf ~/Library/Application\ Support/com.operasoftware.OperaGX/Service Worker/CacheStorage/*
-rm -rf ~/Library/Application\ Support/Slack/Cache/*
-rm -rf ~/Library/Application\ Support/Telegram\ Desktop/tdata
-rm -rf ~/Library/Application\ Support/com.operasoftware.OperaGX/Service\ Worker/CacheStorage/*
+#!/bin/zsh
+
+FILE_RM="./srcs/rm.txt"
+test="$HOME/Libary/Caches/*"
+
+rm -f $test
+
+#function that reads from FILE_RM and removes the files
+function remove_files() {
+	while read line; do
+		rm -rf $line
+		echo "Removed $line"
+	done < $FILE_RM
+}
+
+
+remove_files
