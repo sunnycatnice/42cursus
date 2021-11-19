@@ -77,7 +77,11 @@ function copy_vimrc() {
 		fi
 	done < $FILE_VIMRC_TXT
 }
+
 copy_zsh
 copy_vimrc
+git config --global user.name "dani-MacOS"
+git config --global user.email "sio2guanoeleo@gmail.com"
+echo "Git configured!"
 
 exec zsh
