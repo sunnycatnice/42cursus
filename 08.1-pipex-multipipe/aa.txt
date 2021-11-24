@@ -1,0 +1,5 @@
+IAIDIDI 
+ls
+pwd
+ls
+sl
