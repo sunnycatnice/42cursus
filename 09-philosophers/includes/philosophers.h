@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 17:10:30 by dmangola          #+#    #+#             */
-/*   Updated: 2021/08/27 17:10:32 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:40:56 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void				take_forks(t_philo *philo);
 void				clean_forks(t_philo *philo);
 void				eat(t_philo *philo);
 void				show_msg(t_philo *philo, int type);
-void				ft_usleep(int time);
+void				ft_usleep(int time, int n_philo);;
 void				ft_putstr_star_fd(char *s, int fd);
 void				ft_printstars(char *str);
 

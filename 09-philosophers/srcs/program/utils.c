@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 16:59:23 by dmangola          #+#    #+#             */
-/*   Updated: 2021/09/02 16:59:32 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:41:18 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ uint64_t
 	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
 }
 
-void	ft_usleep(int time)
+void	ft_usleep(int time, int n_philo)
 {
 	unsigned long	end;
 
 	end = get_time() + time;
 	while (get_time() < end)
-		usleep(time);
+		usleep(n_philo);
 }
 
 void	ft_finish(void)

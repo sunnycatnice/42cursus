@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eating.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 16:58:08 by dmangola          #+#    #+#             */
-/*   Updated: 2021/09/02 16:58:09 by dmangola         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:40:11 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void
 	philo->last_eat = get_time();
 	philo->limit = philo->last_eat + philo->state->todie;
 	show_msg(philo, EAT_MSG);
-	ft_usleep(philo->state->toeat);
+	ft_usleep(philo->state->toeat, philo->state->n_philo);
 	philo->eat_count++;
 	philo->is_eating = 0;
 	pthread_mutex_unlock(&philo->mtx);
