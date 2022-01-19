@@ -6,12 +6,12 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/01/18 23:16:32 by dmangola         ###   ########.fr        #
+#    Updated: 2021/12/17 23:16:04 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Name
-NAME =				agenda
+NAME =				megaphone
 
 #Compiler
 CC = 				clang++
@@ -33,10 +33,7 @@ SRCDIR = 			./srcs
 OBJDIR =  			./objs
 INCDIR = 			./includes
 
-FILES =				main.cpp \
-					graphic.cpp \
-					contacts.cpp \
-					phonebook.cpp \
+FILES =				megaphone.cpp
 
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
