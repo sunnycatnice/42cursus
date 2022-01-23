@@ -6,27 +6,19 @@ FILE_ZSHRC_TXT="zshrc.txt"
 FILE_VIMRC="$HOME/.vimrc"
 FILE_VIMRC_TXT="vimrc.txt"
 
-#install vim
-if [ -d "~/.vimrc" ]; then
-	echo "Installing vim"
-	apt-get install vim
-	echo "Installed!"
-else
-	echo "Hai vim installato! Doing nothing..."
-fi
+#function to install vim if not installed
 
-#function that reads from check if FILE_ZSHRC is present, if not, it creates it
-function check_zsh() {
-	if [ -f $FILE_ZSHRC ]; then
-		echo "File $FILE_ZSHRC found!"
+function install_vim(){
+	if [ -d "~/.vimrc" ]; then
+		echo "Installing vim"
+		brew install vim
+		echo "Installed!"
 	else
-		echo "File $FILE_ZSHRC not found! Creating it..."
-		touch $FILE_ZSHRC
-		echo "File $FILE_ZSHRC created!"
+		echo "Hai vim installato! Doing nothing..."
 	fi
 }
 
-#funzione che controlla se il file FILE_VIMRC è presente, se non lo è, lo crea
+#funzione to check if vim config is already installed, if not, install it
 function check_vimrc() {
 	if [ -f $FILE_VIMRC ]; then
 		echo "File $FILE_VIMRC found!"
@@ -37,24 +29,12 @@ function check_vimrc() {
 	fi
 }
 
-#annamaria aggiunge gli alias alla fine del file .zshrc nella home, se ci sono già, non fa niente
-function annamaria() {
-	if grep -q "$1" $FILE_ZSHRC; then
-		echo "$1 found! doing nothing..."
-	else
-		echo $1 >> $FILE_ZSHRC
-	fi
+#function to change git config to use the default git config
+function git_config() {
+	git config --global user.name "dani-MacOS"
+	git config --global user.email "sio2guanoeleo@gmail.com"
+	echo "Git configured!"
 }
-
-#annabella aggiunge al file FILE_VIMRC le impostazioni di VIM, se ci sono già, non fa niente
-function annabella() {
-	if grep -q "$1" $FILE_VIMRC; then
-		echo "$1 found! doing nothing..."
-	else
-		echo $1 >> $FILE_VIMRC
-	fi
-}
-
 
 #funzione che legge linea per linea il file FILE_ZSHRC_TXT e lo copia in FILE_ZSHRC, se la linea è presente nel file FILE_ZSHRC, non fa niente
 function copy_zsh() {
@@ -109,10 +89,6 @@ function check_zsh_theme() {
 		#delete the line containing "ZSH_THEME=robbyrussell"
 		sed -i '' "s/robbyrussell/powerlevel10k\/powerlevel10k/" $FILE_ZSHRC
 		echo "ZSH_THEME changed!"
-	else
-		echo "ZSH_THEME=\"robbyrussell\" not found! Substituting it..."
-		echo "ZSH_THEME=\"powerlevel10k/powerlevel10k\"" >> $FILE_ZSHRC
-		echo "New ZSH_THEME=powerlevel10k/powerlevel10k created!"
 	fi
 }
 
@@ -127,17 +103,31 @@ function check_vscode_font() {
 	fi
 }
 
-#function to change git config to use the default git config
-function git_config() {
-	git config --global user.name "dani-MacOS"
-	git config --global user.email "sio2guanoeleo@gmail.com"
-	echo "Git configured!"
+#function to disable the p10k configuration wizard by adding POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true to $HOME/.zshrc if not present
+function check_p10k_configuration_wizard() {
+	if grep -q "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true" $FILE_ZSHRC; then
+		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD found! doing nothing..."
+	else
+		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD not found! Adding it..."
+		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true" >> $FILE_ZSHRC
+		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD added!"
+	fi
 }
 
-git_config
+
+function set_p10k_config() {
+	cp $PWD/p10k_bck.zsh $HOME/.p10k.zsh
+	echo "p10k configured!"
+}
+
+# install_vim
+# check_vim
+# git_config
 copy_zsh
-copy_vimrc
-check_zsh_autosuggestions
-check_zsh_powerlevel10k
-check_zsh_theme
-check_vscode_font
+# copy_vimrc
+# check_zsh_autosuggestions
+# check_zsh_powerlevel10k
+# check_zsh_theme
+# check_vscode_font
+set_p10k_config
+check_p10k_configuration_wizard

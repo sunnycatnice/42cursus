@@ -8,4 +8,4 @@ else
 	echo "Hai oh my zsh installato! Doing nothing..."
 fi
 
-exec ./srcs/install.sh
+exec $PWD/srcs/install.sh
