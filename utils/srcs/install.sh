@@ -2,9 +2,9 @@
 #DO NOT RUN THIS SCRIPT DIRECTLY, RUN config.sh INSTEAD
 
 FILE_ZSHRC="$HOME/.zshrc"
-FILE_ZSHRC_TXT="srcs/zshrc.txt"
+FILE_ZSHRC_TXT="zshrc.txt"
 FILE_VIMRC="$HOME/.vimrc"
-FILE_VIMRC_TXT="srcs/vimrc.txt"
+FILE_VIMRC_TXT="vimrc.txt"
 
 #install vim
 if [ -d "~/.vimrc" ]; then
@@ -78,10 +78,66 @@ function copy_vimrc() {
 	done < $FILE_VIMRC_TXT
 }
 
+#funzione che controlla se ~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions è presente, se non lo è, lo crea
+#lo crea usando git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+function check_zsh_autosuggestions() {
+	if [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+		echo "zsh-autosuggestions found! doing nothing..."
+	else
+		echo "zsh-autosuggestions not found! Creating it..."
+		git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+		echo "zsh-autosuggestions created!"
+	fi
+}
+
+#function to check if zsh theme powerlevel10k is present, if not, it creates it
+#it creates it using git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+function check_zsh_powerlevel10k() {
+	if [ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+		echo "powerlevel10k found! doing nothing..."
+	else
+		echo "powerlevel10k not found! Creating it..."
+		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+		echo "powerlevel10k created!"
+	fi
+}
+
+#function to check if in the file $HOME/.zshrc there is the line containing the string "ZSH_THEME="robbyrussell""
+#then delete that line and create a new one containing "ZSH_THEME="powerlevel10k/powerlevel10k""
+function check_zsh_theme() {
+	if grep -q "ZSH_THEME=\"robbyrussell\"" $FILE_ZSHRC; then
+		#delete the line containing "ZSH_THEME=robbyrussell"
+		sed -i '' "s/robbyrussell/powerlevel10k\/powerlevel10k/" $FILE_ZSHRC
+		echo "ZSH_THEME changed!"
+	else
+		echo "ZSH_THEME=\"robbyrussell\" not found! Substituting it..."
+		echo "ZSH_THEME=\"powerlevel10k/powerlevel10k\"" >> $FILE_ZSHRC
+		echo "New ZSH_THEME=powerlevel10k/powerlevel10k created!"
+	fi
+}
+
+#function to change the default font of vs code to MesloLGS NF
+function check_vscode_font() {
+	if grep -q "fontFamily: MesloLGS NF" $HOME/"Library/Application Support/Code/User/settings.json"; then
+		echo "Font MesloLGS NF found! doing nothing..."
+	else
+		echo "Font MesloLGS NF not found! Substituting it..."
+		sed -i '' "s/monospace/MesloLGS NF/" $HOME/"Library/Application Support/Code/User/settings.json"
+		echo "New font MesloLGS NF created!"
+	fi
+}
+
+#function to change git config to use the default git config
+function git_config() {
+	git config --global user.name "dani-MacOS"
+	git config --global user.email "sio2guanoeleo@gmail.com"
+	echo "Git configured!"
+}
+
+git_config
 copy_zsh
 copy_vimrc
-git config --global user.name "dani-MacOS"
-git config --global user.email "sio2guanoeleo@gmail.com"
-echo "Git configured!"
-
-exec zsh
+check_zsh_autosuggestions
+check_zsh_powerlevel10k
+check_zsh_theme
+check_vscode_font
