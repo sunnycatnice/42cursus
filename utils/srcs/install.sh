@@ -5,6 +5,7 @@ FILE_ZSHRC="$HOME/.zshrc"
 FILE_ZSHRC_TXT="zshrc.txt"
 FILE_VIMRC="$HOME/.vimrc"
 FILE_VIMRC_TXT="vimrc.txt"
+VS_TERMINAL_CONFIG_PATH="$HOME/Library/Application Support/Code/User/settings.json"
 
 #function to install vim if not installed
 
@@ -82,6 +83,7 @@ function check_zsh_powerlevel10k() {
 	fi
 }
 
+
 #function to check if in the file $HOME/.zshrc there is the line containing the string "ZSH_THEME="robbyrussell""
 #then delete that line and create a new one containing "ZSH_THEME="powerlevel10k/powerlevel10k""
 function check_zsh_theme() {
@@ -92,42 +94,42 @@ function check_zsh_theme() {
 	fi
 }
 
-#function to change the default font of vs code to MesloLGS NF
-function check_vscode_font() {
-	if grep -q "fontFamily: MesloLGS NF" $HOME/"Library/Application Support/Code/User/settings.json"; then
-		echo "Font MesloLGS NF found! doing nothing..."
-	else
-		echo "Font MesloLGS NF not found! Substituting it..."
-		sed -i '' "s/monospace/MesloLGS NF/" $HOME/"Library/Application Support/Code/User/settings.json"
-		echo "New font MesloLGS NF created!"
-	fi
+function set_p10k_config() {
+	cp $PWD/p10k_bck.zsh $HOME/.p10k.zsh
+	echo $PWD/p10k_bck.zsh "  " $HOME/.p10k.zsh
+	echo "p10k configured!"
 }
 
 #function to disable the p10k configuration wizard by adding POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true to $HOME/.zshrc if not present
 function check_p10k_configuration_wizard() {
 	if grep -q "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true" $FILE_ZSHRC; then
-		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD found! doing nothing..."
+		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true found! doing nothing..."
 	else
-		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD not found! Adding it..."
+		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true not found! Creating it..."
 		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true" >> $FILE_ZSHRC
-		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD added!"
+		echo "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true created!"
 	fi
 }
 
-
-function set_p10k_config() {
-	cp $PWD/p10k_bck.zsh $HOME/.p10k.zsh
-	echo "p10k configured!"
+#function to change the default font of vs code to MesloLGS NF
+function check_vscode_font() {
+	#copy vs_terminal_config.json to $VS_TERMINAL_CONFIG_PATH
+	cp $PWD/vs_terminal_settings.json $VS_TERMINAL_CONFIG_PATH
+	echo $PWD/vs_terminal_settings.json $VS_TERMINAL_CONFIG_PATH
+	source $HOME/.zshrc
+	clear
 }
 
+
 # install_vim
-# check_vim
+# check_vimrc
 # git_config
-copy_zsh
+# copy_zsh
 # copy_vimrc
 # check_zsh_autosuggestions
 # check_zsh_powerlevel10k
 # check_zsh_theme
 # check_vscode_font
-set_p10k_config
-check_p10k_configuration_wizard
+# set_p10k_config
+# check_p10k_configuration_wizard
+check_vscode_font
