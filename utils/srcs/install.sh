@@ -5,6 +5,7 @@ FILE_ZSHRC="$HOME/.zshrc"
 FILE_ZSHRC_TXT="zshrc.txt"
 FILE_VIMRC="$HOME/.vimrc"
 FILE_VIMRC_TXT="vimrc.txt"
+P10K_CONFIG_FILE_PATH="$HOME/.p10k.zsh"
 VS_TERMINAL_CONFIG_PATH="$HOME/Library/Application Support/Code/User/settings.json"
 
 #function to install vim if not installed
@@ -95,8 +96,8 @@ function check_zsh_theme() {
 }
 
 function set_p10k_config() {
-	cp $PWD/p10k_bck.zsh $HOME/.p10k.zsh
-	echo $PWD/p10k_bck.zsh "  " $HOME/.p10k.zsh
+	cp $PWD/p10k_bck.zsh $P10K_CONFIG_FILE_PATH
+	echo $PWD/p10k_bck.zsh "  " $P10K_CONFIG_FILE_PATH
 	echo "p10k configured!"
 }
 
@@ -116,10 +117,13 @@ function check_vscode_font() {
 	#copy vs_terminal_config.json to $VS_TERMINAL_CONFIG_PATH
 	cp $PWD/vs_terminal_settings.json $VS_TERMINAL_CONFIG_PATH
 	echo $PWD/vs_terminal_settings.json $VS_TERMINAL_CONFIG_PATH
-	source $HOME/.zshrc
-	clear
 }
 
+function finish() {
+	source $HOME/.zshrc
+	clear
+	echo "All done! Enjoy your new shell!"
+}
 
 # install_vim
 # check_vimrc
@@ -132,4 +136,5 @@ function check_vscode_font() {
 # check_vscode_font
 # set_p10k_config
 # check_p10k_configuration_wizard
-check_vscode_font
+# check_vscode_font
+finish
