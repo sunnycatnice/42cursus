@@ -16,3 +16,5 @@
 | cub3d | `101` |
 | libasm | `100` |
 | push_swap | `88` |
+| pipex | `100` |
+| minishell | `101' |
