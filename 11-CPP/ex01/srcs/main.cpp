@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 22:26:54 by dmangola          #+#    #+#             */
-/*   Updated: 2022/01/19 01:05:31 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/01/30 00:20:13 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-    //print_ascii_art();
+    print_ascii_art();
 	PhoneBook pb;
 	int i = 0;
 	bool over = false;
@@ -36,8 +36,6 @@ int main()
 		}
 		else if (!command.compare("SEARCH"))
 		{
-			// std::cout << "SEARCH" << std::endl;
-			// std::cout << pb.user[0].getName() << std::endl;
 			if (over == true)
 				pb.search(8);
 			else
