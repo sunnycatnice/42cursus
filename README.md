@@ -16,3 +16,6 @@
 | cub3d | `101` |
 | libasm | `100` |
 | push_swap | `88` |
+| pipex | `100` |
+| philosophers | `100` | --> perfect
+| minishell | `101` | --> w/bugs
