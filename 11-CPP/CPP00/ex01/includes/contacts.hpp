@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 22:53:20 by dmangola          #+#    #+#             */
-/*   Updated: 2022/01/18 23:59:34 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:22:51 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,7 @@
 #include <iostream>
 
 class Contacts
-{
-    std::string  name;
-    std::string  lastName;
-    std::string  nickname;
-    std::string  phonenumber;
-    std::string  secret;
-    
+{    
     public:
         // void    setter(std::string type, std::string value);
         // std::string  getter(std::string type);
@@ -38,6 +32,13 @@ class Contacts
         std::string getNickName();
         std::string getPhoneNumber();
         std::string getDarkestSecret();
+
+    private:
+        std::string  name;
+        std::string  lastName;
+        std::string  nickname;
+        std::string  phonenumber;
+        std::string  secret;
 };
 
 #endif
