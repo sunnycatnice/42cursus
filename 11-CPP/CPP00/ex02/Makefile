@@ -6,12 +6,12 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/02/01 02:15:36 by dmangola         ###   ########.fr        #
+#    Updated: 2022/02/06 20:55:24 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Name
-NAME =				agenda
+NAME =				bank
 
 #Compiler
 CC = 				clang++

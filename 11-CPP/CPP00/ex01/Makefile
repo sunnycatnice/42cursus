@@ -6,12 +6,12 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/01/18 23:16:32 by dmangola         ###   ########.fr        #
+#    Updated: 2022/02/06 20:55:39 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Name
-NAME =				agenda
+NAME =				phonebook
 
 #Compiler
 CC = 				clang++

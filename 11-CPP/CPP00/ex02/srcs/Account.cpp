@@ -61,7 +61,7 @@ void Account::_displayTimestamp(void)
 
 	tm utc_tm = *localtime(&time_now);
 	std::cout << std::setfill('0') << "[" << (utc_tm.tm_year + 1900)
-			<< std::setw(2) << utc_tm.tm_mon
+			<< std::setw(2) << (utc_tm.tm_mon + 1)
 			<< std::setw(2) << utc_tm.tm_mday << "_"
 			<< std::setw(2) << utc_tm.tm_hour
 			<< std::setw(2) << utc_tm.tm_min
