@@ -6,18 +6,23 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:34:29 by dmangola          #+#    #+#             */
-/*   Updated: 2022/02/07 03:05:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/02/08 23:25:26 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "zombie.hpp"
+#include "Zombie.hpp"
 
 int main(void)
 {
-    std::cout << "Creating a zombie horde of little Bobby's" << std::endl; 
-    {
-        Zombie *firstZombieHorde = zombieHorde(5, "Bobby");
-        
-    }
+	int	ZombieNumber = 5;
 
+	std::cout << "Creating a zombie horde of little Bobby's" << std::endl; 
+	{
+		Zombie *zombies = zombieHorde(ZombieNumber, "Bobby");
+		for (size_t i = 0; i < (size_t)ZombieNumber; i++)
+		{
+			zombies[i].announce();
+		}
+		delete [] zombies;
+	}
 }

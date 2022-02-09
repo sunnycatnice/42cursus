@@ -6,22 +6,21 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/02/08 23:06:13 by dmangola         ###   ########.fr        #
+#    Updated: 2022/02/09 01:11:12 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Name
-NAME =				Moar_brainz
+NAME =				HI_THIS_IS_BRAIN
 
 #Compiler
 CC = 				clang++
 CFLAGS = 			-Wall -Wextra -Werror -std=c++98
 CFLAG = 			-c
 OFLAG =				-o
-IFLAG =				-I
 
 #Make
-MAKE = 				make -C
+MAKE = 				make
 
 #Shell
 MKDIR =				mkdir -p
@@ -31,11 +30,8 @@ RM =				rm -rf
 #Directories
 SRCDIR = 			./srcs
 OBJDIR =  			./objs
-INCDIR = 			./includes
 
-FILES =				main.cpp \
-					Zombie.cpp \
-					ZombieHorde.cpp \
+FILES =				main.cpp
 
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
@@ -43,7 +39,7 @@ OBJS =	$(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRCS:.cpp=.o))
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@$(MKDIR) $(@D)
-	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $< 
+	@$(CC) $(CFLAGS) $(CFLAG) $(OFLAG) $@ $< 
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/02/07 03:00:47 by dmangola         ###   ########.fr        #
+#    Updated: 2022/02/08 23:06:13 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,8 @@ OBJDIR =  			./objs
 INCDIR = 			./includes
 
 FILES =				main.cpp \
-					newZombie.cpp \
-					randomChump.cpp \
 					Zombie.cpp \
+					ZombieHorde.cpp \
 
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
