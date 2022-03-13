@@ -1,0 +1,1 @@
+(gcc gnlnew.c main.c && ./a.out) | cat -e && rm -f a.out 
