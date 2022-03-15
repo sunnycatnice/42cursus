@@ -1,30 +1,40 @@
 #include <unistd.h>
-#define USED 1
-#define PRINTED 2
-#define TOFILLARRAY used[(unsigned char)av[i][j]]
-#define PRINTELEMENT write(1, &av[i][j], 1);
+
+int ft_check_string(char *str, char c)
+{
+	int i = 0;
+
+	while (str[i])
+	{
+		if (str[i] == c)
+			return 1;
+		i++;
+	}
+	return 0;
+	
+}
+
+int ft_check_prev(int firstsecond, int i, char **av, char p)
+{
+	while(--i >= 0)
+	{
+		if (av[firstsecond][i] == p)
+			return 0;
+	}
+	return 1;
+}
 
 int main(int ac, char **av)
 {
-	int used[255] = {0};
-	int i  = 2, j = 0;
-	if(ac ==3)
+	int i = 0;
+
+	if (ac == 3)
 	{
-		while(i > 0)
+		while (av[1][i])
 		{
-			j = 0;
-			while(av[i][j])
-			{
-				if (i == 2 && !TOFILLARRAY)
-					TOFILLARRAY = USED;
-				else if(TOFILLARRAY == USED && i == 1)
-				{
-					PRINTELEMENT;
-					TOFILLARRAY = PRINTED;
-				}
-				j++;
-			}
-			i--;
+			if (ft_check_prev(1, i, av, av[1][i]) == 1 && ft_check_string(av[2], av[1][i]) == 1)
+				write(1, &av[1][i], 1);
+			i++;
 		}
 	}
 	write(1, "\n", 1);

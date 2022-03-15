@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdio.h>
 
 //check if the char exist in the string
 int     ft_check_string(char *str, char c)
@@ -28,7 +29,7 @@ int    ft_check_prev(int firstsecond, int i, char **av, char p)
 int main(int ac, char **av)
 {
     int i = 0;
-
+    
     if (ac == 3)
     {
         while(av[1][i])
