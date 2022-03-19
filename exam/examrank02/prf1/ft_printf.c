@@ -5,6 +5,7 @@
 int	ft_putstr(char *str)
 {
 	int i = 0;
+	
 	while (str[i])
 	{
 		write (1, &str[i], 1);
@@ -23,7 +24,6 @@ void ft_putnbr_base(long long num,  char *base, int base_len)
 		ft_putnbr_base(num % base_len, base, base_len);
 	}
 }
-
 
 int	ft_print_d(long long num)
 {
