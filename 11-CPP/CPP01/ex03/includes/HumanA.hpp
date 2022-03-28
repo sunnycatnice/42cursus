@@ -10,30 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
-
+#ifndef __HUMANA_HPP__
+# define __HUMANA_HPP__
 #include <iostream>
 #include <string>
 #include "Weapon.hpp"
 
-//create a class, HumanA , that have a Weapon, a name, and an attack() function that displays:
-//NAME attacks with his WEAPON_TYPE
-//this class takes the weapon in its constructor
-//HumanA will ALWAYS be armed
-
+//this class has a weapon, a name and an attach function
 class HumanA
 {
     public:
-        HumanA(std::string name, Weapon &weapon);
         ~HumanA();
-        void    attack();
+        HumanA(std::string name, Weapon &weapon);
+        void attack();
     private:
         std::string _name;
-        Weapon      &_weapon;
+        Weapon &_weapon;
 };
-
-
 
 
 #endif

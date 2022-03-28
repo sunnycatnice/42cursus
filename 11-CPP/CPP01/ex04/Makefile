@@ -6,12 +6,12 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/02/09 02:48:28 by dmangola         ###   ########.fr        #
+#    Updated: 2022/03/24 16:21:45 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Name
-NAME =				Unnecessary_violence
+NAME =				replace
 
 #Compiler
 CC = 				clang++
@@ -34,9 +34,7 @@ OBJDIR =  			./objs
 INCDIR = 			./includes
 
 FILES =				main.cpp \
-					HumanA.cpp \
-					HumanB.cpp \
-					Weapon.cpp \
+					sedforcpp.cpp \
 
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
