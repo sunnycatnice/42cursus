@@ -6,12 +6,11 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:34:29 by dmangola          #+#    #+#             */
-/*   Updated: 2022/03/29 17:17:11 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/03/29 18:24:27 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sedforcpp.hpp"
-#include <iostream>
 
 int main (int argc, char **argv)
 {
