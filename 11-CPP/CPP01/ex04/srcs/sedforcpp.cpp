@@ -6,11 +6,11 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:35:58 by dmangola          #+#    #+#             */
-/*   Updated: 2022/03/25 18:09:42 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:01:04 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cppsed.hpp"
+#include "sedforcpp.hpp"
 
 //init constructor and destructor
 sedforcpp::sedforcpp()
@@ -65,52 +65,6 @@ int	sedforcpp::create_new_file()
 		return (1);
 }
 
-bool sedforcpp::word_replace(std::string& str, const std::string& from, const std::string& to)
-{
-	int	j = 0;
-	int	tocpy_len = 0;
-
-	tocpy_len = to.length();
-	
-	for(std::string::size_type i = 0; i < str.size(); ++i)
-	{
-		if (str[i] == from[j])
-		{
-			str[i] = from[j];
-			if (from[i] == '\0')
-				break ;
-			i++;
-		}
-	}	
-}
-
-std::string	sedforcpp::replace_string()
-{
-	std::ifstream	file(this->_filename);
-	std::ofstream	newfile(this->_filename + ".replace");
-	std::string		line;
-	std::string		newline;
-	std::string		newstr;
-
-	while (std::getline(file, line))
-	{
-		newstr = line;
-		newline = line;
-		std::cout << "line   : " << line << std::endl;
-		std::cout << "line   : " << newstr << std::endl;
-		std::cout << "newline: " << newline << std::endl;
-		word_replace(newline, this->_tofind, this->_toreplace);
-		std::cout << "newline: " << newline << std::endl << std::endl;
-		if (newline != newstr)
-			newfile << newline << std::endl;
-		else
-			newfile << line << std::endl;
-	}
-	file.close();
-	newfile.close();
-	return (newstr);
-}
-
 int	sedforcpp::check_file_isempty()
 {
 	std::ifstream	file(this->_filename);
@@ -129,47 +83,62 @@ int	sedforcpp::check_file_isempty()
 		return (1);
 }
 
-void	sedforcpp::test()
+std::string sedforcpp::read_the_file(std::string filename)
 {
-    std::string sFilename = this->_filename;    
+  std::stringstream buffer;
 
-    /******************************************
-     *                                        *
-     *                WRITING                 *
-     *                                        *
-     ******************************************/
+  buffer << std::ifstream(filename).rdbuf();
 
-    std::ofstream fileSink(sFilename); // Creates an output file stream
+  return buffer.str();
+}
 
-    if (!fileSink) {
-        std::cerr << "Canot open " << sFilename << std::endl;
-        exit(-1);
-    }
+int sedforcpp::replace_string()
+{
+	std::ofstream newfile;
+	newfile.open(this->_filename + ".replace");
 
-    /* std::endl will automatically append the correct EOL */
-    fileSink << "Hello Open Source World!" << std::endl;
+	std::ifstream file(this->_filename);
+	int i = 0;
+	int j = 0;
 
+	std::string file_contents = this->read_the_file(this->_filename);
 
-    /******************************************
-     *                                        *
-     *                READING                 *
-     *                                        *
-     ******************************************/
-   
-    std::ifstream fileSource(sFilename); // Creates an input file stream
-
-    if (!fileSource) {
-        std::cerr << "Canot open " << sFilename << std::endl;
-        exit(-1);
-    }
-    else {
-        // Intermediate buffer
-        std::string buffer;
-
-        // By default, the >> operator reads word by workd (till whitespace)
-        while (fileSource >> buffer)
-        {
-            std::cout << buffer << std::endl;
-        }
-    }
+	if (file.is_open())
+	{
+		// std::cout << "line2: "<<line2 << std::endl;
+		while(file_contents[i])
+		{
+			if(file_contents.substr(i, this->_toreplace.length()) == this->_toreplace)
+			{
+				std::cout << "\n--------------------------\n";
+				std::cout << "!!! Parte da: " << i << std::endl;
+				j = -1;
+				while(this->_tofind[++j])
+				{
+					i++;
+					newfile << this->_tofind[j];
+					std::cout << this->_tofind[j];
+				}
+				if (file_contents[i] == ' ')
+				{
+					std::cout << file_contents[i - 1];
+					newfile << " " << i;
+				}
+				std::cout << std::endl << "!!!Finisce qua: " << i << std::endl;
+				std::cout << "TOT: " << j << std::endl;
+				std::cout << "--------------------------\n";
+			}
+			else
+			{
+				std::cout << file_contents[i];
+				newfile << file_contents[i];
+				i++;
+			}
+		}
+		file.close();
+		newfile.close();
+		return (0);
+	}
+	else
+		return (1);
 }
