@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:32:26 by dmangola          #+#    #+#             */
-/*   Updated: 2022/03/29 19:36:57 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:27:12 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 
 void	karen::complain( std::string level )
 {
-	int i;
-	level == "DEBUG" ? i = 0 : level == "INFO" ? i = 1 : level == "WARNING" ? i = 2 : level == "ERROR" ? i = 3 : i = 4;
+	int i = 0;
 
-	//call every function inside a loop using pointers to member functions
-	void (karen::*functions[4])(void) = {&karen::_debug, &karen::_info, &karen::_warning, &karen::_error};
+	std::string complaintLevels[] =
+	{
+		"ERROR",
+		"WARNING",
+		"INFO",
+		"DEBUG"
+	};
+
+	void (karen::*functions[4])(void) =
+	{
+		&karen::_debug, &karen::_info, &karen::_warning, &karen::_error
+	};
 	while(i < 4)
 	{
-		(this->*functions[i])();
+		if (level == complaintLevels[i])
+			(this->*functions[i])();
 		i++;
 	}
 }
