@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef FIXED3_HPP
+#define FIXED3_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
@@ -22,13 +23,20 @@ class Fixed
 		static const int	_number_of_fractional_bits = 8;
 
 	public:
-		Fixed();
-		Fixed(const Fixed &cpy);
-		Fixed & operator = (const Fixed &op);
-		~Fixed();
+		Fixed(); //default constructor
+		Fixed(const Fixed &cpy); //copy constructor
+		Fixed(const int int_to_conv);
+		Fixed(const float float_to_conv);
+		Fixed &operator = (const Fixed &op); //assignment operator 
+		virtual ~Fixed();
+		
 
 		int		getRawBits(void) const;
-		int		setRawBits(int const raw);
+		void	setRawBits(int const raw);
+		int		to_int(void) const;
+		float	to_float(void) const;
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixe);
 
 #endif
