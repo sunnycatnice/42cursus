@@ -1,0 +1,60 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
+#    Updated: 2022/04/13 10:21:14 by dmangola         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#Name
+NAME =				BSP
+
+#Compiler
+CC = 				clang++
+CFLAGS = 			-Wall -Wextra -Werror -std=c++98
+CFLAG = 			-c
+OFLAG =				-o
+IFLAG =				-I
+
+#Make
+MAKE = 				make -C
+
+#Shell
+MKDIR =				mkdir -p
+CP =				cp
+RM =				rm -rf
+
+#Directories
+SRCDIR = 			./srcs
+OBJDIR =  			./objs
+INCDIR = 			./includes
+
+FILES =				main.cpp \
+					Fixed3.cpp \
+
+SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
+
+OBJS =	$(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRCS:.cpp=.o))
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@$(MKDIR) $(@D)
+	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $< 
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(OFLAG) $(NAME)
+
+clean:
+	@$(RM) $(OBJDIR) $(OBJS)
+
+fclean: clean
+	@$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all norm clean fclean re
