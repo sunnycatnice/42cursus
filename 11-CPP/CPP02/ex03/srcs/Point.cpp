@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 19:20:09 by dmangola          #+#    #+#             */
-/*   Updated: 2022/04/16 13:35:05 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/16 13:48:52 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,8 @@ Fixed const Point::getY(void) const
 	return this->_y;
 }
 
-float Point::sign(Point p1, Point p2, Point p3)
-{
-	float p1x;
-	float p2x;
-	float p3x;
-	float p1y;
-	float p2y;
-	float p3y;
-
-	p1x = p1._x.to_float();
-	p2x = p2._x.to_float();
-	p3x = p3._x.to_float();
-	p1y = p1._y.to_float();
-	p2y = p2._y.to_float();
-	p3y = p3._x.to_float();
-
-    return (p1x - p3x) * (p2y - p3y) - (p2x - p3x) * (p1y - p3y);
-}
-
-//d stands for diagonal
-//it checks in the most efficient way possible if the point is inside or outside the 3 diagonals
+//Is the point s to the left of or to the right of both the lines AB and AC? If true, it can't be inside.
+//If false, it is at least inside the "cones" that satisfy the condition. 
 bool Point::bsp(Point const a, Point const b, Point const c, Point const point)
 {
     float as_x = point._x.to_float()-a._x.to_float();

@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 19:21:17 by dmangola          #+#    #+#             */
-/*   Updated: 2022/04/16 11:54:56 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/16 13:48:57 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class Point
 		~Point();
 		//methods
 		bool			bsp(Point pt, Point v1, Point v2, Point v3);
-		float			sign(Point p1, Point p2, Point p3);
 		Fixed const 	getX(void) const;
 		Fixed const		getY(void) const;
 		
