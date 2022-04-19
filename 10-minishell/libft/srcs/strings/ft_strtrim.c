@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:38:46 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:58:15 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ static int	ft_isset(char const str, char const *set)
 
 static int	ft_trimend(const char *set, const char *ori)
 {
-	unsigned long int		dimset;
 	unsigned long int		i;
 
-	dimset = ft_strlen(set);
 	i = ft_strlen(ori);
 	while (ft_isset(ori[--i], set) == 1)
 		;
@@ -77,10 +75,8 @@ static int	ft_trimend(const char *set, const char *ori)
 
 static int	ft_trimstart(const char *set, const char *ori)
 {
-	unsigned long int		dimset;
 	unsigned long int		i;
 
-	dimset = ft_strlen(set);
 	i = -1;
 	while (ft_isset(ori[++i], set) == 1)
 		;

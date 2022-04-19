@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:12:16 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:13:49 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,10 @@ int	protectline(char *line)
 
 char	**pathfinder(char *line)
 {
-	int		i;
 	char	*path;
 	char	**cmd;
-	int		status;
 
-	i = 0;
 	cmd = ft_bnessi_split(line, ' ');
-	status = 0;
 	path = 0;
 	if (!(strncmp(cmd[0], "./", 2)))
 	{

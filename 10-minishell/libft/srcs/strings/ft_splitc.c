@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-luca <bde-luca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 19:16:43 by bde-luca          #+#    #+#             */
-/*   Updated: 2021/11/10 23:58:27 by bde-luca         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:59:17 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	is_sepc(char str, char charset)
 static int	final_lenc(char const *str, char charset,
 						char const *begin, char const *end)
 {
+	(void) begin;
 	int	count;
 
 	count = 0;

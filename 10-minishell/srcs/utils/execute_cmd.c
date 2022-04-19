@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 17:55:49 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:16:00 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ int	ft_exec_cmd(void)
 {
 	char	*word;
 	int		result;
-	int		x;
 	int		i;
 
 	i = 0;
-	x = 0;
 	word = g_sh.av[i];
 	word = ft_checkif_path(word);
 	result = exec_recoded_cmds(i);

@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 19:51:18 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:16:12 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ char	*get_pipepath(char *cmd)
 	char	**paths;
 	char	*path_line;
 	int		i;
-	int		j;
 
 	path_line = NULL;
 	i = 0;
@@ -86,6 +85,5 @@ char	*get_pipepath(char *cmd)
 	paths = ft_bnessi_split(path_line, ':');
 	i = do_the_while(paths, i);
 	path_line = finish_pipepath(i, cmd, paths);
-	j = 0;
 	return (path_line);
 }

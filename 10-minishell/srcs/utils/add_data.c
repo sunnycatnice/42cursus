@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 17:44:14 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:15:38 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	new_var(char *name, char *content)
 	new = malloc(sizeof(t_node *));
 	new->name = ft_strdup(name);
 	new->string = ft_strdup(content);
-	printf("%s %s\n", new->name, new->string);
+	// printf("%s %s\n", new->name, new->string);
 	new->next = NULL;
 	ft_lstaddnode_back(g_sh.var, new);
 }

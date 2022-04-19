@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:23:06 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:13:36 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	check_echo(char *line, int checker)
 void	sort_things(char *input)
 {
 	int	checker;
-	int	i;
 
 	g_sh.in_pipe = 0;
 	checker = check_token_error(input);
@@ -77,7 +76,6 @@ void	sort_things(char *input)
 	{
 		g_sh.av = ft_split_and_count(g_sh.line, ' ');
 		ft_exec_cmd();
-		i = 0;
 		free_matrix(g_sh.av);
 	}
 }

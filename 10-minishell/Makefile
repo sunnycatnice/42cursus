@@ -6,7 +6,7 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by bde-luca          #+#    #+#              #
-#    Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr        #
+#    Updated: 2022/04/19 15:13:02 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME =				minishell
 
 #Compiler
 CC = 				gcc
-CFLAGS = 			-L /Users/$(USER)/goinfre/.test/.brew/opt/readline/lib -I/goinfre/$(USER)/.test/.brew/opt/readline/include -lreadline -Qunused-arguments -Wall -Wextra -Werror -g
+CFLAGS = 			-L /opt/homebrew/Cellar/readline/8.1.2/lib -I/opt/homebrew/Cellar/readline/8.1.2/include -lreadline -Qunused-arguments -Wall -Wextra -Werror
 CFLAG = 			-c
 OFLAG =				-o
 IFLAG =				-I

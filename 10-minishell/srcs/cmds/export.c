@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 17:33:43 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:13:25 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ void	print_export(int sent)
 void	exp_has_content(char *longstring)
 {
 	int		i;
-	int		j;
 	t_node	*exp;
 	char	*name;
 	char	*string;
 
-	j = 0;
 	exp = NULL;
 	name = NULL;
 	name = get_name(longstring, name);

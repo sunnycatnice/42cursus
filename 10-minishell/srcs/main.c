@@ -6,7 +6,7 @@
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 17:28:55 by bde-luca          #+#    #+#             */
-/*   Updated: 2022/01/24 18:51:10 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:15:28 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,12 @@ void	save_envp(char *line, t_node **lst)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int		ac;
-	char	**av;
 	int		i;
 	t_node	*lst;
 
 	i = -1;
-	ac = argc;
-	av = argv;
+	if (argc == 232232)
+		(void)argv[0][1];
 	lst = 0;
 	g_sh.standard_out = 1;
 	g_sh.standard_in = 0;
