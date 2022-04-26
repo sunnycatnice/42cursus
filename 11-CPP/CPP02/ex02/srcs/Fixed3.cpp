@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed2.cpp                                         :+:      :+:    :+:   */
+/*   Fixed3.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:45:31 by dmangola          #+#    #+#             */
-/*   Updated: 2022/04/05 17:59:36 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/04/16 12:03:08 by dmangola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed2.hpp"
+#include "Fixed3.hpp"
 
 /*
 **	CANONYCAL FORM /////////////////////////////////////
@@ -83,6 +83,127 @@ float	Fixed::to_float(void) const
 	return ((float) (this->_fixed_point_value / (float)(1 << this->_number_of_fractional_bits)));
 }
 
+/*
+**	OPERATORS /////////////////////////////////////////
+*/
+
+bool	Fixed::operator>(const Fixed &rhs) const
+{
+	return(this->getRawBits() > rhs.getRawBits());
+}
+
+bool	Fixed::operator>=(const Fixed &rhs) const
+{
+	return (!(*this < rhs));
+}
+
+bool	Fixed::operator<(const Fixed &rhs) const
+{
+	return(rhs > *this);
+}
+
+bool	Fixed::operator<=(const Fixed &rhs) const
+{
+	return (!(*this > rhs));
+}
+
+bool	Fixed::operator==(const Fixed &rhs) const
+{
+	return (rhs.getRawBits() == this->getRawBits());
+}
+
+bool	Fixed::operator!=(const	Fixed &rhs) const
+{
+	return(!(rhs == *this));
+}
+
+Fixed	Fixed::operator+(const Fixed &rhs) const
+{
+	Fixed	res;
+
+	res.setRawBits(this->getRawBits() + rhs.getRawBits());
+	return(res);
+}
+
+Fixed	Fixed::operator-(const Fixed &rhs) const
+{
+	Fixed res;
+
+	res.setRawBits(this->getRawBits() - rhs.getRawBits());
+	return(res);
+}
+
+Fixed	Fixed::operator*(const Fixed &rhs) const
+{
+	Fixed res(this->to_float() * rhs.to_float());
+
+	return(res);
+}
+
+Fixed	Fixed::operator/(const Fixed &rhs) const
+{
+	Fixed	res(this->to_float() / rhs.to_float());
+
+	return (res);
+}
+
+Fixed	Fixed::operator++(void)
+{
+	this->_fixed_point_value++;
+
+	return(*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	old(*this);
+
+	++(*this);
+	return(old);
+}
+
+Fixed	Fixed::operator--(void)
+{
+	this->_fixed_point_value--;
+
+	return(*this);
+}
+
+Fixed	&Fixed::max(Fixed &lhs, Fixed &rhs)
+{
+	if (lhs > rhs)
+		return (lhs);
+	else
+		return (rhs);
+}
+
+const Fixed	&Fixed::max(const Fixed &lhs, const Fixed &rhs)
+{
+	if (lhs > rhs)
+		return (lhs);
+	else
+		return (rhs);
+}
+
+Fixed	&Fixed::min(Fixed &lhs, Fixed &rhs)
+{
+	if (lhs < rhs)
+		return (lhs);
+	else
+		return (rhs);
+}
+
+/*
+**	OVERLOADED MEMBER FUNCTIONS ////////////////////////
+*/
+
+const Fixed	&Fixed::min(const Fixed &lhs, const Fixed &rhs)
+{
+	if (lhs < rhs)
+		return (lhs);
+	else
+		return (rhs);
+}
 std::ostream &operator<<(std::ostream &out, const Fixed &fixe)
 {
     out << fixe.to_float();

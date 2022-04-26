@@ -6,7 +6,7 @@
 #    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/04/05 18:01:00 by dmangola         ###   ########.fr        #
+#    Updated: 2022/04/13 10:01:59 by dmangola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJDIR =  			./objs
 INCDIR = 			./includes
 
 FILES =				main.cpp \
-					Fixed2.cpp \
+					Fixed3.cpp \
 
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 

@@ -27,14 +27,30 @@ class Fixed
 		Fixed(const Fixed &cpy); //copy constructor
 		Fixed(const int int_to_conv);
 		Fixed(const float float_to_conv);
-		Fixed &operator = (const Fixed &op); //assignment operator 
+		Fixed	&operator = (const Fixed &op); //assignment operator 
 		virtual ~Fixed();
 		
-
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
-		int		to_int(void) const;
-		float	to_float(void) const;
+		bool		operator<(const Fixed &rhs) const;
+		bool		operator<=(const Fixed &rhs) const;
+		bool		operator>(const Fixed &rhs) const;
+		bool		operator>=(const Fixed &rhs) const;
+		bool		operator==(const Fixed &rhs) const;
+		bool		operator!=(const Fixed &rhs) const;
+		Fixed		operator+(const Fixed &rhs) const;
+		Fixed		operator-(const Fixed &rhs) const;
+		Fixed		operator*(const Fixed &rhs) const;
+		Fixed		operator/(const Fixed &rhs) const;
+		Fixed		operator++(void);
+		Fixed		operator++(int);
+		Fixed		operator--(void);
+		Fixed		&max(Fixed &lhs, Fixed &rhs);
+		const Fixed	&max(const Fixed &lhs, const Fixed &rhs);
+		Fixed		&min(Fixed &lhs, Fixed &rhs);
+		const Fixed	&min(const Fixed &lhs, const Fixed &rhs);
+		int			getRawBits(void) const;
+		void		setRawBits(int const raw);
+		int			to_int(void) const;
+		float		to_float(void) const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixe);
