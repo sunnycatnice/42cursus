@@ -3,7 +3,7 @@
 int main()
 {
 	DiamondTrap anna("anna");
-	DiamondTrap maria("maria");
+	// DiamondTrap maria("maria");
 
 	anna.attack("maria");
 	// anna.takeDamage(1);
