@@ -10,6 +10,8 @@ class Animal
 		std::string type;
 	public:
 		Animal();
+		Animal	&operator=( const Animal &other );
+		Animal( const Animal &src );
 		~Animal();
 		std::string getType() const;
 		void		makeSound() const;
