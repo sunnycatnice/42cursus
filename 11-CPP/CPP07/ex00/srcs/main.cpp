@@ -16,10 +16,11 @@ int	main( void )
 	f = 'x';
 	g = "string1";
 	h = "string2";
+
 	std::cout << "a: " << a << " and b: " << b << std::endl;
 	std::cout << "c: " << c << " and d: " << d << std::endl;
 	std::cout << "e: " << e << " and f: " << f << std::endl;
-	std::cout << "g: " << g << " and h: " << h << std::endl;
+	std::cout << "g: " << g << " and h: " << h << std::endl << std::endl;
 	std::cout << "Now calling swap on all these..." << std::endl;
 	::swap(a, b);
 	::swap(c, d);
@@ -28,7 +29,7 @@ int	main( void )
 	std::cout << "a: " << a << " and b: " << b << std::endl;
 	std::cout << "c: " << c << " and d: " << d << std::endl;
 	std::cout << "e: " << e << " and f: " << f << std::endl;
-	std::cout << "g: " << g << " and h: " << h << std::endl;
+	std::cout << "g: " << g << " and h: " << h << std::endl << std::endl;
 	std::cout << "min(a, b): " << ::min(a, b) << std::endl;
 	std::cout << "max(a, b): " << ::max(a, b) << std::endl;
 	std::cout << "min(c, d): " << ::min(c, d) << std::endl;

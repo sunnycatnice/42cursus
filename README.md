@@ -19,3 +19,4 @@
 | pipex | `100` |
 | philosophers | `100` | --> perfect
 | minishell | `101` | --> w/bugs
+| CPP modules | `100` |
