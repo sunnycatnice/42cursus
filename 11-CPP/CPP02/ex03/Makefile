@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/04/14 19:29:18 by dmangola         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #Name
 NAME =				BSP
 
@@ -33,9 +21,7 @@ SRCDIR = 			./srcs
 OBJDIR =  			./objs
 INCDIR = 			./includes
 
-FILES =				main.cpp \
-					Fixed3.cpp \
-					Point.cpp \
+FILES =				 *.cpp \
 
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
@@ -43,7 +29,7 @@ OBJS =	$(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRCS:.cpp=.o))
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@$(MKDIR) $(@D)
-	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $< 
+	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $<
 
 all: $(NAME)
 

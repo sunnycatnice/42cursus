@@ -21,12 +21,7 @@ SRCDIR = 			./srcs
 OBJDIR =  			./objs
 INCDIR = 			./incs
 
-FILES =				main.cpp \
-					A.cpp \
-					B.cpp \
-					C.cpp \
-					Base.cpp \
-
+FILES =				 *.cpp
 
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
@@ -34,7 +29,7 @@ OBJS =	$(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRCS:.cpp=.o))
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@$(MKDIR) $(@D)
-	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $< 
+	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $<
 
 all: $(NAME)
 

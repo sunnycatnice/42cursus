@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asinamet <asinamet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:34:27 by dmangola          #+#    #+#             */
-/*   Updated: 2022/02/08 23:17:53 by dmangola         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:13:30 by asinamet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "zombie.hpp"
 
 Zombie::Zombie (void): name("")
 {

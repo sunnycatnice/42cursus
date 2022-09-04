@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dmangola <dmangola@student.42.fr>          +#+  +:+       +#+         #
+#    By: asinamet <asinamet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 00:25:55 by dmangola          #+#    #+#              #
-#    Updated: 2022/02/07 01:30:57 by dmangola         ###   ########.fr        #
+#    Updated: 2022/09/04 17:11:17 by asinamet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,18 +33,14 @@ SRCDIR = 			./srcs
 OBJDIR =  			./objs
 INCDIR = 			./includes
 
-FILES =				main.cpp \
-					newZombie.cpp \
-					randomChump.cpp \
-					Zombie.cpp \
-
+FILES =				 *.cpp \
 SRCS =	$(foreach FILE, $(FILES), $(shell find $(SRCDIR) -name $(FILE)))
 
 OBJS =	$(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(SRCS:.cpp=.o))
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@$(MKDIR) $(@D)
-	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $< 
+	@$(CC) $(CFLAGS) $(IFLAG) $(INCDIR) $(CFLAG) $(OFLAG) $@ $<
 
 all: $(NAME)
 
