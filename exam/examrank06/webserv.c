@@ -12,7 +12,7 @@ typedef struct client {
 	int fd;
 }	client;
 
-client clients[1024];
+client clients[10000];
 char buf[1000000], msg[1000000];
 int sockfd, id, fd_max;
 fd_set mem_s, r_s, w_s;
@@ -45,7 +45,7 @@ void send_all(int id_from) {
 
 void add_client() {
 	int i = 0;
-	while (clients[i].fd > 0 && i < 1024)
+	while (clients[i].fd > 0 && i < 10000)
 		i++;
 	struct sockaddr_in client_addr;
 	socklen_t len;
@@ -62,7 +62,7 @@ void add_client() {
 void send_msg(int id_from) {
 	int i = 0, j = 0;
 	int len = strlen(buf);
-	char tmp[100000] = {0};
+	char tmp[1000000] = {0};
 	while (i < len) {
 		tmp[j++] = buf[i];
 		if (buf[i++] == '\n') {
